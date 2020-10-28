@@ -2,12 +2,12 @@ import unittest
 
 from talipp.indicators import TEMA
 
-from talippTest import ITAITest
+from TalippTest import TalippTest
 
 
-class Test(ITAITest):
+class Test(TalippTest):
     def setUp(self) -> None:
-        self.input_values = list(ITAITest.CLOSE_TMPL)
+        self.input_values = list(TalippTest.CLOSE_TMPL)
 
     def test_init(self):
         ind = TEMA(10, self.input_values)

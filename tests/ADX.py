@@ -1,14 +1,13 @@
 import unittest
 
 from talipp.indicators import ADX
-from talipp.ohlcv import OHLCV, OHLCVFactory
 
-from talippTest import ITAITest
+from TalippTest import TalippTest
 
 
-class TestADX(ITAITest):
+class TestADX(TalippTest):
     def setUp(self) -> None:
-        self.input_values = list(ITAITest.OHLCV_TMPL)
+        self.input_values = list(TalippTest.OHLCV_TMPL)
 
     def test_init(self):
         ind = ADX(14, 14, self.input_values)

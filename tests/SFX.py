@@ -2,12 +2,12 @@ import unittest
 
 from talipp.indicators import SFX
 
-from talippTest import ITAITest
+from TalippTest import TalippTest
 
 
-class Test(ITAITest):
+class Test(TalippTest):
     def setUp(self) -> None:
-        self.input_values = list(ITAITest.OHLCV_TMPL)
+        self.input_values = list(TalippTest.OHLCV_TMPL)
 
     def test_init(self):
         ind = SFX(12, 12, 3, self.input_values)

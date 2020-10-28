@@ -2,12 +2,12 @@ import unittest
 
 from talipp.indicators import UO
 
-from talippTest import ITAITest
+from TalippTest import TalippTest
 
 
-class TestAO(ITAITest):
+class TestAO(TalippTest):
     def setUp(self) -> None:
-        self.input_values = list(ITAITest.OHLCV_TMPL)
+        self.input_values = list(TalippTest.OHLCV_TMPL)
 
     def test_init(self):
         ind = UO(3, 5, 7, self.input_values)

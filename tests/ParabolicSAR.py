@@ -3,12 +3,12 @@ import unittest
 from talipp.indicators import ParabolicSAR
 from talipp.indicators.ParabolicSAR import SARTrend
 
-from talippTest import ITAITest
+from TalippTest import TalippTest
 
 
-class TestBB(ITAITest):
+class TestBB(TalippTest):
     def setUp(self) -> None:
-        self.input_values = list(ITAITest.OHLCV_TMPL)
+        self.input_values = list(TalippTest.OHLCV_TMPL)
 
     def test_init(self):
         ind = ParabolicSAR(0.02, 0.02, 0.2, self.input_values)

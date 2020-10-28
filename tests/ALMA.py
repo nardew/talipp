@@ -2,12 +2,12 @@ import unittest
 
 from talipp.indicators import ALMA
 
-from talippTest import ITAITest
+from TalippTest import TalippTest
 
 
-class TestALMA(ITAITest):
+class TestALMA(TalippTest):
     def setUp(self) -> None:
-        self.input_values = list(ITAITest.CLOSE_TMPL)
+        self.input_values = list(TalippTest.CLOSE_TMPL)
 
     def test_init(self):
         ind = ALMA(9, 0.85, 6, self.input_values)

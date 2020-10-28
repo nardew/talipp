@@ -2,12 +2,12 @@ import unittest
 
 from talipp.indicators import DEMA
 
-from talippTest import ITAITest
+from TalippTest import TalippTest
 
 
-class TestDEMA(ITAITest):
+class TestDEMA(TalippTest):
     def setUp(self) -> None:
-        self.input_values = list(ITAITest.CLOSE_TMPL)
+        self.input_values = list(TalippTest.CLOSE_TMPL)
 
     def test_init(self):
         ind = DEMA(20, self.input_values)

@@ -2,12 +2,12 @@ import unittest
 
 from talipp.indicators import KST
 
-from talippTest import ITAITest
+from TalippTest import TalippTest
 
 
-class Test(ITAITest):
+class Test(TalippTest):
     def setUp(self) -> None:
-        self.input_values = list(ITAITest.CLOSE_TMPL)
+        self.input_values = list(TalippTest.CLOSE_TMPL)
 
     def test_init(self):
         ind = KST(5, 5, 10, 5, 15, 5, 25, 10, 9, self.input_values)

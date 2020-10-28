@@ -2,12 +2,12 @@ import unittest
 
 from talipp.indicators import BB
 
-from talippTest import ITAITest
+from TalippTest import TalippTest
 
 
-class TestBB(ITAITest):
+class TestBB(TalippTest):
     def setUp(self) -> None:
-        self.input_values = list(ITAITest.CLOSE_TMPL)
+        self.input_values = list(TalippTest.CLOSE_TMPL)
 
     def test_init(self):
         ind = BB(5, 2, self.input_values)

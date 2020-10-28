@@ -2,12 +2,12 @@ import unittest
 
 from talipp.indicators import VWMA
 
-from talippTest import ITAITest
+from TalippTest import TalippTest
 
 
-class Test(ITAITest):
+class Test(TalippTest):
     def setUp(self) -> None:
-        self.input_values = list(ITAITest.OHLCV_TMPL)
+        self.input_values = list(TalippTest.OHLCV_TMPL)
 
     def test_init(self):
         ind = VWMA(20, self.input_values)
