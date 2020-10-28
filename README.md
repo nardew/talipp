@@ -1,0 +1,1 @@
+# Incremental Technical Analysis Indicators - ITAI
