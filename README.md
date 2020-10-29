@@ -2,9 +2,9 @@
 
 ![](https://img.shields.io/badge/python-3.6-blue.svg) ![](https://img.shields.io/badge/python-3.7-blue.svg) ![](https://img.shields.io/badge/python-3.8-blue.svg) ![](https://img.shields.io/badge/python-3.9-blue.svg)
 
-`tali++` (or `talipp`) is a Python library implementing financial indicators for technical analysis. The distinctive feature of the library is its incremental computation which fits extremely well real-time applications or applications with iterative input in general.  
+`talipp` (or `tali++`) is a Python library implementing financial indicators for technical analysis. The distinctive feature of the library is its incremental computation which fits extremely well real-time applications or applications with iterative input in general.  
 
-Unlike existing libraries for technical analysis which typically have to work on the whole input vector in order to calculate new values of indicators, `tali++` due to its incremental architecture calculates new indicators' values exclusively based on the delta input data. That implies, among others, it requires `O(1)` time to produce new values in comparison to `O(n)` (or worse) required by other libraries.
+Unlike existing libraries for technical analysis which typically have to work on the whole input vector in order to calculate new values of indicators, `talipp` due to its incremental architecture calculates new indicators' values exclusively based on the delta input data. That implies, among others, it requires `O(1)` time to produce new values in comparison to `O(n)` (or worse) required by other libraries.
 
 Supported incremental operations include:
 
@@ -12,13 +12,13 @@ Supported incremental operations include:
 - updating the last input value
 - removing arbitrary number of the input values
 
-Incremental nature of `tali++` naturally excels in applications with frequent `CUD` operations but it can be used for charting, back-testing, ... as any other existing library.
+Incremental nature of `talipp` naturally excels in applications with frequent `CUD` operations but it can be used for charting, back-testing, ... as any other existing library.
 
 ---
 
-### What's new in version 0.1.0
+### What's new in version 1.0.0
 
-- `tali++` released
+- `talipp` released
 
 For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/master/CHANGELOG.md).
 
@@ -26,7 +26,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 
 ### List of incremental indicators
 
-`talipp` currently provides below set of indicators. If your favourite indicator is missing, then create a ticket via GitHub Issues and there is a chance that it will be included in the future version of the library at some point.
+`talipp` currently provides below set of indicators. If your favourite indicator is missing, then create a ticket via GitHub Issues and there is a chance that it will be included in the future version of the library.
 
 | Type | Indicators |
 | :---: | --- |
@@ -90,18 +90,14 @@ print(f'Stoch(5, 3) composite result: {stoch}') # [StochVal(k=70.83333333333333,
 print(f'Stoch(5, 3) decomposed result: {stoch.to_lists()}') # {'k': [70.83333333333333, 50.0, 42.857142857142854], 'd': [None, None, 54.563492063492056]} 
 ```
 
-### Performance
-
-performance
-
 ### Contact
 
 - to report issues, bugs, docu corrections or to propose new features use preferably Github Issues
-- for topics requiring more personal approach feel free to send an e-mail to <img src="http://safemail.justlikeed.net/e/92d5165877de84f44e7731e4a1b60ba1.png" border="0" align="absbottom">
+- for topics requiring more personal approach feel free to send an e-mail to <img src="http://safemail.justlikeed.net/e/581536c5ad7cf046df49d5e52452cb20.png" border="0" align="absbottom">
 
 ### Support
 
-If you like the library and you feel like you want to support its further development, enhancements and bugfixing, then it will be of great help and most appreciated if you:
+If you like the library and you feel like you want to support its further development, enhancements and bug fixing, then it will be of great help and most appreciated if you:
 - file bugs, proposals, pull requests, ...
 - spread the word
 - donate an arbitrary tip

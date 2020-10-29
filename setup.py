@@ -9,9 +9,9 @@ requirements = [line.strip() for line in requirements]
 
 setuptools.setup(
     name="talipp",
-    version="0.1.0",
+    version="1.0.0",
     author="nardew",
-    author_email="cryptoxlib.aio@gmail.com",
+    author_email="talipp.pyth@gmail.com",
     description="TALi++ - Incremental Technical Analysis Library",
     long_description=long_description,
     long_description_content_type="text/markdown",
