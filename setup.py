@@ -18,8 +18,10 @@ setuptools.setup(
     url="https://github.com/nardew/talipp",
     packages=setuptools.find_packages(),
     classifiers=[
-        "Development Status :: 5 - Production/Stable",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
+        "Intended Audience :: Financial and Insurance Industry"
+        "Intended Audience :: Science/Research"
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",

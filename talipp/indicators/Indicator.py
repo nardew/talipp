@@ -125,6 +125,6 @@ class Indicator(Sequence):
                 result = defaultdict(list)
                 for key, value in chain.from_iterable(map(methodcaller('items'), map(attrgetter('__dict__'), self.output_values))):
                     result[key].extend([value])
-                return result
+                return dict(result)
             else:
                 raise Exception("to_lists() method can be used only with indicators returning multiple values as their result.")
