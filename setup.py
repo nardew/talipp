@@ -20,8 +20,8 @@ setuptools.setup(
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
-        "Intended Audience :: Financial and Insurance Industry"
-        "Intended Audience :: Science/Research"
+        "Intended Audience :: Financial and Insurance Industry",
+        "Intended Audience :: Science/Research",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",

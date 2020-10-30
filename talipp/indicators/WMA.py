@@ -25,7 +25,7 @@ class WMA(Indicator):
         else:
             s = 0.0
             for i in range(self.period, 0, -1):
-                index = len(self.input_values) - self.period + i - 1 # decreases from end of array with increasing i
+                index = len(self.input_values) - self.period + i - 1  # decreases from end of array with increasing i
                 s += self.input_values[index] * i
 
             return s / self.denom_sum

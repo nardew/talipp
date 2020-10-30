@@ -5,6 +5,7 @@ from talipp.indicators.Indicator import Indicator
 from talipp.indicators.SMA import SMA
 from talipp.indicators.StdDev import StdDev
 
+
 @dataclass
 class BBVal:
     # lower band

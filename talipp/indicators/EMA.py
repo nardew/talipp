@@ -27,4 +27,3 @@ class EMA(Indicator):
         else:
             mult = 2.0 / (self.period + 1.0)
             return float(mult * self.input_values[-1] + (1.0 - mult) * self.output_values[-1])
-

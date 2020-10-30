@@ -32,5 +32,6 @@ class TestBB(TalippTest):
     def test_delete(self):
         self.assertIndicatorDelete(BB(5, 2, self.input_values))
 
+
 if __name__ == '__main__':
     unittest.main()

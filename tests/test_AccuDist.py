@@ -30,5 +30,6 @@ class TestAccuDist(TalippTest):
 
         # no assert since the check verifies no exception was raised
 
+
 if __name__ == '__main__':
     unittest.main()

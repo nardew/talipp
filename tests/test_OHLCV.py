@@ -3,7 +3,7 @@ import unittest
 from talipp.ohlcv import OHLCV, OHLCVFactory
 
 
-class TestOHLC(unittest.TestCase):
+class Test(unittest.TestCase):
     def test_from_matrix_w_volume(self):
         values = [
             [1, 2, 3, 4, 5],
