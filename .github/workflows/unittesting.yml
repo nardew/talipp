@@ -2,7 +2,7 @@ name: Unit testing
 
 on:
   push:
-    branches: [ pytest ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
