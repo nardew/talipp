@@ -36,5 +36,6 @@ class TestBB(TalippTest):
     def test_delete(self):
         self.assertIndicatorDelete(ParabolicSAR(0.02, 0.02, 0.2, self.input_values))
 
+
 if __name__ == '__main__':
     unittest.main()

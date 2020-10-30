@@ -3,7 +3,7 @@ import unittest
 from talipp.indicators import BB
 
 
-class TestOHLC(unittest.TestCase):
+class Test(unittest.TestCase):
     def test_conversion_to_list(self):
         bb = BB(3, 2, [1, 2, 3, 4, 5])
         bb_lists = bb.to_lists()
@@ -13,13 +13,9 @@ class TestOHLC(unittest.TestCase):
         self.assertTrue('cb' in bb_lists)
         self.assertTrue('ub' in bb_lists)
 
-        self.assertEqual(len(bb_lists['lb']), 5)
-        self.assertEqual(len(bb_lists['cb']), 5)
-        self.assertEqual(len(bb_lists['ub']), 5)
-
-        self.assertListEqual([bb_lists['lb'][0], bb_lists['lb'][1]], [None, None])
-        self.assertListEqual([bb_lists['cb'][0], bb_lists['lb'][1]], [None, None])
-        self.assertListEqual([bb_lists['ub'][0], bb_lists['lb'][1]], [None, None])
+        self.assertEqual(len(bb_lists['lb']), 3)
+        self.assertEqual(len(bb_lists['cb']), 3)
+        self.assertEqual(len(bb_lists['ub']), 3)
 
     def test_conversion_to_list_empty(self):
         bb = BB(3, 2)
