@@ -1,7 +1,8 @@
 from dataclasses import is_dataclass
 from abc import ABCMeta, abstractmethod
 from typing import List, Any, Callable, Dict, Union
-from collections import MutableSequence, Sequence, defaultdict
+from collections import defaultdict
+from collections.abc import MutableSequence, Sequence
 from itertools import chain
 from operator import methodcaller, attrgetter
 
