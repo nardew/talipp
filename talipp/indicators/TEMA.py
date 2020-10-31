@@ -11,7 +11,7 @@ class TEMA(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period: int, input_values: List[float] = None):
+    def __init__(self, period: int, input_values: List[float] = None, input_indicator: Indicator = None):
         super().__init__()
 
         self.period = period
@@ -25,7 +25,7 @@ class TEMA(Indicator):
         self.add_managed_sequence(self.ema_ema)
         self.add_managed_sequence(self.ema_ema_ema)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if not self.ema.has_output_value():

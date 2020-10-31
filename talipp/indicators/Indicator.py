@@ -21,6 +21,7 @@ class Indicator(Sequence):
         self.output_values: ListAny = []
         self.managed_sequences: List[ManagedSequenceType] = []
         self.sub_indicators: List[Indicator] = []
+        self.output_listeners: List[Indicator] = []
 
     @abstractmethod
     def _calculate_new_value(self) -> Any:
@@ -41,12 +42,21 @@ class Indicator(Sequence):
     def add_managed_sequence(self, lst: ManagedSequenceType) -> None:
         self.managed_sequences.append(lst)
 
-    def initialize(self, input_values: ListAny) -> None:
+    def initialize(self, input_values: ListAny = None, input_indicator: 'Indicator' = None) -> None:
+        if input_values is not None and input_indicator is not None:
+            raise Exception('Indicator cannot be initialized with both input_values and input_indicator!')
+
         self.remove_all()
 
         if input_values is not None:
             for value in input_values:
                 self.add_input_value(value)
+
+        if input_indicator is not None:
+            for value in input_indicator:
+                self.add_input_value(value)
+
+            input_indicator.add_output_listener(self)
 
     def add_input_value(self, value: Any) -> None:
         for sub_indicator in self.sub_indicators:
@@ -60,6 +70,9 @@ class Indicator(Sequence):
         if new_value is not None:
             self.output_values.append(new_value)
 
+            for listener in self.output_listeners:
+                listener.add_input_value(new_value)
+
     def update_input_value(self, value: Any) -> None:
         self.remove_input_value()
         self.add_input_value(value)
@@ -68,7 +81,8 @@ class Indicator(Sequence):
         for sub_indicator in self.sub_indicators:
             sub_indicator.remove_input_value()
 
-        self.input_values.pop(-1)
+        if len(self.input_values) > 0:
+            self.input_values.pop(-1)
 
         self._remove_output_value()
 
@@ -80,6 +94,9 @@ class Indicator(Sequence):
                     lst.pop(-1)
 
         self._remove_input_value_custom()
+
+        for listener in self.output_listeners:
+            listener.remove_input_value()
 
     def _remove_output_value(self) -> None:
         if len(self.output_values) > 0:
@@ -102,6 +119,9 @@ class Indicator(Sequence):
                 lst.clear()
 
         self._remove_all_custom()
+
+        for listener in self.output_listeners:
+            listener.remove_all()
 
     def _remove_all_custom(self) -> None:
         pass
@@ -129,3 +149,6 @@ class Indicator(Sequence):
                 return dict(result)
             else:
                 raise Exception("to_lists() method can be used only with indicators returning multiple values as their result.")
+
+    def add_output_listener(self, listener: 'Indicator') -> None:
+        self.output_listeners.append(listener)

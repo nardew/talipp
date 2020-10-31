@@ -9,7 +9,7 @@ class RSI(Indicator):
 
     Output: a list of floats
     """
-    def __init__(self, period: int, input_values: List[float] = None):
+    def __init__(self, period: int, input_values: List[float] = None, input_indicator: Indicator = None):
         super().__init__()
 
         self.period = period
@@ -19,7 +19,7 @@ class RSI(Indicator):
         self.prev_last_avg_gain = 0.0
         self.prev_last_avg_loss = 0.0
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         self.prev_last_avg_gain = self.last_avg_gain

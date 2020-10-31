@@ -25,7 +25,7 @@ class BB(Indicator):
     Output: a list of BBVal
     """
 
-    def __init__(self, period: int, std_dev_multiplier: float, input_values: List[float] = None):
+    def __init__(self, period: int, std_dev_multiplier: float, input_values: List[float] = None, input_indicator: Indicator = None):
         super().__init__()
 
         self.period = period
@@ -37,7 +37,7 @@ class BB(Indicator):
         self.add_sub_indicator(self.central_band)
         self.add_sub_indicator(self.std_dev)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.input_values) < self.period:

@@ -19,7 +19,7 @@ class MACD(Indicator):
     Output: a list of MACDVal
     """
 
-    def __init__(self, fast_period: int, slow_period: int, signal_period: int, input_values: List[float] = None):
+    def __init__(self, fast_period: int, slow_period: int, signal_period: int, input_values: List[float] = None, input_indicator: Indicator = None):
         super().__init__()
 
         self.ema_fast = EMA(fast_period)
@@ -30,7 +30,7 @@ class MACD(Indicator):
         self.add_sub_indicator(self.ema_slow)
         self.add_managed_sequence(self.signal_line)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.ema_fast) > 0 and len(self.ema_slow) > 0:

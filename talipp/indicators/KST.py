@@ -29,7 +29,7 @@ class KST(Indicator):
                  roc4_period: int,
                  roc4_ma_period: int,
                  signal_period: int,
-                 input_values: List[float] = None):
+                 input_values: List[float] = None, input_indicator: Indicator = None):
         super().__init__()
 
         self.roc1 = ROC(roc1_period)
@@ -54,7 +54,7 @@ class KST(Indicator):
         self.add_managed_sequence(self.roc4_ma)
         self.add_managed_sequence(self.signal_line)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if self.roc1.has_output_value():

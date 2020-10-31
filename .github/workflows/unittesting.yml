@@ -1,4 +1,4 @@
-name: Unit testing
+name: unit tests
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     strategy:
       matrix:
         os: ["ubuntu-latest", "windows-latest", "macos-latest"]
-        python-version: [3.7, 3.8, 3.9]
+        python-version: [3.7, 3.8, 3.9, 'pypy3']
 
     runs-on: "${{ matrix.os }}"
 
@@ -31,6 +31,6 @@ jobs:
       run: |
         # stop the build if there are Python syntax errors or undefined names
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-    - name: Test with pytest
+    - name: Run pytest
       run: |
         pytest

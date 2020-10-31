@@ -1,4 +1,4 @@
-# TALi++ - Incremental Technical Analysis Library
+# TALIpp - Incremental Technical Analysis Library
 
 ![](https://img.shields.io/badge/python-3.7-blue.svg) ![](https://img.shields.io/badge/python-3.8-blue.svg) ![](https://img.shields.io/badge/python-3.9-blue.svg)
 
@@ -12,7 +12,11 @@ Supported incremental operations include:
 - updating the last input value
 - removing arbitrary number of the input values
 
+Besides the already mentioned superior time complexity for delta input operations, `talipp`'s incremental approach immediately offers other interesting features for free, such as indicator chaining or building new indicators combined from other indicators. See section with examples to get an idea.
+
 Incremental nature of `talipp` naturally excels in applications with frequent `CUD` operations but it can be used for charting, back-testing, ... as any other existing library.
+
+Last but not least, `talipp` is a very young project and therefore any suggestions to amend the functionality or API to users' liking are very easy and very welcome. See below how to propose new features.
 
 ---
 
