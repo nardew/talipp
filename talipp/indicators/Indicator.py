@@ -62,16 +62,20 @@ class Indicator(Sequence):
         for sub_indicator in self.sub_indicators:
             sub_indicator.add_input_value(value)
 
-        if self.value_extractor is not None:
-            value = self.value_extractor(value)
-        self.input_values.append(value)
+        if not isinstance(value, list):
+            value = [value]
 
-        new_value = self._calculate_new_value()
-        if new_value is not None:
-            self.output_values.append(new_value)
+        for input_value in value:
+            if self.value_extractor is not None:
+                input_value = self.value_extractor(input_value)
+            self.input_values.append(input_value)
 
-            for listener in self.output_listeners:
-                listener.add_input_value(new_value)
+            new_value = self._calculate_new_value()
+            if new_value is not None:
+                self.output_values.append(new_value)
+
+                for listener in self.output_listeners:
+                    listener.add_input_value(new_value)
 
     def update_input_value(self, value: Any) -> None:
         self.remove_input_value()
