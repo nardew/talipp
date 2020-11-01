@@ -14,17 +14,15 @@ class RSI(Indicator):
 
         self.period = period
 
-        self.last_avg_gain = 0.0
-        self.last_avg_loss = 0.0
-        self.prev_last_avg_gain = 0.0
-        self.prev_last_avg_loss = 0.0
+        self.avg_gain = []
+        self.avg_loss = []
+
+        self.add_managed_sequence(self.avg_gain)
+        self.add_managed_sequence(self.avg_loss)
 
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        self.prev_last_avg_gain = self.last_avg_gain
-        self.prev_last_avg_loss = self.last_avg_loss
-
         if len(self.input_values) < self.period + 1:
             return None
         elif len(self.input_values) == self.period + 1:
@@ -32,31 +30,21 @@ class RSI(Indicator):
             init_changes = [self.input_values[i] - self.input_values[i - 1] for i in range(1, self.period)]
 
             # initialize average gain and loss
-            self.last_avg_gain = float(sum(init_changes[i] for i in range(len(init_changes)) if init_changes[i] > 0)) / (self.period - 1)
-            self.last_avg_loss = float(sum(-1 * init_changes[i] for i in range(len(init_changes)) if init_changes[i] < 0)) / (self.period - 1)
+            self.avg_gain.append(float(sum(init_changes[i] for i in range(len(init_changes)) if init_changes[i] > 0)) / (self.period - 1))
+            self.avg_loss.append(float(sum(-1 * init_changes[i] for i in range(len(init_changes)) if init_changes[i] < 0)) / (self.period - 1))
 
         change = self.input_values[-1] - self.input_values[-2]
 
         gain = change if change > 0 else 0.0
         loss = -1 * change if change < 0 else 0.0
 
-        self.last_avg_gain = float(self.last_avg_gain * (self.period - 1) + gain) / self.period
-        self.last_avg_loss = float(self.last_avg_loss * (self.period - 1) + loss) / self.period
+        self.avg_gain.append(float(self.avg_gain[-1] * (self.period - 1) + gain) / self.period)
+        self.avg_loss.append(float(self.avg_loss[-1] * (self.period - 1) + loss) / self.period)
 
-        if self.last_avg_loss == 0:
+        if self.avg_loss[-1] == 0:
             rsi = 100.0
         else:
-            rs = self.last_avg_gain / self.last_avg_loss
+            rs = self.avg_gain[-1] / self.avg_loss[-1]
             rsi = 100.0 - (100.0 / (1.0 + rs))
 
         return rsi
-
-    def _remove_input_value_custom(self) -> None:
-        self.last_avg_gain = self.prev_last_avg_gain
-        self.last_avg_loss = self.prev_last_avg_loss
-
-    def _remove_all_custom(self) -> None:
-        self.last_avg_gain = 0.0
-        self.last_avg_loss = 0.0
-        self.prev_last_avg_gain = 0.0
-        self.prev_last_avg_loss = 0.0
