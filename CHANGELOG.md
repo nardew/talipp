@@ -18,7 +18,7 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
   ```python
   sma.add_input_value(5)
-  sma.add_input_value([5, 6,  7])
+  sma.add_input_value([5, 6, 7])
   ```
 
 ## 1.0.0 - 2020-10-28

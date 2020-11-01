@@ -1,4 +1,4 @@
-name: new release check
+name: release deployment
 
 on:
   release:

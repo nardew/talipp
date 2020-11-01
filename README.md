@@ -55,7 +55,7 @@ pip install git+https://github.com/nardew/talipp.git@master
 Consult `examples` folder to see usage of every single indicator included in the library. To get the basic look and feel of the API, see below. 
 
 ```python
-from talipp.indicators import EMA, Stoch
+from talipp.indicators import EMA, SMA, Stoch
 from talipp.ohlcv import OHLCVFactory
 
 # EMA indicator ([float] -> [float])
