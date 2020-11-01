@@ -19,9 +19,9 @@ jobs:
         TAG_REF=(${GITHUB_REF//\// })
         TAG_REF=${TAG_REF[2]}
 
-        SETUP_PY_VERSION=`grep "version=" ../setup.py | cut -d '"' -f2`
+        SETUP_PY_VERSION=`grep "version=" setup.py | cut -d '"' -f2`
 
         if [ "SETUP_PY_VERSION" != "$TAG_REF" ]; then
-            echo "ERROR: setup.py contains version $setup_py_version which differs from $TAG_REF"
+            echo "ERROR: setup.py contains version $SETUP_PY_VERSION which differs from $TAG_REF"
             exit 1
         fi
