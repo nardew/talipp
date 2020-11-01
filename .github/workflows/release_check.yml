@@ -1,0 +1,19 @@
+name: new release check
+
+on:
+  release:
+    types:
+      - created
+    tags:
+      - '*.*.*'
+
+jobs:
+  check:
+    runs-on: "ubuntu-latest"
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Execute check for tag ${{ GITHUB_REF }}
+      run: |
+        ./check_new_release.sh
