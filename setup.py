@@ -23,6 +23,7 @@ setuptools.setup(
         "Intended Audience :: Financial and Insurance Industry",
         "Intended Audience :: Science/Research",
         "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",

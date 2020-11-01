@@ -1,6 +1,6 @@
 # TALIpp - Incremental Technical Analysis Library
 
-![](https://img.shields.io/badge/python-3.7-blue.svg) ![](https://img.shields.io/badge/python-3.8-blue.svg) ![](https://img.shields.io/badge/python-3.9-blue.svg)
+![](https://img.shields.io/badge/python-3.6-blue.svg) ![](https://img.shields.io/badge/python-3.7-blue.svg) ![](https://img.shields.io/badge/python-3.8-blue.svg) ![](https://img.shields.io/badge/python-3.9-blue.svg) ![](https://img.shields.io/badge/pypy-3-blue.svg) 
 
 `talipp` (or `tali++`) is a Python library implementing financial indicators for technical analysis. The distinctive feature of the library is its incremental computation which fits extremely well real-time applications or applications with iterative input in general.  
 
@@ -106,7 +106,7 @@ print(f"SMA3: {sma3}") # [4.0, 5.0, 6.0, 7.0]
 
 ### Contact
 
-- to report issues, bugs, docu corrections or to propose new features use preferably Github Issues
+- to report issues, bugs, corrections or to propose new features use preferably Github Issues
 - for topics requiring more personal approach feel free to send an e-mail to <img src="http://safemail.justlikeed.net/e/581536c5ad7cf046df49d5e52452cb20.png" border="0" align="absbottom">
 
 ### Support
