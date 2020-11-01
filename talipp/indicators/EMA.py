@@ -11,12 +11,12 @@ class EMA(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period: int, input_values: List[float] = None, value_extractor: ValueExtractorType = None):
+    def __init__(self, period: int, input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
         super().__init__(value_extractor = value_extractor)
 
         self.period = period
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.input_values) < self.period:

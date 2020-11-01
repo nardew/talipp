@@ -11,7 +11,7 @@ class ALMA(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period: int, offset: float, sigma: float, input_values: List[float] = None):
+    def __init__(self, period: int, offset: float, sigma: float, input_values: List[float] = None, input_indicator: Indicator = None):
         super().__init__()
 
         self.period = period
@@ -27,7 +27,7 @@ class ALMA(Indicator):
             self.w.append(exp(-1 * (i - m) * (i - m) / (2 * s * s)))
             self.w_sum += self.w[-1]
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.input_values) < self.period:

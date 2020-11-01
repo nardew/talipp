@@ -1,6 +1,6 @@
-# TALi++ - Incremental Technical Analysis Library
+# TALIpp - Incremental Technical Analysis Library
 
-![](https://img.shields.io/badge/python-3.7-blue.svg) ![](https://img.shields.io/badge/python-3.8-blue.svg) ![](https://img.shields.io/badge/python-3.9-blue.svg)
+![](https://img.shields.io/badge/python-3.6-blue.svg) ![](https://img.shields.io/badge/python-3.7-blue.svg) ![](https://img.shields.io/badge/python-3.8-blue.svg) ![](https://img.shields.io/badge/python-3.9-blue.svg) ![](https://img.shields.io/badge/pypy-3-blue.svg) 
 
 `talipp` (or `tali++`) is a Python library implementing financial indicators for technical analysis. The distinctive feature of the library is its incremental computation which fits extremely well real-time applications or applications with iterative input in general.  
 
@@ -12,7 +12,11 @@ Supported incremental operations include:
 - updating the last input value
 - removing arbitrary number of the input values
 
+Besides the already mentioned superior time complexity for delta input operations, `talipp`'s incremental approach immediately offers other interesting features for free, such as indicator chaining or building new indicators combined from other indicators. See section with examples to get an idea.
+
 Incremental nature of `talipp` naturally excels in applications with frequent `CUD` operations but it can be used for charting, back-testing, ... as any other existing library.
+
+Last but not least, `talipp` is a very young project and therefore open to any suggestions of amending the API to users' liking. You are encouraged to come up with proposals.
 
 ---
 
@@ -88,11 +92,21 @@ print(f'Stoch(5, 3) composite result: {stoch}') # [StochVal(k=70.83333333333333,
 
 # print result as lists per output parameters
 print(f'Stoch(5, 3) decomposed result: {stoch.to_lists()}') # {'k': [70.83333333333333, 50.0, 42.857142857142854], 'd': [None, None, 54.563492063492056]} 
+
+# Indicator chaining
+sma1 = SMA(3)
+sma2 = SMA(3, input_indicator = sma1)
+sma3 = SMA(3, input_indicator = sma2)
+
+sma1.add_input_value([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+print(f"SMA1: {sma1}") # [2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
+print(f"SMA2: {sma2}") # [3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
+print(f"SMA3: {sma3}") # [4.0, 5.0, 6.0, 7.0]
 ```
 
 ### Contact
 
-- to report issues, bugs, docu corrections or to propose new features use preferably Github Issues
+- to report issues, bugs, corrections or to propose new features use preferably Github Issues
 - for topics requiring more personal approach feel free to send an e-mail to <img src="http://safemail.justlikeed.net/e/581536c5ad7cf046df49d5e52452cb20.png" border="0" align="absbottom">
 
 ### Support

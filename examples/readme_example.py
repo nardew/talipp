@@ -1,4 +1,4 @@
-from talipp.indicators import EMA, Stoch
+from talipp.indicators import EMA, SMA, Stoch
 from talipp.ohlcv import OHLCVFactory
 
 # EMA indicator ([float] -> [float])
@@ -36,3 +36,13 @@ print(f'Stoch(5, 3) composite result: {stoch}') # [StochVal(k=70.83333333333333,
 
 # print result as lists per output parameters
 print(f'Stoch(5, 3) decomposed result: {stoch.to_lists()}') # {'k': [70.83333333333333, 50.0, 42.857142857142854], 'd': [None, None, 54.563492063492056]}
+
+# Indicator chaining
+sma1 = SMA(3)
+sma2 = SMA(3, input_indicator = sma1)
+sma3 = SMA(3, input_indicator = sma2)
+
+sma1.add_input_value([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+print(f"SMA1: {sma1}") # [2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
+print(f"SMA2: {sma2}") # [3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
+print(f"SMA3: {sma3}") # [4.0, 5.0, 6.0, 7.0]
