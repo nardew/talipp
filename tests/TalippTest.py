@@ -44,4 +44,11 @@ class TalippTest(unittest.TestCase):
         for i in range(1, iterations_no):
             indicator.remove_input_value()
 
+        # verify that adding and then removing X input values returns the original output value
+        self.assertEqual(last_indicator_value, indicator[-1])
+
+        # delete the original last input value and add it back and check the original last output value is returned
+        indicator.remove_input_value()
+        indicator.add_input_value(last_input_value)
+
         self.assertEqual(last_indicator_value, indicator[-1])
