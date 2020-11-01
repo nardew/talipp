@@ -14,14 +14,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Extract tag reference
+    - name: Check version in setup.py
       run: |
         TAG_REF=(${GITHUB_REF//\// })
         TAG_REF=${TAG_REF[2]}
 
-        echo "Extracted reference: $TAG_REF"
-        echo "TAG_REF=$TAG_REF" >> $GITHUB_ENV
+        SETUP_PY_VERSION=`grep "version=" setup.py | cut -d '"' -f2`
 
-    - name: Execute check for tag
-      run: |
-        ./check_new_release.sh $TAG_REF
+        if [ "SETUP_PY_VERSION" != "$TAG_REF" ]; then
+            echo "ERROR: setup.py contains version $setup_py_version which differs from $TAG_REF"
+            exit 1
+        fi
