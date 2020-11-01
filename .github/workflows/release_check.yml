@@ -20,7 +20,7 @@ jobs:
 
         SETUP_PY_VERSION=`grep "version=" setup.py | cut -d '"' -f2 | tr -d '[:space:]'`
 
-        if [ "SETUP_PY_VERSION" != "$TAG_REF" ]; then
+        if [ "$SETUP_PY_VERSION" != "$TAG_REF" ]; then
             echo "ERROR: setup.py contains version '$SETUP_PY_VERSION' which differs from '$TAG_REF'"
             exit 1
         fi
