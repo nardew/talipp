@@ -7,38 +7,9 @@ from cryptoxlib.clients.bitpanda import enums
 from cryptoxlib.version_conversions import async_run
 
 from talipp.ohlcv import OHLCV
-from talipp.indicators import AccuDist
-from talipp.indicators import ADX
-from talipp.indicators import ALMA
-from talipp.indicators import AO
-from talipp.indicators import ATR
-from talipp.indicators import BB
-from talipp.indicators import ChaikinOsc
-from talipp.indicators import DEMA
-from talipp.indicators import DonchianChannels
-from talipp.indicators import EMA
-from talipp.indicators import HMA
-from talipp.indicators import Ichimoku
-from talipp.indicators import KeltnerChannels
-from talipp.indicators import KST
-from talipp.indicators import MACD
-from talipp.indicators import MassIndex
-from talipp.indicators import OBV
-from talipp.indicators import PivotsHL
-from talipp.indicators import ROC
-from talipp.indicators import RSI
-from talipp.indicators import ParabolicSAR
-from talipp.indicators import SFX
-from talipp.indicators import SMA
-from talipp.indicators import SMMA
-from talipp.indicators import SOBV
-from talipp.indicators import StdDev
-from talipp.indicators import Stoch
-from talipp.indicators import StochRSI
-from talipp.indicators import TEMA
-from talipp.indicators import UO
-from talipp.indicators import VWMA
-from talipp.indicators import WMA
+from talipp.indicators import AccuDist, ADX, ALMA, AO, ATR, BB, ChaikinOsc, DEMA, DonchianChannels, EMA, HMA, Ichimoku, \
+    KAMA, KeltnerChannels, KST, MACD, MassIndex, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, \
+    Stoch, StochRSI, TEMA, UO, VWMA, WMA
 
 
 async def run():
@@ -65,6 +36,7 @@ async def run():
     print(f'EMA: {EMA(20, close)[-1]}')
     print(f'HMA: {HMA(9, close)[-1]}')
     print(f'Ichimoku: {Ichimoku(26, 9, 52, 52, 26, ohlcv)[-1]}')
+    print(f'KAMA: {KAMA(14, 2, 30, close)[-1]}')
     print(f'KeltnerChannels: {KeltnerChannels(20, 26, 1, 1, ohlcv)[-1]}')
     print(f'KST: {KST(10, 10, 15, 10, 20, 10, 30, 15, 9, close)[-1]}')
     print(f'MACD: {MACD(12, 26, 9, close)[-1]}')
