@@ -11,6 +11,7 @@ from .EMA import EMA as EMA
 from .FibRetracement import FibRetracement as FibRetracement
 from .HMA import HMA as HMA
 from .Ichimoku import Ichimoku as Ichimoku
+from .KAMA import KAMA as KAMA
 from .KeltnerChannels import KeltnerChannels as KeltnerChannels
 from .KST import KST as KST
 from .MACD import MACD as MACD
@@ -46,6 +47,7 @@ __all__ = (
     "FibRetracement",
     "HMA",
     "Ichimoku",
+    "KAMA",
     "KeltnerChannels",
     "KST",
     "MACD",
