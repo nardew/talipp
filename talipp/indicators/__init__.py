@@ -30,6 +30,7 @@ from .Stoch import Stoch as Stoch
 from .StochRSI import StochRSI as StochRSI
 from .TEMA import TEMA as TEMA
 from .TRIX import TRIX as TRIX
+from .TSI import TSI as TSI
 from .UO import UO as UO
 from .VWMA import VWMA as VWMA
 from .WMA import WMA as WMA
@@ -67,6 +68,7 @@ __all__ = (
     "StochRSI",
     "TEMA",
     "TRIX",
+    "TSI",
     "UO",
     "VWMA",
     "WMA",
