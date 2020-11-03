@@ -29,6 +29,7 @@ from .StdDev import StdDev as StdDev
 from .Stoch import Stoch as Stoch
 from .StochRSI import StochRSI as StochRSI
 from .TEMA import TEMA as TEMA
+from .TRIX import TRIX as TRIX
 from .UO import UO as UO
 from .VWMA import VWMA as VWMA
 from .WMA import WMA as WMA
@@ -65,6 +66,7 @@ __all__ = (
     "Stoch",
     "StochRSI",
     "TEMA",
+    "TRIX",
     "UO",
     "VWMA",
     "WMA",
