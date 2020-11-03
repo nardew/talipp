@@ -54,7 +54,7 @@ async def run():
     print(f'Stoch: {Stoch(14, 3, ohlcv)[-1]}')
     print(f'StochRSI: {StochRSI(14, 14, 3, 3, close)[-1]}')
     print(f'TEMA: {TEMA(20, close)[-1]}')
-    print(f'TRIX: {TRIX(18, close)[-5:]}')
+    print(f'TRIX: {TRIX(18, close)[-1]}')
     print(f'UO: {UO(7, 14, 28, ohlcv)[-1]}')
     print(f'VWMA: {VWMA(20, ohlcv)[-1]}')
     print(f'WMA: {WMA(9, close)[-1]}')
