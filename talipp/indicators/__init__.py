@@ -2,6 +2,7 @@ from .AccuDist import AccuDist as AccuDist
 from .ADX import ADX as ADX
 from .ALMA import ALMA as ALMA
 from .AO import AO as AO
+from .Aroon import Aroon as Aroon
 from .ATR import ATR as ATR
 from .BB import BB as BB
 from .ChaikinOsc import ChaikinOsc as ChaikinOsc
@@ -40,6 +41,7 @@ __all__ = (
     "ADX",
     "ALMA",
     "AO",
+    "Aroon",
     "ATR",
     "BB",
     "ChaikinOsc",

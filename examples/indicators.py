@@ -1,7 +1,7 @@
 import random
 
 from talipp.ohlcv import OHLCVFactory
-from talipp.indicators import AccuDist, ADX, ALMA, AO, ATR, BB, ChaikinOsc, DEMA, DonchianChannels, EMA, HMA, Ichimoku, \
+from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, ChaikinOsc, DEMA, DonchianChannels, EMA, HMA, Ichimoku, \
     KAMA, KeltnerChannels, KST, MACD, MassIndex, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, \
     Stoch, StochRSI, TEMA, TRIX, TSI, UO, VWMA, WMA
 
@@ -22,6 +22,7 @@ if __name__ == "__main__":
     print(f'ADX: {ADX(14, 14, ohlcv)[-1]}')
     print(f'ALMA: {ALMA(9, 0.85, 6, close)[-1]}')
     print(f'AO: {AO(5, 34, ohlcv)[-1]}')
+    print(f'Aroon: {Aroon(14, ohlcv)[-1]}')
     print(f'ATR: {ATR(14, ohlcv)[-1]}')
     print(f'BB: {BB(20, 2, close)[-1]}')
     print(f'ChaikinOsc: {ChaikinOsc(3, 10, ohlcv)[-1]}')
