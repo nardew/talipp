@@ -20,10 +20,9 @@ Last but not least, `talipp` is a very young project and therefore open to any s
 
 ---
 
-### What's new in version 1.1.0
+### What's new in version 1.2.0
 
-- indicator chaining
-- delta input values can be added as a single values as well as a list
+- new indicators: Aroon, Balance of Power (BOP), KAMA, TSI, TRIX
 
 For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/master/CHANGELOG.md).
 

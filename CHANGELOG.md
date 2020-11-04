@@ -6,6 +6,10 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Pending release]
 
+## [1.2.0] - 2020-11-04
+
+- new indicators: Aroon, Balance of Power (BOP), KAMA, TSI, TRIX
+
 ## [1.1.0] - 2020-11-01
 
 - indicator chaining (see the example in README)
@@ -25,5 +29,6 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 - the official release of `talipp`
 
-[Pending release]: https://github.com/nardew/talipp/compare/1.1.0...HEAD
+[Pending release]: https://github.com/nardew/talipp/compare/1.2.0...HEAD
+[1.2.0]: https://github.com/nardew/talipp/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/nardew/talipp/compare/1.0.0...1.1.0
