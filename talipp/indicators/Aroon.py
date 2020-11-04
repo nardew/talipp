@@ -30,7 +30,7 @@ class Aroon(Indicator):
         if len(self.input_values) < self.period + 1:
             return None
 
-        # search in reversed list in order to get right-most index
+        # search in reversed list in order to get the right-most index
         days_high = self.period - max(reversed(range(self.period + 1)),
                                       key = lambda x: self.input_values[-self.period - 1:][x].high)
         days_low = self.period - min(reversed(range(self.period + 1)),

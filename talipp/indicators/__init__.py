@@ -5,6 +5,7 @@ from .AO import AO as AO
 from .Aroon import Aroon as Aroon
 from .ATR import ATR as ATR
 from .BB import BB as BB
+from .BOP import BOP as BOP
 from .ChaikinOsc import ChaikinOsc as ChaikinOsc
 from .DEMA import DEMA as DEMA
 from .DonchianChannels import DonchianChannels as DonchianChannels
@@ -44,6 +45,7 @@ __all__ = (
     "Aroon",
     "ATR",
     "BB",
+    "BOP",
     "ChaikinOsc",
     "DEMA",
     "DonchianChannels",
