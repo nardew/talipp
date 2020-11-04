@@ -35,7 +35,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 
 | Type | Indicators |
 | :---: | --- |
-| **trend** | Average Directional Index (ADX) <br> Awesome Oscillator (AO) <br> Ichimoku Kinko Hyo <br> Know Sure Thing (KST) <br> Moving Average Convergence Divergence (MACD) <br> Mass Index <br> Moving Average (ALMA, SMA, SMMA, DEMA, EMA, HMA, KAMA, TEMA, VWMA, WMA) <br> Parabolic SAR <br> SFX TOR
+| **trend** | Aroon <br> Average Directional Index (ADX) <br> Awesome Oscillator (AO) <br> Ichimoku Kinko Hyo <br> Know Sure Thing (KST) <br> Moving Average Convergence Divergence (MACD) <br> Mass Index <br> Moving Average (ALMA, SMA, SMMA, DEMA, EMA, HMA, KAMA, TEMA, VWMA, WMA) <br> Parabolic SAR <br> SFX TOR
 | **support/resistance** | High/Low Pivots
 | **momentum** | Chaikin Oscillator <br> Rate of Change (ROC) <br> Relative strength index (RSI) <br> Stochastic Oscillator <br> Stochastic RSI <br> TRIX <br> True Strength Index (TSI) <br> Ultimate Oscillator (UO)
 | **volume** | Accumulation/Distribution (ADL) <br> On-balance Volume (OBV)
