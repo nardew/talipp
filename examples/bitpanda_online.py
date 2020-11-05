@@ -7,8 +7,8 @@ from cryptoxlib.clients.bitpanda import enums
 from cryptoxlib.version_conversions import async_run
 
 from talipp.ohlcv import OHLCV
-from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, ChaikinOsc, DEMA, DonchianChannels, EMA, HMA, Ichimoku, \
-    KAMA, KeltnerChannels, KST, MACD, MassIndex, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, \
+from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, CoppockCurve, DEMA, DonchianChannels, EMA, HMA, Ichimoku, \
+    KAMA, KeltnerChannels, KST, MACD, MassIndex, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, \
     Stoch, StochRSI, TEMA, TRIX, TSI, UO, VWMA, WMA
 
 
@@ -32,7 +32,11 @@ async def run():
     print(f'ATR: {ATR(14, ohlcv)[-1]}')
     print(f'BB: {BB(20, 2, close)[-1]}')
     print(f'BOP: {BOP(ohlcv)[-1]}')
+    print(f'CCI: {CCI(20, ohlcv)[-1]}')
     print(f'ChaikinOsc: {ChaikinOsc(3, 10, ohlcv)[-1]}')
+    print(f'ChandeKrollStop: {ChandeKrollStop(10, 2, 9, ohlcv)[-5:]}')
+    print(f'CHOP: {CHOP(14, ohlcv)[-5:]}')
+    print(f'CoppockCurve: {CoppockCurve(11, 14, 10, close)[-1]}')
     print(f'DEMA: {DEMA(20, close)[-1]}')
     print(f'DonchianChannels: {DonchianChannels(20, ohlcv)[-1]}')
     print(f'EMA: {EMA(20, close)[-1]}')
@@ -43,6 +47,7 @@ async def run():
     print(f'KST: {KST(10, 10, 15, 10, 20, 10, 30, 15, 9, close)[-1]}')
     print(f'MACD: {MACD(12, 26, 9, close)[-1]}')
     print(f'MassIndex: {MassIndex(9, 9, 10, ohlcv)[-1]}')
+    print(f'MeanDev: {MeanDev(10, close)[-1]}')
     print(f'OBV: {OBV(ohlcv)[-1]}')
     print(f'Pivots: {PivotsHL(15, 15, ohlcv)[-4:]}')
     print(f'ROC: {ROC(9, close)[-1]}')
