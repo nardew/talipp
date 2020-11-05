@@ -7,6 +7,7 @@ from .ATR import ATR as ATR
 from .BB import BB as BB
 from .BOP import BOP as BOP
 from .ChaikinOsc import ChaikinOsc as ChaikinOsc
+from .CoppockCurve import CoppockCurve as CoppockCurve
 from .DEMA import DEMA as DEMA
 from .DonchianChannels import DonchianChannels as DonchianChannels
 from .EMA import EMA as EMA
@@ -47,6 +48,7 @@ __all__ = (
     "BB",
     "BOP",
     "ChaikinOsc",
+    "CoppockCurve",
     "DEMA",
     "DonchianChannels",
     "EMA",
