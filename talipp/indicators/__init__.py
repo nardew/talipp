@@ -6,6 +6,7 @@ from .Aroon import Aroon as Aroon
 from .ATR import ATR as ATR
 from .BB import BB as BB
 from .BOP import BOP as BOP
+from .CCI import CCI as CCI
 from .ChaikinOsc import ChaikinOsc as ChaikinOsc
 from .DEMA import DEMA as DEMA
 from .DonchianChannels import DonchianChannels as DonchianChannels
@@ -18,6 +19,7 @@ from .KeltnerChannels import KeltnerChannels as KeltnerChannels
 from .KST import KST as KST
 from .MACD import MACD as MACD
 from .MassIndex import MassIndex as MassIndex
+from .MeanDev import MeanDev as MeanDev
 from .OBV import OBV as OBV
 from .PivotsHL import PivotsHL as PivotsHL
 from .ROC import ROC as ROC
@@ -46,6 +48,7 @@ __all__ = (
     "ATR",
     "BB",
     "BOP",
+    "CCI",
     "ChaikinOsc",
     "DEMA",
     "DonchianChannels",
@@ -58,6 +61,7 @@ __all__ = (
     "KST",
     "MACD",
     "MassIndex",
+    "MeanDev",
     "OBV",
     "ParabolicSAR",
     "PivotsHL",

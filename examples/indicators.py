@@ -1,8 +1,8 @@
 import random
 
 from talipp.ohlcv import OHLCVFactory
-from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, ChaikinOsc, DEMA, DonchianChannels, EMA, HMA, \
-    Ichimoku, KAMA, KeltnerChannels, KST, MACD, MassIndex, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, \
+from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, DEMA, DonchianChannels, EMA, HMA, \
+    Ichimoku, KAMA, KeltnerChannels, KST, MACD, MassIndex, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, \
     StdDev, Stoch, StochRSI, TEMA, TRIX, TSI, UO, VWMA, WMA
 
 
@@ -26,6 +26,7 @@ if __name__ == "__main__":
     print(f'ATR: {ATR(14, ohlcv)[-1]}')
     print(f'BB: {BB(20, 2, close)[-1]}')
     print(f'BOP: {BOP(ohlcv)[-1]}')
+    print(f'CCI: {CCI(20, ohlcv)[-1]}')
     print(f'ChaikinOsc: {ChaikinOsc(3, 10, ohlcv)[-1]}')
     print(f'DEMA: {DEMA(20, close)[-1]}')
     print(f'DonchianChannels: {DonchianChannels(20, ohlcv)[-1]}')
@@ -37,6 +38,7 @@ if __name__ == "__main__":
     print(f'KST: {KST(10, 10, 15, 10, 20, 10, 30, 15, 9, close)[-1]}')
     print(f'MACD: {MACD(12, 26, 9, close)[-1]}')
     print(f'MassIndex: {MassIndex(9, 9, 10, ohlcv)[-1]}')
+    print(f'MeanDev: {MeanDev(10, close)[-1]}')
     print(f'OBV: {OBV(ohlcv)[-1]}')
     print(f'Pivots: {PivotsHL(15, 15, ohlcv)[-4:]}')
     print(f'ROC: {ROC(9, close)[-1]}')
