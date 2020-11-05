@@ -18,4 +18,10 @@ class BOP(Indicator):
 
     def _calculate_new_value(self) -> Any:
         value = self.input_values[-1]
-        return (value.close - value.open) / float(value.high - value.low)
+        if value.high != value.low:
+            return (value.close - value.open) / float(value.high - value.low)
+        else:
+            if len(self.output_values) > 0:
+                return self.output_values[-1]
+            else:
+                return None
