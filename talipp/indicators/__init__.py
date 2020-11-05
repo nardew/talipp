@@ -9,6 +9,7 @@ from .BOP import BOP as BOP
 from .ChaikinOsc import ChaikinOsc as ChaikinOsc
 from .ChandeKrollStop import ChandeKrollStop as ChandeKrollStop
 from .CHOP import CHOP as CHOP
+from .CoppockCurve import CoppockCurve as CoppockCurve
 from .DEMA import DEMA as DEMA
 from .DonchianChannels import DonchianChannels as DonchianChannels
 from .EMA import EMA as EMA
@@ -51,6 +52,7 @@ __all__ = (
     "ChaikinOsc",
     "ChandeKrollStop",
     "CHOP",
+    "CoppockCurve",
     "DEMA",
     "DonchianChannels",
     "EMA",
