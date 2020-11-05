@@ -30,15 +30,40 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 
 ### List of incremental indicators
 
-`talipp` currently provides below set of indicators. If your favourite indicator is missing, then create a ticket via GitHub Issues and there is a chance that it will be included in the future version of the library.
+`talipp` currently provides below set of indicators. If your favourite indicator is missing, then create a ticket via GitHub Issues and there is a good chance that it will be included in the future version of the library.
 
-| Type | Indicators |
-| :---: | --- |
-| **trend** | Aroon <br> Average Directional Index (ADX) <br> Awesome Oscillator (AO) <br> Ichimoku Kinko Hyo <br> Know Sure Thing (KST) <br> Moving Average Convergence Divergence (MACD) <br> Mass Index <br> Moving Average (ALMA, SMA, SMMA, DEMA, EMA, HMA, KAMA, TEMA, VWMA, WMA) <br> Parabolic SAR <br> SFX TOR
-| **support/resistance** | High/Low Pivots
-| **momentum** | Balance of Power (BOP) <br> Chaikin Oscillator <br> Rate of Change (ROC) <br> Relative strength index (RSI) <br> Stochastic Oscillator <br> Stochastic RSI <br> TRIX <br> True Strength Index (TSI) <br> Ultimate Oscillator (UO)
-| **volume** | Accumulation/Distribution (ADL) <br> On-balance Volume (OBV)
-| **volatility** | Average True Range (ATR) <br> Bollinger Bands (BB) <br> Donchian Channel (DC) <br> Keltner Channel (KC) <br> Standard deviation
+- Accumulation/Distribution (ADL)
+- Aroon
+- Average Directional Index (ADX)
+- Average True Range (ATR)
+- Awesome Oscillator (AO)
+- Balance of Power (BOP)
+- Bollinger Bands (BB)
+- Chaikin Oscillator
+- Chande Kroll Stop
+- Choppiness Index (CHOP)
+- Coppock Curve
+- Commodity Channel Index (CCI)
+- Donchian Channel (DC)
+- Ichimoku Kinko Hyo
+- Keltner Channel (KC)
+- Know Sure Thing (KST)
+- Mass Index
+- Mean Deviation
+- Moving Average (ALMA, SMA, SMMA, DEMA, EMA, HMA, KAMA, TEMA, VWMA, WMA)
+- Moving Average Convergence Divergence (MACD)
+- On-balance Volume (OBV), Smoothed On-balance Volume (SOBV)
+- Parabolic SAR
+- Pivots High/Low
+- Rate of Change (ROC)
+- Relative strength index (RSI)
+- SFX TOR
+- Standard Deviation
+- Stochastic Oscillator
+- Stochastic RSI
+- TRIX
+- True Strength Index (TSI)
+- Ultimate Oscillator (UO)
 
 ### Installation
 ```bash
