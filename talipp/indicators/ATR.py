@@ -37,7 +37,7 @@ class ATR(Indicator):
                 abs(low - close2),
             ))
 
-            if len(self.input_values) == self.period:
+            if len(self.input_values) == self.period or len(self.output_values) < 1:
                 return sum(self.tr) / self.period
             elif len(self.input_values) > self.period:
                 return (self.output_values[-1] * (self.period - 1) + self.tr[-1]) / self.period
