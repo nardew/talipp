@@ -129,6 +129,18 @@ print(f"SMA2: {sma2}") # [3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
 print(f"SMA3: {sma3}") # [4.0, 5.0, 6.0, 7.0]
 ```
 
+### Performance
+
+To illustrate performance scaling of `talipp` we ran several tests together with the industry standard `talib` library and its python wrapper [ta-lib](https://github.com/mrjbq7/ta-lib). The takeaway from the comparison is following:
+
+- for batch processing (i.e. one-off calculation of indicators without addition of further delta values) `talib` is a clear winner. This is not surprising at all since it is implemented in C and it is tailored for vector calculations in one shot. `talipp`'s incremental (i.e. not vector) calculation and features such as indicator chaining (which internally implements output listeners) must inevitably come at a cost. That being said, `talipp` calculates SMA for batch of 50k values incrementally still in ~200ms which is perfectly acceptable for many applications
+- where `talipp` clearly takes the lead is  incremental calculation. Again this is well expected since `talipp`'s CUD operations take `O(1)` time compared to `O(n)` time of `talib`. For 50k input the difference is as big as ~200ms vs. ~6800ms.
+- from the graphs it is apparent that `talipp` scales linearly with the size of the input compared to quadratic curve of `talib` when incremental operations are concerned. This follows from `talipp`'s `O(1)` time for delta operations vs. `talib`'s `O(n)`.
+
+![SMA(20)](https://raw.githubusercontent.com/nardew/talipp/master/images/SMA_20.svg)
+![TEMA(20)](https://raw.githubusercontent.com/nardew/talipp/master/images/TEMA_20.svg)
+![StochRSI(14,3,3)](https://raw.githubusercontent.com/nardew/talipp/master/images/StochRSI_14_3_3.svg)
+
 ### Contact
 
 - to report issues, bugs, corrections or to propose new features use preferably Github Issues
