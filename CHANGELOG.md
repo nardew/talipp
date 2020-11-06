@@ -6,6 +6,11 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Pending release]
 
+## [1.3.0] - 2020-11-06
+
+- new indicators: Chande Kroll Stop, Choppiness Index, Commodity Channel Index, Coppock Curve, Mean Deviation
+- performance comparison with `talib` library
+
 ## [1.2.0] - 2020-11-04
 
 - new indicators: Aroon, Balance of Power (BOP), KAMA, TSI, TRIX
@@ -29,6 +34,7 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 - the official release of `talipp`
 
-[Pending release]: https://github.com/nardew/talipp/compare/1.2.0...HEAD
+[Pending release]: https://github.com/nardew/talipp/compare/1.3.0...HEAD
+[1.3.0]: https://github.com/nardew/talipp/compare/1.2.0...1.3.0
 [1.2.0]: https://github.com/nardew/talipp/compare/1.1.0...1.2.0
 [1.1.0]: https://github.com/nardew/talipp/compare/1.0.0...1.1.0
