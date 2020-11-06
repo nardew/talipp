@@ -137,9 +137,9 @@ To illustrate performance scaling of `talipp` we ran several tests together with
 - where `talipp` clearly takes the lead is  incremental calculation. Again this is well expected since `talipp`'s CUD operations take `O(1)` time compared to `O(n)` time of `talib`. For 50k input the difference is as big as ~200ms vs. ~6800ms.
 - from the graphs it is apparent that `talipp` scales linearly with the size of the input compared to quadratic curve of `talib` when incremental operations are concerned. This follows from `talipp`'s `O(1)` time for delta operations vs. `talib`'s `O(n)`.
 
-![SMA(20)](https://raw.githubusercontent.com/nardew/cryptoxlib-aio/master/images/bitvavo.png)
-![TEMA(20)](https://raw.githubusercontent.com/nardew/cryptoxlib-aio/master/images/bitvavo.png)
-![StochRSI(14,3,3)](https://raw.githubusercontent.com/nardew/cryptoxlib-aio/master/images/bitvavo.png)
+![SMA(20)](https://raw.githubusercontent.com/nardew/talipp/perf/images/SMA_20.svg)
+![TEMA(20)](https://raw.githubusercontent.com/nardew/talipp/perf/images/TEMA_20.svg)
+![StochRSI(14,3,3)](https://raw.githubusercontent.com/nardew/talipp/perf/images/StochRSI_14_3_3.svg)
 
 ### Contact
 
