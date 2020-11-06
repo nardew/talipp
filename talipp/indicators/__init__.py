@@ -15,6 +15,7 @@ from .DEMA import DEMA as DEMA
 from .DonchianChannels import DonchianChannels as DonchianChannels
 from .DPO import DPO as DPO
 from .EMA import EMA as EMA
+from .EMV import EMV as EMV
 from .FibRetracement import FibRetracement as FibRetracement
 from .HMA import HMA as HMA
 from .Ichimoku import Ichimoku as Ichimoku
@@ -61,6 +62,7 @@ __all__ = (
     "DonchianChannels",
     "DPO",
     "EMA",
+    "EMV",
     "FibRetracement",
     "HMA",
     "Ichimoku",
