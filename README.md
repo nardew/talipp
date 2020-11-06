@@ -20,9 +20,9 @@ Last but not least, `talipp` is a very young project and therefore open to any s
 
 ---
 
-### What's new in version 1.2.0
+### What's new in version 1.3.0
 
-- new indicators: Aroon, Balance of Power (BOP), KAMA, TSI, TRIX
+- new indicators: Chande Kroll Stop, Choppiness Index, Commodity Channel Index, Coppock Curve, Mean Deviation
 
 For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/master/CHANGELOG.md).
 
