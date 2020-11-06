@@ -13,6 +13,7 @@ from .CHOP import CHOP as CHOP
 from .CoppockCurve import CoppockCurve as CoppockCurve
 from .DEMA import DEMA as DEMA
 from .DonchianChannels import DonchianChannels as DonchianChannels
+from .DPO import DPO as DPO
 from .EMA import EMA as EMA
 from .FibRetracement import FibRetracement as FibRetracement
 from .HMA import HMA as HMA
@@ -58,6 +59,7 @@ __all__ = (
     "CoppockCurve",
     "DEMA",
     "DonchianChannels",
+    "DPO",
     "EMA",
     "FibRetracement",
     "HMA",

@@ -76,8 +76,6 @@ def measure_tema(values_n: int, period: int):
         output = talib.TEMA(close, timeperiod = period)
         t3 += (time.time_ns() - start) / 1000000
 
-        talib.STOCHRSI()
-
     print(f"TEMA({period});{values_n:,};{round(t1, 3)};{round(t2, 3)};{round(t3, 3)}")
 
 
