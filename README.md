@@ -45,6 +45,8 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Coppock Curve
 - Commodity Channel Index (CCI)
 - Donchian Channel (DC)
+- Detrended Price Oscillator (DOP)
+- Ease of Movement (EMV)
 - Ichimoku Kinko Hyo
 - Keltner Channel (KC)
 - Know Sure Thing (KST)
