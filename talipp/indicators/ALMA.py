@@ -35,6 +35,6 @@ class ALMA(Indicator):
         else:
             alma = 0.0
             for i in range(0, self.period):
-                alma += self.input_values[len(self.input_values) - self.period + i] * self.w[i]
+                alma += self.input_values[-(self.period - i)] * self.w[i]
 
             return alma / self.w_sum
