@@ -49,6 +49,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Ease of Movement (EMV)
 - Ichimoku Kinko Hyo
 - Keltner Channel (KC)
+- Klinger Volume Oscillator (KVO)
 - Know Sure Thing (KST)
 - Mass Index
 - Mean Deviation
