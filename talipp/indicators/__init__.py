@@ -22,6 +22,7 @@ from .Ichimoku import Ichimoku as Ichimoku
 from .KAMA import KAMA as KAMA
 from .KeltnerChannels import KeltnerChannels as KeltnerChannels
 from .KST import KST as KST
+from .KVO import KVO as KVO
 from .MACD import MACD as MACD
 from .MassIndex import MassIndex as MassIndex
 from .MeanDev import MeanDev as MeanDev
@@ -69,6 +70,7 @@ __all__ = (
     "KAMA",
     "KeltnerChannels",
     "KST",
+    "KVO",
     "MACD",
     "MassIndex",
     "MeanDev",
