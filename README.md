@@ -20,9 +20,9 @@ Last but not least, `talipp` is a very young project and therefore open to any s
 
 ---
 
-### What's new in version 1.3.0
+### What's new in version 1.4.0
 
-- new indicators: Chande Kroll Stop, Choppiness Index, Commodity Channel Index, Coppock Curve, Mean Deviation
+- new indicators: Detrended Price Oscillator (DPO), Ease of Movement (EMV), Klinger Volume Oscillator (KVO), Vortex Indicator (VTX)
 
 For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/master/CHANGELOG.md).
 
