@@ -67,6 +67,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - TRIX
 - True Strength Index (TSI)
 - Ultimate Oscillator (UO)
+- Vortex Indicator (VTX)
 
 ### Installation
 ```bash
