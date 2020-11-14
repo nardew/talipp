@@ -3,7 +3,7 @@ import random
 from talipp.ohlcv import OHLCVFactory
 from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, HMA, \
     Ichimoku, KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, \
-    StdDev, Stoch, StochRSI, TEMA, TRIX, TSI, UO, VWMA, WMA
+    StdDev, Stoch, StochRSI, TEMA, TRIX, TSI, UO, VTX, VWMA, WMA
 
 
 if __name__ == "__main__":
@@ -61,5 +61,6 @@ if __name__ == "__main__":
     print(f'TRIX: {TRIX(18, close)[-1]}')
     print(f'TSI: {TSI(13, 25, close)[-1]}')
     print(f'UO: {UO(7, 14, 28, ohlcv)[-1]}')
+    print(f'VTX: {VTX(14, ohlcv)[-1]}')
     print(f'VWMA: {VWMA(20, ohlcv)[-1]}')
     print(f'WMA: {WMA(9, close)[-1]}')
