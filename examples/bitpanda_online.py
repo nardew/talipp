@@ -7,7 +7,7 @@ from cryptoxlib.clients.bitpanda import enums
 from cryptoxlib.version_conversions import async_run
 
 from talipp.ohlcv import OHLCV
-from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, HMA, Ichimoku, \
+from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, Ichimoku, \
     KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, \
     Stoch, StochRSI, TEMA, TRIX, TSI, UO, VTX, VWMA, WMA
 
@@ -42,6 +42,7 @@ async def run():
     print(f'DPO: {DPO(20, close)[-1]}')
     print(f'EMA: {EMA(20, close)[-1]}')
     print(f'EMV: {EMV(14, 10000, ohlcv)[-5:]}')
+    print(f'ForceIndex: {ForceIndex(13, ohlcv)[-5:]}')
     print(f'HMA: {HMA(9, close)[-1]}')
     print(f'Ichimoku: {Ichimoku(26, 9, 52, 52, 26, ohlcv)[-1]}')
     print(f'KAMA: {KAMA(14, 2, 30, close)[-1]}')
