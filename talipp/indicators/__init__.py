@@ -26,6 +26,7 @@ from .KST import KST as KST
 from .KVO import KVO as KVO
 from .MACD import MACD as MACD
 from .MassIndex import MassIndex as MassIndex
+from .McGinleyDynamic import McGinleyDynamic as McGinleyDynamic
 from .MeanDev import MeanDev as MeanDev
 from .OBV import OBV as OBV
 from .PivotsHL import PivotsHL as PivotsHL
@@ -76,6 +77,7 @@ __all__ = (
     "KVO",
     "MACD",
     "MassIndex",
+    "McGinleyDynamic",
     "MeanDev",
     "OBV",
     "ParabolicSAR",

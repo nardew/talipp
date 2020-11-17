@@ -1,12 +1,11 @@
 from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.SMA import SMA
 
 
-class EMA(Indicator):
+class McGinleyDynamic(Indicator):
     """
-    Exponential Moving Average
+    McGinley Dynamic
 
     Output: a list of floats
     """
@@ -22,7 +21,10 @@ class EMA(Indicator):
         if len(self.input_values) < self.period:
             return None
         elif len(self.input_values) == self.period:
-            return sum(self.input_values) / self.period
+            return sum(self.input_values) / float(self.period)
         else:
-            mult = 2.0 / (self.period + 1.0)
-            return float(mult * self.input_values[-1] + (1.0 - mult) * self.output_values[-1])
+            print(self.output_values[-1])
+            print(pow(self.input_values[-1] / float(self.output_values[-1]), 4))
+            print(self.input_values[-1])
+            print(self.output_values[-1])
+            return self.output_values[-1] + (self.input_values[-1] - self.output_values[-1]) / float(self.period * pow(self.input_values[-1] / float(self.output_values[-1]), 4))
