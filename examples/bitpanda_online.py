@@ -8,7 +8,7 @@ from cryptoxlib.version_conversions import async_run
 
 from talipp.ohlcv import OHLCV
 from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, Ichimoku, \
-    KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, \
+    KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, McGinleyDynamic, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, \
     Stoch, StochRSI, TEMA, TRIX, TSI, UO, VTX, VWMA, WMA
 
 
@@ -41,8 +41,8 @@ async def run():
     print(f'DonchianChannels: {DonchianChannels(20, ohlcv)[-1]}')
     print(f'DPO: {DPO(20, close)[-1]}')
     print(f'EMA: {EMA(20, close)[-1]}')
-    print(f'EMV: {EMV(14, 10000, ohlcv)[-5:]}')
-    print(f'ForceIndex: {ForceIndex(13, ohlcv)[-5:]}')
+    print(f'EMV: {EMV(14, 10000, ohlcv)[-1]}')
+    print(f'ForceIndex: {ForceIndex(13, ohlcv)[-1]}')
     print(f'HMA: {HMA(9, close)[-1]}')
     print(f'Ichimoku: {Ichimoku(26, 9, 52, 52, 26, ohlcv)[-1]}')
     print(f'KAMA: {KAMA(14, 2, 30, close)[-1]}')
@@ -51,6 +51,7 @@ async def run():
     print(f'KVO: {KVO(34, 55, ohlcv)[-5:]}')
     print(f'MACD: {MACD(12, 26, 9, close)[-1]}')
     print(f'MassIndex: {MassIndex(9, 9, 10, ohlcv)[-1]}')
+    print(f'McGinleyDynamic: {McGinleyDynamic(14, close)[-1]}')
     print(f'MeanDev: {MeanDev(10, close)[-1]}')
     print(f'OBV: {OBV(ohlcv)[-1]}')
     print(f'Pivots: {PivotsHL(15, 15, ohlcv)[-4:]}')

@@ -53,6 +53,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Klinger Volume Oscillator (KVO)
 - Know Sure Thing (KST)
 - Mass Index
+- McGinley Dynamic
 - Mean Deviation
 - Moving Average (ALMA, SMA, SMMA, DEMA, EMA, HMA, KAMA, TEMA, VWMA, WMA)
 - Moving Average Convergence Divergence (MACD)
