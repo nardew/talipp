@@ -47,6 +47,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Donchian Channel (DC)
 - Detrended Price Oscillator (DOP)
 - Ease of Movement (EMV)
+- Force Index
 - Ichimoku Kinko Hyo
 - Keltner Channel (KC)
 - Klinger Volume Oscillator (KVO)

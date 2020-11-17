@@ -17,6 +17,7 @@ from .DPO import DPO as DPO
 from .EMA import EMA as EMA
 from .EMV import EMV as EMV
 from .FibRetracement import FibRetracement as FibRetracement
+from .ForceIndex import ForceIndex as ForceIndex
 from .HMA import HMA as HMA
 from .Ichimoku import Ichimoku as Ichimoku
 from .KAMA import KAMA as KAMA
@@ -66,6 +67,7 @@ __all__ = (
     "EMA",
     "EMV",
     "FibRetracement",
+    "ForceIndex",
     "HMA",
     "Ichimoku",
     "KAMA",
