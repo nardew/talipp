@@ -32,6 +32,9 @@ class Test(TalippTest):
     def test_delete(self):
         self.assertIndicatorDelete(KeltnerChannels(10, 10, 2, 3, self.input_values))
 
+    def test_purge_oldest(self):
+        self.assertIndicatorPurgeOldest(KeltnerChannels(10, 10, 2, 3, self.input_values))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -24,6 +24,9 @@ class Test(TalippTest):
     def test_delete(self):
         self.assertIndicatorDelete(ChaikinOsc(5, 7, self.input_values))
 
+    def test_purge_oldest(self):
+        self.assertIndicatorPurgeOldest(ChaikinOsc(5, 7, self.input_values))
+
 
 if __name__ == '__main__':
     unittest.main()

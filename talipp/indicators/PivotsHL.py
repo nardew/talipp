@@ -60,3 +60,7 @@ class PivotsHL(Indicator):
     # override the method to avoid automatic cleanup of output_results
     def _remove_output_value(self) -> None:
         pass
+
+    # override the method to avoid automatic cleanup of output_results
+    def _purge_oldest_output_value(self, size: int) -> None:
+        pass

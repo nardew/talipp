@@ -29,6 +29,9 @@ class Test(TalippTest):
     def test_delete(self):
         self.assertIndicatorDelete(Stoch(14, 3, self.input_values))
 
+    def test_purge_oldest(self):
+        self.assertIndicatorPurgeOldest(Stoch(14, 3, self.input_values))
+
 
 if __name__ == '__main__':
     unittest.main()
