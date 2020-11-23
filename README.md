@@ -20,9 +20,9 @@ Last but not least, `talipp` is a very young project and therefore open to any s
 
 ---
 
-### What's new in version 1.4.0
+### What's new in version 1.5.0
 
-- new indicators: Detrended Price Oscillator (DPO), Ease of Movement (EMV), Klinger Volume Oscillator (KVO), Vortex Indicator (VTX)
+- a new possibility to purge old data in order to free memory
 
 For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/master/CHANGELOG.md).
 
