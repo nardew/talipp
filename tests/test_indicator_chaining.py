@@ -72,6 +72,40 @@ class Test(TalippTest):
 
         self.assertEqual(last_indicator_value, sma4[-1])
 
+    def test_purge_oldest(self):
+        sma1 = SMA(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+        sma2 = SMA(3, input_indicator = sma1)
+        sma3 = SMA(3, input_indicator = sma2)
+        sma4 = SMA(3, input_indicator = sma3)
+
+        # purge oldest N values
+        purge_size = 2
+        sma1_copy = sma1[:]
+        sma2_copy = sma2[:]
+        sma3_copy = sma3[:]
+        sma4_copy = sma4[:]
+        sma1.purge_oldest(purge_size)
+        self.assertSequenceEqual(sma1_copy[purge_size:], sma1)
+        self.assertSequenceEqual(sma2_copy[purge_size:], sma2)
+        self.assertSequenceEqual(sma3_copy[purge_size:], sma3)
+        self.assertSequenceEqual(sma4_copy[purge_size:], sma4)
+
+        # purge all remaining values
+        purge_size = len(sma1)
+        sma1_copy = sma1[:]
+        sma2_copy = sma2[:]
+        sma3_copy = sma3[:]
+        sma4_copy = sma4[:]
+        sma1.purge_oldest(purge_size)
+        self.assertSequenceEqual(sma1_copy[purge_size:], sma1)
+        self.assertSequenceEqual(sma2_copy[purge_size:], sma2)
+        self.assertSequenceEqual(sma3_copy[purge_size:], sma3)
+        self.assertSequenceEqual(sma4_copy[purge_size:], sma4)
+        self.assertSequenceEqual([], sma1)
+        self.assertSequenceEqual([], sma2)
+        self.assertSequenceEqual([], sma3)
+        self.assertSequenceEqual([], sma4)
+
 
 if __name__ == '__main__':
     unittest.main()

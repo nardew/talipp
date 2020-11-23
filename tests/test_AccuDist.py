@@ -24,6 +24,9 @@ class TestAccuDist(TalippTest):
     def test_delete(self):
         self.assertIndicatorDelete(AccuDist(self.input_values))
 
+    def test_purge_oldest(self):
+        self.assertIndicatorPurgeOldest(AccuDist(self.input_values))
+
     def test_low_high_equal(self):
         ind = AccuDist(self.input_values)
         ind.add_input_value(OHLCV(1, 1, 1, 1, 1))

@@ -130,6 +130,32 @@ class Indicator(Sequence):
     def _remove_all_custom(self) -> None:
         pass
 
+    def purge_oldest(self, size: int) -> None:
+        for sub_indicator in self.sub_indicators:
+            sub_indicator.purge_oldest(size)
+
+        if len(self.input_values) > 0:
+            self.input_values = self.input_values[size:]
+
+        self._purge_oldest_output_value(size)
+
+        for lst in self.managed_sequences:
+            if isinstance(lst, Indicator):
+                lst.purge_oldest(size)
+            else:
+                del lst[:size]
+
+        self._purge_oldest_custom(size)
+
+        for listener in self.output_listeners:
+            listener.purge_oldest(size)
+
+    def _purge_oldest_output_value(self, size: int) -> None:
+        self.output_values = self.output_values[size:]
+
+    def _purge_oldest_custom(self, size: int) -> None:
+        pass
+
     def set_input_values(self, input_values: ListAny, initialize: bool = True) -> None:
         if initialize:
             self.initialize(input_values)

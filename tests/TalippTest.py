@@ -53,3 +53,17 @@ class TalippTest(unittest.TestCase):
         indicator.add_input_value(last_input_value)
 
         self.assertEqual(last_indicator_value, indicator[-1])
+
+    def assertIndicatorPurgeOldest(self, indicator: Indicator):
+        # purge oldest 5 values
+        purge_size = 5
+        indicator_copy = indicator[:]
+        indicator.purge_oldest(purge_size)
+        self.assertSequenceEqual(indicator_copy[purge_size:], indicator)
+
+        # purge all remaining values
+        purge_size = len(indicator)
+        indicator_copy = indicator[:]
+        indicator.purge_oldest(purge_size)
+        self.assertSequenceEqual(indicator_copy[purge_size:], indicator)
+        self.assertSequenceEqual([], indicator)

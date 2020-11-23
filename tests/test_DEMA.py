@@ -24,6 +24,9 @@ class TestDEMA(TalippTest):
     def test_delete(self):
         self.assertIndicatorDelete(DEMA(20, self.input_values))
 
+    def test_purge_oldest(self):
+        self.assertIndicatorPurgeOldest(DEMA(20, self.input_values))
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -32,6 +32,9 @@ class TestADX(TalippTest):
     def test_delete(self):
         self.assertIndicatorDelete(ADX(14, 14, self.input_values))
 
+    def test_purge_oldest(self):
+        self.assertIndicatorPurgeOldest(ADX(14, 14, self.input_values))
+
 
 if __name__ == '__main__':
     unittest.main()

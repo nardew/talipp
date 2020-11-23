@@ -24,6 +24,10 @@ print(f'EMA after updating the last value: {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 
 ema.remove_input_value()
 print(f'EMA after removing the last value: {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125]
 
+# purge the oldest input value
+ema.purge_oldest(1)
+print(f'EMA after purging the oldest value: {ema}') # [5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125]
+
 # STOCH indicator ([OHLCV] -> [composite])
 stoch = Stoch(5, 3, OHLCVFactory.from_dict({
     'high':     [5, 10, 15, 20, 25, 30, 35],
@@ -42,7 +46,14 @@ sma1 = SMA(3)
 sma2 = SMA(3, input_indicator = sma1)
 sma3 = SMA(3, input_indicator = sma2)
 
+print(f"Chain three moving averages:")
 sma1.add_input_value([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 print(f"SMA1: {sma1}") # [2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
 print(f"SMA2: {sma2}") # [3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
 print(f"SMA3: {sma3}") # [4.0, 5.0, 6.0, 7.0]
+
+print(f"Purge oldest 3 values:")
+sma1.purge_oldest(3)
+print(f"SMA1: {sma1}") # [5.0, 6.0, 7.0, 8.0, 9.0]
+print(f"SMA2: {sma2}") # [6.0, 7.0, 8.0]
+print(f"SMA3: {sma3}") # [7.0]

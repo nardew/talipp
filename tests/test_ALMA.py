@@ -24,6 +24,9 @@ class TestALMA(TalippTest):
     def test_delete(self):
         self.assertIndicatorDelete(ALMA(9, 0.85, 6, self.input_values))
 
+    def test_purge_oldest(self):
+        self.assertIndicatorPurgeOldest(ALMA(9, 0.85, 6, self.input_values))
+
 
 if __name__ == '__main__':
     unittest.main()

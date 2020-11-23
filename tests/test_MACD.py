@@ -32,6 +32,9 @@ class Test(TalippTest):
     def test_delete(self):
         self.assertIndicatorDelete(MACD(12, 26, 9, self.input_values))
 
+    def test_purge_oldest(self):
+        self.assertIndicatorPurgeOldest(MACD(12, 26, 9, self.input_values))
+
 
 if __name__ == '__main__':
     unittest.main()
