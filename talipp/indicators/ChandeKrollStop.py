@@ -16,7 +16,7 @@ class ChandeKrollStop(Indicator):
     """
     Chande Kroll Stop
 
-    Output: a list of OHLCV objects
+    Output: a list of ChandeKrollStopVal objects
     """
 
     def __init__(self, preliminary_period: int, atr_mult: float, period: int, input_values: List[OHLCV] = None):
