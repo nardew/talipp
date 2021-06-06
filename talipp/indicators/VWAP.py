@@ -8,8 +8,6 @@ from typing import List, Any
 from talipp.indicators.Indicator import Indicator
 from talipp.ohlcv import OHLCV
 
-import numpy as np
-
 
 class VWAP(Indicator):
     """
