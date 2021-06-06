@@ -70,6 +70,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - True Strength Index (TSI)
 - Ultimate Oscillator (UO)
 - Vortex Indicator (VTX)
+- Volume Weighted Average Price (VWAP)
 
 ### Installation
 ```bash

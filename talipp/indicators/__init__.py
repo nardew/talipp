@@ -97,6 +97,7 @@ __all__ = (
     "TSI",
     "UO",
     "VTX",
+    "VWAP",
     "VWMA",
     "WMA",
 )
