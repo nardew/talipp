@@ -45,6 +45,7 @@ from .TRIX import TRIX as TRIX
 from .TSI import TSI as TSI
 from .UO import UO as UO
 from .VTX import VTX as VTX
+from .VWAP import VWAP as VWAP
 from .VWMA import VWMA as VWMA
 from .WMA import WMA as WMA
 
@@ -96,6 +97,7 @@ __all__ = (
     "TSI",
     "UO",
     "VTX",
+    "VWAP",
     "VWMA",
     "WMA",
 )
