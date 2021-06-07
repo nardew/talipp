@@ -58,3 +58,37 @@ class VWAP(Indicator):
 
         for listener in self.output_listeners:
             listener.remove_input_value()
+
+    def reset(self):
+        while (True):
+            if len(self.input_values) > 0:
+                value = self.input_values[-1]
+                self.cumsumPV -= value.volume*(
+                    value.high+value.low+value.close)/3
+                self.cumsumV -= value.volume
+                self.input_values.pop(-1)
+
+                for sub_indicator in self.sub_indicators:
+                    sub_indicator.remove_input_value()
+
+                for lst in self.managed_sequences:
+                    if isinstance(lst, Indicator):
+                        lst.remove_input_value()
+                    else:
+                        if len(lst) > 0:
+                            lst.pop(-1)
+
+                for listener in self.output_listeners:
+                    listener.remove_input_value()
+            else:
+                self.cumsumPV = 0
+                self.cumsumV = 0
+                break
+
+        while (True):
+            if len(self.output_values) > 0:
+                self.output_values.pop(-1)
+
+                self._remove_output_value()
+            else:
+                break

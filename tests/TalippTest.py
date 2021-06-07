@@ -67,3 +67,6 @@ class TalippTest(unittest.TestCase):
         indicator.purge_oldest(purge_size)
         self.assertSequenceEqual(indicator_copy[purge_size:], indicator)
         self.assertSequenceEqual([], indicator)
+
+    def assertIndicatorReset(self, indicator: Indicator):
+        indicator.reset()
