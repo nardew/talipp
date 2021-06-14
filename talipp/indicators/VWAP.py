@@ -13,34 +13,32 @@ class VWAP(Indicator):
     """
     Volume Weighted Average Price
     Output: a list of floats
-    ALERT: This does not check season starting.
     """
 
     def __init__(self, input_values: List[OHLCV] = None):
         super().__init__()
 
-        self.cumsumPV = []
-        self.cumsumV = []
+        self.sum_price_vol = []
+        self.sum_vol = []
 
-        self.add_managed_sequence(self.cumsumPV)
-        self.add_managed_sequence(self.cumsumV)
+        self.add_managed_sequence(self.sum_price_vol)
+        self.add_managed_sequence(self.sum_vol)
 
         self.initialize(input_values)
 
     def _calculate_new_value(self) -> Any:
+        # initialize sums
+        if len(self.sum_price_vol) == 0:
+            self.sum_price_vol.append(0.0)
+            self.sum_vol.append(0.0)
+
         value = self.input_values[-1]
+        typical_price = (value.high + value.low + value.close) / 3.0
 
-        if self.cumsumPV:
-            self.cumsumPV.append(self.cumsumPV[-1]
-                                 + value.volume*(value.high
-                                                 + value.low + value.close)/3)
-            self.cumsumV.append(self.cumsumV[-1] + value.volume)
-        else:
-            self.cumsumPV.append(value.volume*(value.high
-                                               + value.low + value.close)/3)
-            self.cumsumV.append(value.volume)
+        self.sum_price_vol.append(self.sum_price_vol[-1] + value.volume * typical_price)
+        self.sum_vol.append(self.sum_vol[-1] + value.volume)
 
-        if (self.cumsumV[-1] != 0):
-            return self.cumsumPV[-1]/self.cumsumV[-1]
+        if self.sum_vol[-1] != 0:
+            return self.sum_price_vol[-1] / self.sum_vol[-1]
         else:
             return None
