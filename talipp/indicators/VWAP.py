@@ -1,6 +1,6 @@
 # =============================================================================
-# Created By  : Pramit Biswas
-# Created Date: Sun Jun 06 19:55:00 IST 2021
+# Created By   : Pramit Biswas
+# Creation Date: Sun Jun 06 19:55:00 IST 2021
 # =============================================================================
 
 from typing import List, Any
@@ -19,76 +19,28 @@ class VWAP(Indicator):
     def __init__(self, input_values: List[OHLCV] = None):
         super().__init__()
 
-        self.cumsumPV = 0
-        self.cumsumV = 0
+        self.cumsumPV = []
+        self.cumsumV = []
+
+        self.add_managed_sequence(self.cumsumPV)
+        self.add_managed_sequence(self.cumsumV)
 
         self.initialize(input_values)
 
     def _calculate_new_value(self) -> Any:
         value = self.input_values[-1]
 
-        self.cumsumPV += value.volume*(value.high+value.low+value.close)/3
-        self.cumsumV += value.volume
+        if self.cumsumPV:
+            self.cumsumPV.append(self.cumsumPV[-1]
+                                 + value.volume*(value.high
+                                                 + value.low + value.close)/3)
+            self.cumsumV.append(self.cumsumV[-1] + value.volume)
+        else:
+            self.cumsumPV.append(value.volume*(value.high
+                                               + value.low + value.close)/3)
+            self.cumsumV.append(value.volume)
 
-        if (self.cumsumV != 0):
-            return self.cumsumPV/self.cumsumV
+        if (self.cumsumV[-1] != 0):
+            return self.cumsumPV[-1]/self.cumsumV[-1]
         else:
             return None
-
-    def remove_input_value(self) -> None:
-        for sub_indicator in self.sub_indicators:
-            sub_indicator.remove_input_value()
-
-        if len(self.input_values) > 0:
-            value = self.input_values[-1]
-            self.cumsumPV -= value.volume*(value.high+value.low+value.close)/3
-            self.cumsumV -= value.volume
-            self.input_values.pop(-1)
-
-        self._remove_output_value()
-
-        for lst in self.managed_sequences:
-            if isinstance(lst, Indicator):
-                lst.remove_input_value()
-            else:
-                if len(lst) > 0:
-                    lst.pop(-1)
-
-        self._remove_input_value_custom()
-
-        for listener in self.output_listeners:
-            listener.remove_input_value()
-
-    def reset(self):
-        while (True):
-            if len(self.input_values) > 0:
-                value = self.input_values[-1]
-                self.cumsumPV -= value.volume*(
-                    value.high+value.low+value.close)/3
-                self.cumsumV -= value.volume
-                self.input_values.pop(-1)
-
-                for sub_indicator in self.sub_indicators:
-                    sub_indicator.remove_input_value()
-
-                for lst in self.managed_sequences:
-                    if isinstance(lst, Indicator):
-                        lst.remove_input_value()
-                    else:
-                        if len(lst) > 0:
-                            lst.pop(-1)
-
-                for listener in self.output_listeners:
-                    listener.remove_input_value()
-            else:
-                self.cumsumPV = 0
-                self.cumsumV = 0
-                break
-
-        while (True):
-            if len(self.output_values) > 0:
-                self.output_values.pop(-1)
-
-                self._remove_output_value()
-            else:
-                break
