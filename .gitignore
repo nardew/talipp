@@ -50,6 +50,7 @@ coverage.xml
 *.cover
 .hypothesis/
 .pytest_cache/
+.noseids
 
 # Translations
 *.mo
@@ -106,3 +107,6 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+# IDE/Editor
+.vscode/
