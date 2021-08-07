@@ -27,17 +27,17 @@ class ATR(Indicator):
 
         if len(self.input_values) == 1:
             self.tr.append(high - low)
-            return None
         else:
             close2 = self.input_values[-2].close
-
             self.tr.append(max(
                 high - low,
                 abs(high - close2),
                 abs(low - close2),
             ))
 
-            if len(self.input_values) == self.period or len(self.output_values) < 1:
-                return sum(self.tr) / self.period
-            elif len(self.input_values) > self.period:
-                return (self.output_values[-1] * (self.period - 1) + self.tr[-1]) / self.period
+        if len(self.input_values) < self.period:
+            return None
+        elif len(self.input_values) == self.period:
+            return sum(self.tr) / self.period
+        else:
+            return (self.output_values[-1] * (self.period - 1) + self.tr[-1]) / self.period
