@@ -172,3 +172,5 @@ If you like the library and you feel like you want to support its further develo
 - donate an arbitrary tip
   * `BTC`: `3GJPT6H6WeuTWR2KwDSEN5qyJq95LEErzf`
   * `ETH`: `0xC7d8673Ee1B01f6F10e40aA416a1b0A746eaBe68`
+  * `Binance Smart Chain tokens`: `0xe37FaB52ed4c1C9a3d80896f2001Cb3284a1b619`
+  * `XMR`: `87vdCaWFN2YJEk3HKVJNaPBFsuwZTJocRfpGJ747dPQrFcrs6SQTmA3XDGyWUPoALuNnXezEbJXkbY8Y4VSxG4ReEFqxy5m`
