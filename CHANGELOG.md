@@ -6,6 +6,11 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Pending release]
 
+## [1.7.0] - 2021-08-31
+
+- `OHLCV` class extended with timestamp
+- `ATR` calculation of the very first value fixed
+
 ## [1.6.0] - 2021-06-14
 
 - new `VWAP` indicator added
@@ -46,7 +51,8 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 - the official release of `talipp`
 
-[Pending release]: https://github.com/nardew/talipp/compare/1.6.0...HEAD
+[Pending release]: https://github.com/nardew/talipp/compare/1.7.0...HEAD
+[1.7.0]: https://github.com/nardew/talipp/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/nardew/talipp/compare/1.5.0...1.6.0
 [1.5.0]: https://github.com/nardew/talipp/compare/1.4.0...1.5.0
 [1.4.0]: https://github.com/nardew/talipp/compare/1.3.0...1.4.0

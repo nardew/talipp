@@ -20,9 +20,9 @@ Last but not least, `talipp` is a very young project and therefore open to any s
 
 ---
 
-### What's new in version 1.6.0
+### What's new in version 1.7.0
 
-- new `VWAP` indicator added
+- `OHLCV` class supports timestamps
 
 For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/master/CHANGELOG.md).
 
