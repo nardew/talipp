@@ -35,4 +35,10 @@ class TSI(Indicator):
         if len(self.fast_ema) < 1:
             return None
 
-        return 100.0 * (self.fast_ema[-1] / self.abs_fast_ema[-1])
+        if self.abs_fast_ema[-1] != 0:
+            return 100.0 * (self.fast_ema[-1] / self.abs_fast_ema[-1])
+        else:
+            if len(self.output_values) > 0:
+                return self.output_values[-1]
+            else:
+                return None

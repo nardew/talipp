@@ -6,6 +6,10 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Pending release]
 
+## [1.7.1] - 2022-05-21
+
+- `TSI` calculation fixed when input contains a long series of identical values (division by zero occurred before). After the fix the indicator will simply copy previous value should division by zero occur.
+
 ## [1.7.0] - 2021-08-31
 
 - `OHLCV` class extended with timestamp
@@ -51,7 +55,8 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 - the official release of `talipp`
 
-[Pending release]: https://github.com/nardew/talipp/compare/1.7.0...HEAD
+[Pending release]: https://github.com/nardew/talipp/compare/1.7.1...HEAD
+[1.7.1]: https://github.com/nardew/talipp/compare/1.7.0...1.7.1
 [1.7.0]: https://github.com/nardew/talipp/compare/1.6.0...1.7.0
 [1.6.0]: https://github.com/nardew/talipp/compare/1.5.0...1.6.0
 [1.5.0]: https://github.com/nardew/talipp/compare/1.4.0...1.5.0

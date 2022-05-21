@@ -8,6 +8,7 @@ from TalippTest import TalippTest
 class Test(TalippTest):
     def setUp(self) -> None:
         self.input_values = list(TalippTest.CLOSE_TMPL)
+        self.input_values_equal = list(TalippTest.CLOSE_EQUAL_VALUES_TMPL)
 
     def test_init(self):
         ind = TSI(14, 23, self.input_values)
@@ -17,6 +18,12 @@ class Test(TalippTest):
         self.assertAlmostEqual(ind[-3], 9.159520, places = 5)
         self.assertAlmostEqual(ind[-2], 10.724944, places = 5)
         self.assertAlmostEqual(ind[-1], 11.181863, places = 5)
+
+    def test_init_equal(self):
+        """ Check that if there is no price difference between two consecutive prices, the indicator does not crash"""
+        ind = TSI(3, 5, self.input_values_equal)
+
+        self.assertEqual(len(ind), 0)
 
     def test_update(self):
         self.assertIndicatorUpdate(TSI(14, 23, self.input_values))
