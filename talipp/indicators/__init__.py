@@ -40,6 +40,7 @@ from .SOBV import SOBV as SOBV
 from .StdDev import StdDev as StdDev
 from .Stoch import Stoch as Stoch
 from .StochRSI import StochRSI as StochRSI
+from .SuperTrend import SuperTrend as SuperTrend
 from .TEMA import TEMA as TEMA
 from .TRIX import TRIX as TRIX
 from .TSI import TSI as TSI
@@ -92,6 +93,7 @@ __all__ = (
     "StdDev",
     "Stoch",
     "StochRSI",
+    "SuperTrend",
     "TEMA",
     "TRIX",
     "TSI",

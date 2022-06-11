@@ -9,7 +9,7 @@ from cryptoxlib.version_conversions import async_run
 from talipp.ohlcv import OHLCV
 from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, Ichimoku, \
     KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, McGinleyDynamic, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, \
-    Stoch, StochRSI, TEMA, TRIX, TSI, UO, VTX, VWAP, VWMA, WMA
+    Stoch, StochRSI, SuperTrend, TEMA, TRIX, TSI, UO, VTX, VWAP, VWMA, WMA
 
 
 async def run():
@@ -65,6 +65,7 @@ async def run():
     print(f'StdDev: {StdDev(7, close)[-1]}')
     print(f'Stoch: {Stoch(14, 3, ohlcv)[-1]}')
     print(f'StochRSI: {StochRSI(14, 14, 3, 3, close)[-1]}')
+    print(f'SuperTrend: {SuperTrend(10, 3, ohlcv)[-20:]}')
     print(f'TEMA: {TEMA(20, close)[-1]}')
     print(f'TRIX: {TRIX(18, close)[-1]}')
     print(f'TSI: {TSI(13, 25, close)[-1]}')

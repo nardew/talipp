@@ -1,4 +1,4 @@
-# TALIpp - Incremental Technical Analysis Library 1.7.1
+# TALIpp - Incremental Technical Analysis Library 1.8.0
 
 ![](https://img.shields.io/badge/python-3.6-blue.svg) ![](https://img.shields.io/badge/python-3.7-blue.svg) ![](https://img.shields.io/badge/python-3.8-blue.svg) ![](https://img.shields.io/badge/python-3.9-blue.svg) ![](https://img.shields.io/badge/pypy-3-blue.svg) ![unit tests](https://github.com/nardew/talipp/workflows/unit%20tests/badge.svg)
 
@@ -22,7 +22,7 @@ Last but not least, `talipp` is a very young project and therefore open to any s
 
 ### What's new in the latest version
 
-- `TSI` indicator does not crash when input contains a long series of identical values
+- new `SuperTrend` indicator added
 
 For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/master/CHANGELOG.md).
 
