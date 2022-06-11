@@ -20,7 +20,7 @@ class SuperTrendVal:
 
 class SuperTrend(Indicator):
     """
-    Output: A list of floats
+    Output: A list of SuperTrendVal
     """
 
     def __init__(self, atr_period: int, mult: int, input_values: List[OHLCV] = None):
