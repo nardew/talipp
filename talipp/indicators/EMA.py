@@ -1,7 +1,6 @@
 from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.SMA import SMA
 
 
 class EMA(Indicator):

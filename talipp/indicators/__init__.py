@@ -44,6 +44,7 @@ from .SuperTrend import SuperTrend as SuperTrend
 from .TEMA import TEMA as TEMA
 from .TRIX import TRIX as TRIX
 from .TSI import TSI as TSI
+from .TTM import TTM as TTM
 from .UO import UO as UO
 from .VTX import VTX as VTX
 from .VWAP import VWAP as VWAP
@@ -97,6 +98,7 @@ __all__ = (
     "TEMA",
     "TRIX",
     "TSI",
+    "TTM",
     "UO",
     "VTX",
     "VWAP",
