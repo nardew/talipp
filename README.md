@@ -1,4 +1,4 @@
-# TALIpp - Incremental Technical Analysis Library 1.8.0
+# TALIpp - Incremental Technical Analysis Library 1.9.0
 
 ![](https://img.shields.io/badge/python-3.6-blue.svg) ![](https://img.shields.io/badge/python-3.7-blue.svg) ![](https://img.shields.io/badge/python-3.8-blue.svg) ![](https://img.shields.io/badge/python-3.9-blue.svg) ![](https://img.shields.io/badge/pypy-3-blue.svg) ![unit tests](https://github.com/nardew/talipp/workflows/unit%20tests/badge.svg)
 
@@ -22,7 +22,7 @@ Last but not least, `talipp` is a very young project and therefore open to any s
 
 ### What's new in the latest version
 
-- new `SuperTrend` indicator added
+- new `TTM Squeeze` indicator added!
 
 For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/master/CHANGELOG.md).
 
@@ -45,7 +45,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Coppock Curve
 - Commodity Channel Index (CCI)
 - Donchian Channel (DC)
-- Detrended Price Oscillator (DOP)
+- Detrended Price Oscillator (DPO)
 - Ease of Movement (EMV)
 - Force Index
 - Ichimoku Kinko Hyo
@@ -66,7 +66,9 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Standard Deviation
 - Stochastic Oscillator
 - Stochastic RSI
+- SuperTrend
 - TRIX
+- TTM Squeeze
 - True Strength Index (TSI)
 - Ultimate Oscillator (UO)
 - Vortex Indicator (VTX)

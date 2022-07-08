@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.SMA import SMA
 from talipp.indicators.StdDev import StdDev
 
@@ -25,14 +25,15 @@ class BB(Indicator):
     Output: a list of BBVal
     """
 
-    def __init__(self, period: int, std_dev_multiplier: float, input_values: List[float] = None, input_indicator: Indicator = None):
-        super().__init__()
+    def __init__(self, period: int, std_dev_multiplier: float, input_values: List[float] = None,
+                 input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.period = period
         self.std_dev_multiplier = std_dev_multiplier
 
-        self.central_band = SMA(self.period)
-        self.std_dev = StdDev(self.period)
+        self.central_band = SMA(self.period, value_extractor = value_extractor)
+        self.std_dev = StdDev(self.period, value_extractor = value_extractor)
 
         self.add_sub_indicator(self.central_band)
         self.add_sub_indicator(self.std_dev)
