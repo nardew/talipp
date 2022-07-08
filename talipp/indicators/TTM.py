@@ -11,7 +11,7 @@ class TTMVal:
     # squeeze is on (=True) or off (=False
     squeeze: bool = None
 
-    # histogram of the difference of delta values and their linear regression
+    # histogram of the linear regression
     histogram: float = None
 
 
@@ -19,7 +19,7 @@ class TTM(Indicator):
     """
     TTM Squeeze
 
-    Output: a list of floats
+    Output: a list of TTMVal
     """
 
     def __init__(self, period: int, bb_std_dev_mult: float = 2, kc_atr_mult: float = 1.5,

@@ -45,7 +45,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Coppock Curve
 - Commodity Channel Index (CCI)
 - Donchian Channel (DC)
-- Detrended Price Oscillator (DOP)
+- Detrended Price Oscillator (DPO)
 - Ease of Movement (EMV)
 - Force Index
 - Ichimoku Kinko Hyo
@@ -66,6 +66,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Standard Deviation
 - Stochastic Oscillator
 - Stochastic RSI
+- SuperTrend
 - TRIX
 - TTM Squeeze
 - True Strength Index (TSI)
