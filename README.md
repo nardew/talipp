@@ -1,4 +1,4 @@
-# TALIpp - Incremental Technical Analysis Library 1.9.0
+# TALIpp - Incremental Technical Analysis Library 1.9.1
 
 ![](https://img.shields.io/badge/python-3.6-blue.svg) ![](https://img.shields.io/badge/python-3.7-blue.svg) ![](https://img.shields.io/badge/python-3.8-blue.svg) ![](https://img.shields.io/badge/python-3.9-blue.svg) ![](https://img.shields.io/badge/pypy-3-blue.svg) ![unit tests](https://github.com/nardew/talipp/workflows/unit%20tests/badge.svg)
 

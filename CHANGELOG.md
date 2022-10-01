@@ -6,6 +6,10 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Pending release]
 
+## [1.9.1] - 2022-10-01
+
+- conda-forge alignment
+
 ## [1.9.0] - 2022-07-07
 
 - new `TTM Squeeze` indicator added.
@@ -63,7 +67,8 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 - the official release of `talipp`
 
-[Pending release]: https://github.com/nardew/talipp/compare/1.9.0...HEAD
+[Pending release]: https://github.com/nardew/talipp/compare/1.9.1...HEAD
+[1.9.1]: https://github.com/nardew/talipp/compare/1.9.0...1.9.1
 [1.9.0]: https://github.com/nardew/talipp/compare/1.8.0...1.9.0
 [1.8.0]: https://github.com/nardew/talipp/compare/1.7.1...1.8.0
 [1.7.1]: https://github.com/nardew/talipp/compare/1.7.0...1.7.1
