@@ -2,9 +2,8 @@ import numpy as np
 from talipp.ohlcv import OHLCVFactory, OHLCV
 from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, \
     CoppockCurve, DEMA, DonchianChannels, DPO, EMA, ForceIndex, HMA, Ichimoku, KAMA, KeltnerChannels, KST, KVO, \
-    MACD, MassIndex, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, Stoch, StochRSI, \
+    MACD, MassIndex, MeanDev, OBV, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, Stoch, StochRSI, \
     SuperTrend, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, WMA, McGinleyDynamic
-
 
 
 class IndicatorManager:
@@ -13,9 +12,12 @@ class IndicatorManager:
         :param ohlcv: (N, 5) numpy array, ordered by time (small to large)
                     open, high, low, close, volume
         """
+        self.max_len = max_len
+
         close = list(ohlcv[:, 3])
-        dollar_volume = list(ohlcv[:, 4] * close[:, 3])
+        dollar_volume = list(ohlcv[:, 4] * ohlcv[:, 3])
         ohlcv = OHLCVFactory.from_matrix(ohlcv)
+
         self.indicators = {}
         self.indicators['AccuDist'] = AccuDist(ohlcv)
         self.indicators['ADX'] = ADX(14, 14, ohlcv)
@@ -49,7 +51,6 @@ class IndicatorManager:
         self.indicators['MeanDev'] = MeanDev(20, close)
         self.indicators['OBV'] = OBV(ohlcv)
         self.indicators['ParabolicSAR'] = ParabolicSAR(0.02, 0.02, 0.2, ohlcv)
-        self.indicators['PivotsHL'] = PivotsHL(15, 15, ohlcv)
         self.indicators['ROC'] = ROC(10, close)
         self.indicators['RSI'] = RSI(14, close)
         self.indicators['SFX'] = SFX(12, 12, 3, ohlcv)
@@ -75,8 +76,30 @@ class IndicatorManager:
         self.indicators['VWMA'] = VWMA(25, ohlcv)
         self.indicators['WMA'] = WMA(10, close)
 
-    def get_latest_indicators(self) -> dict:
-        pass
+    def update_indicators(self, open: float, high: float, low: float, close: float, volume: float):
+        for key in self.indicators:
+            if isinstance(self.indicators[key].input_values[-1], float):
+                if 'SMAV' in key:
+                    self.indicators[key].add_input_value(close * volume)
+                else:
+                    self.indicators[key].add_input_value(close)
+            else:
+                ohlcv = OHLCV(open=open, high=high, low=low, close=close, volume=volume)
+                self.indicators[key].add_input_value(ohlcv)
+            while len(self.indicators[key]) > self.max_len:
+                self.indicators[key].purge_oldest(1)
 
-    def update_indicators(open: float, high: float, low: float, close: float, volume: float):
-        pass
+    def get_latest_indicators(self) -> dict:
+        latest_indicators = {}
+        for key in self.indicators:
+            if isinstance(self.indicators[key][-1], float):
+                latest_indicators[key] = self.indicators[key][-1]
+            else:
+                key_value_pairs = self.indicators[key].to_lists()
+                for key2 in key_value_pairs:
+                    value = key_value_pairs[key2][-1]
+                    if not isinstance(value, float):
+                        if key == 'ParabolicSAR' or key == 'SuperTrend':
+                            value = value.value - 1
+                    latest_indicators[f"{key}_{key2}"] = value
+        return latest_indicators
