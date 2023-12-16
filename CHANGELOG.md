@@ -6,6 +6,10 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Pending release]
 
+## [1.9.3] - 2023-12-16
+
+- dropped support for python `3.7`
+
 ## [1.9.2] - 2023-12-16
 
 - dropped support for python `3.6`
@@ -72,7 +76,8 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 - the official release of `talipp`
 
-[Pending release]: https://github.com/nardew/talipp/compare/1.9.2...HEAD
+[Pending release]: https://github.com/nardew/talipp/compare/1.9.3...HEAD
+[1.9.3]: https://github.com/nardew/talipp/compare/1.9.2...1.9.3
 [1.9.2]: https://github.com/nardew/talipp/compare/1.9.1...1.9.2
 [1.9.1]: https://github.com/nardew/talipp/compare/1.9.0...1.9.1
 [1.9.0]: https://github.com/nardew/talipp/compare/1.8.0...1.9.0
