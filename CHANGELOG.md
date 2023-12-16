@@ -6,6 +6,8 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Pending release]
 
+- Drop support for Python `3.6`, add Python `3.10`, `3.11` to the test matrix.
+
 ## [1.9.1] - 2022-10-01
 
 - conda-forge alignment
