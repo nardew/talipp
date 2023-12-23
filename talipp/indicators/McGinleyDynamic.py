@@ -23,8 +23,4 @@ class McGinleyDynamic(Indicator):
         elif len(self.input_values) == self.period:
             return sum(self.input_values) / float(self.period)
         else:
-            print(self.output_values[-1])
-            print(pow(self.input_values[-1] / float(self.output_values[-1]), 4))
-            print(self.input_values[-1])
-            print(self.output_values[-1])
             return self.output_values[-1] + (self.input_values[-1] - self.output_values[-1]) / float(self.period * pow(self.input_values[-1] / float(self.output_values[-1]), 4))
