@@ -1,27 +1,30 @@
-import os
 import datetime
+import os
 
 from cryptoxlib.CryptoXLib import CryptoXLib
 from cryptoxlib.Pair import Pair
-from cryptoxlib.clients.bitpanda import enums
+from cryptoxlib.clients.binance import enums
 from cryptoxlib.version_conversions import async_run
-
-from talipp.ohlcv import OHLCV
-from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, Ichimoku, \
-    KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, McGinleyDynamic, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, \
+from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, \
+    CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, Ichimoku, \
+    KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, McGinleyDynamic, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, \
+    SFX, SMA, SMMA, SOBV, StdDev, \
     Stoch, StochRSI, SuperTrend, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, WMA
+from talipp.ohlcv import OHLCV
 
 
 async def run():
-    api_key = os.environ['BITPANDAAPIKEY']
+    api_key = os.environ['B_API_KEY']
+    sec_key = os.environ['B_SEC_KEY']
 
-    client = CryptoXLib.create_bitpanda_client(api_key)
+    client = CryptoXLib.create_binance_client(api_key, sec_key)
 
-    candles = await client.get_candlesticks(Pair('BTC', 'EUR'), enums.TimeUnit.DAYS, "1",
-                                  datetime.datetime.now() - datetime.timedelta(days = 1500), datetime.datetime.now())
+    start_date = datetime.datetime.now() - datetime.timedelta(days = 500)
+    candles = await client.get_candlesticks(Pair('BTC', 'USDT'), interval=enums.Interval.I_1D,
+                                  start_tmstmp_ms=int(start_date.timestamp())*1000)
     candles = candles['response']
-    close = [float(x['close']) for x in candles]
-    ohlcv = [OHLCV(float(x['open']), float(x['high']), float(x['low']), float(x['close']), float(x['volume'])) for x in candles]
+    close = [float(x[4]) for x in candles]
+    ohlcv = [OHLCV(float(x[1]), float(x[2]), float(x[3]), float(x[4]), float(x[5])) for x in candles]
     print(f"Last OHLCV: {ohlcv[-1]}")
 
     print(f'AccuDist: {AccuDist(ohlcv)[-1]}')
@@ -62,6 +65,7 @@ async def run():
     print(f'SMA: {SMA(20, close)[-1]}')
     print(f'SMMA: {SMMA(7, close)[-1]}')
     print(f'SOBV: {SOBV(7, ohlcv)[-1]}')
+    print(f'STC: {stc[-10:]}')
     print(f'StdDev: {StdDev(7, close)[-1]}')
     print(f'Stoch: {Stoch(14, 3, ohlcv)[-1]}')
     print(f'StochRSI: {StochRSI(14, 14, 3, 3, close)[-1]}')

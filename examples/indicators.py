@@ -1,11 +1,10 @@
 import random
 
-from talipp.ohlcv import OHLCVFactory
 from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, \
     CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, Ichimoku, KAMA, KeltnerChannels, KST, KVO, \
-    MACD, MassIndex, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, StdDev, Stoch, StochRSI, \
+    MACD, MassIndex, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, STC, StdDev, Stoch, StochRSI, \
     SuperTrend, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, WMA
-
+from talipp.ohlcv import OHLCVFactory
 
 if __name__ == "__main__":
 
@@ -56,6 +55,7 @@ if __name__ == "__main__":
     print(f'SMA: {SMA(20, close)[-1]}')
     print(f'SMMA: {SMMA(7, close)[-1]}')
     print(f'SOBV: {SOBV(7, ohlcv)[-1]}')
+    print(f'STC: {STC(23, 50, 10, 3, close)[-1]}')
     print(f'StdDev: {StdDev(7, close)[-1]}')
     print(f'Stoch: {Stoch(14, 3, ohlcv)[-1]}')
     print(f'StochRSI: {StochRSI(14, 14, 3, 3, close)[-1]}')

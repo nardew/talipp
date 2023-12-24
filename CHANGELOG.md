@@ -6,6 +6,10 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Pending release]
 
+## [1.10.0] - 2023-12-24
+
+- new `Schaff Trend Cycle` indicator added.
+
 ## [1.9.1] - 2022-10-01
 
 - conda-forge alignment
@@ -67,7 +71,8 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 - the official release of `talipp`
 
-[Pending release]: https://github.com/nardew/talipp/compare/1.9.1...HEAD
+[Pending release]: https://github.com/nardew/talipp/compare/1.10.0...HEAD
+[1.10.0]: https://github.com/nardew/talipp/compare/1.9.1...1.10.0
 [1.9.1]: https://github.com/nardew/talipp/compare/1.9.0...1.9.1
 [1.9.0]: https://github.com/nardew/talipp/compare/1.8.0...1.9.0
 [1.8.0]: https://github.com/nardew/talipp/compare/1.7.1...1.8.0
