@@ -63,6 +63,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Pivots High/Low
 - Rate of Change (ROC)
 - Relative strength index (RSI)
+- Schaff Trend Cycle (STC)
 - SFX TOR
 - Standard Deviation
 - Stochastic Oscillator
