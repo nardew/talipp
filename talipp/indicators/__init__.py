@@ -37,6 +37,7 @@ from .SFX import SFX as SFX
 from .SMA import SMA as SMA
 from .SMMA import SMMA as SMMA
 from .SOBV import SOBV as SOBV
+from .STC import STC as STC
 from .StdDev import StdDev as StdDev
 from .Stoch import Stoch as Stoch
 from .StochRSI import StochRSI as StochRSI
@@ -91,6 +92,7 @@ __all__ = (
     "SMA",
     "SMMA",
     "SOBV",
+    "STC",
     "StdDev",
     "Stoch",
     "StochRSI",

@@ -1,7 +1,7 @@
-from typing import List, Any
 from dataclasses import dataclass
+from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.SMA import SMA
 from talipp.ohlcv import OHLCV
 
@@ -19,15 +19,15 @@ class Stoch(Indicator):
     Output: a list of StochVal
     """
 
-    def __init__(self, period: int, smoothing_period: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, period: int, smoothing_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor=value_extractor)
 
         self.period = period
 
         self.values_d = SMA(smoothing_period)
         self.add_managed_sequence(self.values_d)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.input_values) < self.period:
@@ -35,8 +35,8 @@ class Stoch(Indicator):
 
         input_period = self.input_values[-1 * self.period:]
 
-        highs = [value.high for value in input_period]
-        lows = [value.low for value in input_period]
+        highs = [value.high for value in input_period if value.high is not None]
+        lows = [value.low for value in input_period if value.low is not None]
 
         max_high = max(highs)
         min_low = min(lows)
