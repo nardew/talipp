@@ -13,19 +13,19 @@ class ChaikinOsc(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period_fast: int, period_slow: int, input_values: List[OHLCV] = None):
+    def __init__(self, fast_period: int, slow_period: int, input_values: List[OHLCV] = None):
         super().__init__()
 
-        self.period_fast = period_fast
-        self.period_slow = period_slow
+        self.fast_period = fast_period
+        self.slow_period = slow_period
 
         self.accu_dist = AccuDist()
         self.add_sub_indicator(self.accu_dist)
 
-        self.ema_fast = EMA(period_fast)
+        self.ema_fast = EMA(fast_period)
         self.add_managed_sequence(self.ema_fast)
 
-        self.ema_slow = EMA(period_slow)
+        self.ema_slow = EMA(slow_period)
         self.add_managed_sequence(self.ema_slow)
 
         self.initialize(input_values)
