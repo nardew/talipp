@@ -2,7 +2,7 @@ import enum
 from typing import List, Any
 from dataclasses import dataclass
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
 
@@ -24,13 +24,13 @@ class PivotsHL(Indicator):
     Output: a list of PivotsHLVal
     """
 
-    def __init__(self, high_period: int, low_period: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, high_period: int, low_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.high_period = high_period
         self.low_period = low_period
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     # Always return None to avoid automatic update of output_results. They are handled in the method manually
     # The indicator always works with the last but one input value because it cannot handle updates/removals properly.

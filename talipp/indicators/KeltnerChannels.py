@@ -1,7 +1,7 @@
 from typing import List, Any
 from dataclasses import dataclass
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.EMA import EMA
 from talipp.indicators.ATR import ATR
 from talipp.ohlcv import OHLCV, ValueExtractor
@@ -26,8 +26,9 @@ class KeltnerChannels(Indicator):
     Output: a list of KeltnerChannelsVal
     """
 
-    def __init__(self, ma_period: int, atr_period: int, atr_mult_up: float, atr_mult_down: float, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, ma_period: int, atr_period: int, atr_mult_up: float, atr_mult_down: float, input_values: List[OHLCV] = None,
+                 input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.atr_mult_up = atr_mult_up
         self.atr_mult_down = atr_mult_down
@@ -38,7 +39,7 @@ class KeltnerChannels(Indicator):
         self.add_sub_indicator(self.cb)
         self.add_sub_indicator(self.atr)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.cb) < 1 or len(self.atr) < 1:

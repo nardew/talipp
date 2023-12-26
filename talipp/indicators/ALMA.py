@@ -1,6 +1,6 @@
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from math import exp
 
 
@@ -11,8 +11,8 @@ class ALMA(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period: int, offset: float, sigma: float, input_values: List[float] = None, input_indicator: Indicator = None):
-        super().__init__()
+    def __init__(self, period: int, offset: float, sigma: float, input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.period = period
         self.offset = offset

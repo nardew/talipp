@@ -1,7 +1,7 @@
 from typing import List, Any
 from dataclasses import dataclass
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.RSI import RSI
 from talipp.indicators.SMA import SMA
 
@@ -19,8 +19,9 @@ class StochRSI(Indicator):
     Output: a list of StochRSIVal
     """
 
-    def __init__(self, rsi_period: int, stoch_period: int, smoothing_period_k: int, smoothing_period_d: int, input_values: List[float] = None, input_indicator: Indicator = None):
-        super().__init__()
+    def __init__(self, rsi_period: int, stoch_period: int, smoothing_period_k: int, smoothing_period_d: int,
+                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.stoch_period = stoch_period
 

@@ -1,6 +1,6 @@
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
 
@@ -11,8 +11,9 @@ class UO(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period_fast: int, period_mid: int, period_slow: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, period_fast: int, period_mid: int, period_slow: int,
+                 input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.period_fast = period_fast
         self.period_mid = period_mid
@@ -24,7 +25,7 @@ class UO(Indicator):
         self.add_managed_sequence(self.buy_press)
         self.add_managed_sequence(self.true_range)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.input_values) < 2:

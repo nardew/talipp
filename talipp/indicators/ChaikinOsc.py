@@ -1,6 +1,6 @@
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.EMA import EMA
 from talipp.indicators.AccuDist import AccuDist
 from talipp.ohlcv import OHLCV
@@ -13,8 +13,8 @@ class ChaikinOsc(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period_fast: int, period_slow: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, period_fast: int, period_slow: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.period_fast = period_fast
         self.period_slow = period_slow
@@ -28,7 +28,7 @@ class ChaikinOsc(Indicator):
         self.ema_slow = EMA(period_slow)
         self.add_managed_sequence(self.ema_slow)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if not self.accu_dist.has_output_value():
