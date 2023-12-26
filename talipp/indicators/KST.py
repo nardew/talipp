@@ -4,6 +4,8 @@ from dataclasses import dataclass
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.SMA import SMA
 from talipp.indicators.ROC import ROC
+from talipp.ma import MAType, MAFactory
+
 
 
 @dataclass
@@ -29,7 +31,8 @@ class KST(Indicator):
                  roc4_period: int,
                  roc4_ma_period: int,
                  signal_period: int,
-                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
+                 ma_type: MAType = MAType.SMA):
         super().__init__(value_extractor = value_extractor)
 
         self.roc1 = ROC(roc1_period)
@@ -37,11 +40,11 @@ class KST(Indicator):
         self.roc3 = ROC(roc3_period)
         self.roc4 = ROC(roc4_period)
 
-        self.roc1_ma = SMA(roc1_ma_period)
-        self.roc2_ma = SMA(roc2_ma_period)
-        self.roc3_ma = SMA(roc3_ma_period)
-        self.roc4_ma = SMA(roc4_ma_period)
-        self.signal_line = SMA(signal_period)
+        self.roc1_ma = MAFactory.get_ma(ma_type, roc1_ma_period)
+        self.roc2_ma = MAFactory.get_ma(ma_type, roc2_ma_period)
+        self.roc3_ma = MAFactory.get_ma(ma_type, roc3_ma_period)
+        self.roc4_ma = MAFactory.get_ma(ma_type, roc4_ma_period)
+        self.signal_line = MAFactory.get_ma(ma_type, signal_period)
 
         self.add_sub_indicator(self.roc1)
         self.add_sub_indicator(self.roc2)

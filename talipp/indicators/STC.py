@@ -4,6 +4,7 @@ from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.MACD import MACD, MACDVal
 from talipp.indicators.Stoch import Stoch, StochVal
 from talipp.ohlcv import OHLCV
+from talipp.ma import MAType, MAFactory
 
 
 class STC(Indicator):
@@ -14,13 +15,14 @@ class STC(Indicator):
     """
 
     def __init__(self, fast_macd_period: int, slow_macd_period: int, stoch_period: int, stoch_smoothing_period:int,
-                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
+                 stoch_ma_type: MAType = MAType.SMA):
         super().__init__(value_extractor = value_extractor)
 
         # use slow_macd_period for signal line as signal line is not relevant here
         self.macd = MACD(fast_macd_period, slow_macd_period, slow_macd_period)
-        self.stoch_macd = Stoch(stoch_period, stoch_smoothing_period, input_indicator=self.macd, value_extractor=STC.macd_to_ohlcv)
-        self.stoch_d = Stoch(stoch_period, stoch_smoothing_period, input_indicator=self.stoch_macd, value_extractor=STC.stoch_d_to_ohlcv)
+        self.stoch_macd = Stoch(stoch_period, stoch_smoothing_period, input_indicator=self.macd, value_extractor=STC.macd_to_ohlcv, ma_type=stoch_ma_type)
+        self.stoch_d = Stoch(stoch_period, stoch_smoothing_period, input_indicator=self.stoch_macd, value_extractor=STC.stoch_d_to_ohlcv, ma_type=stoch_ma_type)
 
         self.add_sub_indicator(self.macd)
 
