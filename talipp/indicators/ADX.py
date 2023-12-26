@@ -19,13 +19,14 @@ class ADX(Indicator):
 
     Output: a list of ADXVal
     """
-    def __init__(self, period_di: int, period_adx: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+
+    def __init__(self, di_period: int, adx_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
         super(ADX, self).__init__()
 
-        self.period_di = period_di
-        self.period_adx = period_adx
+        self.di_period = di_period
+        self.adx_period = adx_period
 
-        self.atr = ATR(period_di)
+        self.atr = ATR(di_period)
         self.add_sub_indicator(self.atr)
 
         # plus directional movement
@@ -75,14 +76,14 @@ class ADX(Indicator):
         else:
             self.mdm.append(0)
 
-        if len(self.pdm) < self.period_di:
+        if len(self.pdm) < self.di_period:
             return None
-        elif len(self.pdm) == self.period_di:
-            self.spdm.append(sum(self.pdm[-self.period_di:]) / float(self.period_di))
-            self.smdm.append(sum(self.mdm[-self.period_di:]) / float(self.period_di))
-        elif len(self.pdm) > self.period_di:
-            self.spdm.append((self.spdm[-1] * (self.period_di - 1) + self.pdm[-1]) / float(self.period_di))
-            self.smdm.append((self.smdm[-1] * (self.period_di - 1) + self.mdm[-1]) / float(self.period_di))
+        elif len(self.pdm) == self.di_period:
+            self.spdm.append(sum(self.pdm[-self.di_period:]) / float(self.di_period))
+            self.smdm.append(sum(self.mdm[-self.di_period:]) / float(self.di_period))
+        elif len(self.pdm) > self.di_period:
+            self.spdm.append((self.spdm[-1] * (self.di_period - 1) + self.pdm[-1]) / float(self.di_period))
+            self.smdm.append((self.smdm[-1] * (self.di_period - 1) + self.mdm[-1]) / float(self.di_period))
 
         self.pdi.append(100.0 * self.spdm[-1] / float(self.atr[-1]))
         self.mdi.append(100.0 * self.smdm[-1] / float(self.atr[-1]))
@@ -90,9 +91,9 @@ class ADX(Indicator):
         self.dx.append(100.0 * float(abs(self.pdi[-1] - self.mdi[-1])) / (self.pdi[-1] + self.mdi[-1]))
 
         adx = None
-        if len(self.dx) == self.period_adx:
-            adx = sum(self.dx) / float(self.period_adx)
-        elif len(self.dx) > self.period_adx:
-            adx = (self.output_values[-1].adx * (self.period_adx - 1) + self.dx[-1]) / float(self.period_adx)
+        if len(self.dx) == self.adx_period:
+            adx = sum(self.dx) / float(self.adx_period)
+        elif len(self.dx) > self.adx_period:
+            adx = (self.output_values[-1].adx * (self.adx_period - 1) + self.dx[-1]) / float(self.adx_period)
 
         return ADXVal(adx, self.pdi[-1], self.mdi[-1])

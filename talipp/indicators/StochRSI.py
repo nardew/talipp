@@ -19,7 +19,7 @@ class StochRSI(Indicator):
     Output: a list of StochRSIVal
     """
 
-    def __init__(self, rsi_period: int, stoch_period: int, smoothing_period_k: int, smoothing_period_d: int,
+    def __init__(self, rsi_period: int, stoch_period: int, k_smoothing_period: int, d_smoothing_period: int,
                  input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
         super().__init__(value_extractor = value_extractor)
 
@@ -28,10 +28,10 @@ class StochRSI(Indicator):
         self.rsi = RSI(rsi_period)
         self.add_sub_indicator(self.rsi)
 
-        self.smoothed_k = SMA(smoothing_period_k)
+        self.smoothed_k = SMA(k_smoothing_period)
         self.add_managed_sequence(self.smoothed_k)
 
-        self.values_d = SMA(smoothing_period_d)
+        self.values_d = SMA(d_smoothing_period)
         self.add_managed_sequence(self.values_d)
 
         self.initialize(input_values, input_indicator)

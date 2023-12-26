@@ -12,14 +12,14 @@ class AO(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period_fast: int, period_slow: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+    def __init__(self, fast_period: int, slow_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
         super(AO, self).__init__()
 
-        self.periodFast = period_fast
-        self.periodSlow = period_slow
+        self.fast_period = fast_period
+        self.slow_period = slow_period
 
-        self.sma_fast = SMA(period_fast)
-        self.sma_slow = SMA(period_slow)
+        self.sma_fast = SMA(fast_period)
+        self.sma_slow = SMA(slow_period)
 
         self.add_managed_sequence(self.sma_fast)
         self.add_managed_sequence(self.sma_slow)
