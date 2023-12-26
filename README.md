@@ -9,7 +9,7 @@
 
 `talipp` (or `tali++`) is a Python library implementing financial indicators for technical analysis. The distinctive feature of the library is its incremental computation which fits extremely well real-time applications or applications with iterative input in general.  
 
-Unlike existing libraries for technical analysis which typically have to work on the whole input vector in order to calculate new values of indicators, `talipp` due to its incremental architecture calculates new indicators' values exclusively based on the delta input data. That implies, among others, it requires `O(1)` time to produce new values in comparison to `O(n)` (or worse) required by other libraries.
+Unlike existing libraries for technical analysis which typically have to work on the whole input vector in order to calculate new values of indicators, `talipp` due to its incremental architecture calculates new indicators' values exclusively based on the delta input data. That implies, among others, it requires `O(1)` time to produce new values in comparison to `O(n)` required by other libraries.
 
 Supported incremental operations include:
 
@@ -21,7 +21,7 @@ Besides the already mentioned superior time complexity for delta input operation
 
 Incremental nature of `talipp` naturally excels in applications with frequent `CUD` operations but it can be used for charting, back-testing, ... as any other existing library.
 
-Last but not least, `talipp` is a very young project and therefore open to any suggestions of amending the API to users' liking. You are encouraged to come up with proposals.
+Last but not least, `talipp` is a community project and therefore open to any suggestions how to make it better. You are encouraged to come up with proposals.
 
 ---
 
@@ -171,7 +171,7 @@ To illustrate performance scaling of `talipp` we ran several tests together with
 ### Contact
 
 - to report issues, bugs, corrections or to propose new features use preferably Github Issues
-- for topics requiring more personal approach feel free to send an e-mail to <img src="http://safemail.justlikeed.net/e/581536c5ad7cf046df49d5e52452cb20.png" border="0" align="absbottom">
+- for topics requiring more personal approach feel free to send an e-mail to <img src="http://safemail.justlikeed.net/e/581536c5ad7cf046df49d5e52452cb20.png" border="0" align="absbottom">. Please note that general questions will not be answered via this channel.
 
 ### Support
 
