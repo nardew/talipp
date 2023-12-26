@@ -1,6 +1,6 @@
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.EMA import EMA
 from talipp.ohlcv import OHLCV
 
@@ -12,8 +12,8 @@ class MassIndex(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, ema_period: int, ema_ema_period: int, ema_ratio_period: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, ema_period: int, ema_ema_period: int, ema_ratio_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.ema_ratio_period = ema_ratio_period
 
@@ -25,7 +25,7 @@ class MassIndex(Indicator):
         self.add_managed_sequence(self.ema_ema)
         self.add_managed_sequence(self.ema_ratio)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         value = self.input_values[-1]

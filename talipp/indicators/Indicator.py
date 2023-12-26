@@ -1,10 +1,10 @@
-from dataclasses import is_dataclass
 from abc import ABCMeta, abstractmethod
-from typing import List, Any, Callable, Dict, Union
 from collections import defaultdict
 from collections.abc import MutableSequence, Sequence
+from dataclasses import is_dataclass
 from itertools import chain
 from operator import methodcaller, attrgetter
+from typing import List, Any, Callable, Dict, Union
 
 ListAny = List[Any]
 ManagedSequenceType = Union['Indicator', MutableSequence]
@@ -158,7 +158,7 @@ class Indicator(Sequence):
 
     def set_input_values(self, input_values: ListAny, initialize: bool = True) -> None:
         if initialize:
-            self.initialize(input_values)
+            self.initialize(input_values, input_indicator)
         else:
             self.input_values = input_values
 

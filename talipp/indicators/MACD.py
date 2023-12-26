@@ -1,7 +1,7 @@
 from typing import List, Any
 from dataclasses import dataclass
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.EMA import EMA
 
 
@@ -19,8 +19,8 @@ class MACD(Indicator):
     Output: a list of MACDVal
     """
 
-    def __init__(self, fast_period: int, slow_period: int, signal_period: int, input_values: List[float] = None, input_indicator: Indicator = None):
-        super().__init__()
+    def __init__(self, fast_period: int, slow_period: int, signal_period: int, input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.ema_fast = EMA(fast_period)
         self.ema_slow = EMA(slow_period)

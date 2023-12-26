@@ -1,6 +1,6 @@
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 
 
 class KAMA(Indicator):
@@ -11,8 +11,8 @@ class KAMA(Indicator):
     """
 
     def __init__(self, period: int, fast_ema_constant_period: int, slow_ema_constant_period: int,
-                 input_values: List[float] = None, input_indicator: Indicator = None):
-        super().__init__()
+                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.period = period
 
@@ -49,4 +49,3 @@ class KAMA(Indicator):
             prev_kama = self.output_values[-1]
 
         return prev_kama + smoothing_constant * (self.input_values[-1] - prev_kama)
-

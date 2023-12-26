@@ -1,8 +1,8 @@
-from typing import List, Any
 from dataclasses import dataclass
+from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
 from talipp.indicators.ATR import ATR
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
 
@@ -19,7 +19,8 @@ class ADX(Indicator):
 
     Output: a list of ADXVal
     """
-    def __init__(self, di_period: int, adx_period: int, input_values: List[OHLCV] = None):
+
+    def __init__(self, di_period: int, adx_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
         super(ADX, self).__init__()
 
         self.di_period = di_period
@@ -56,7 +57,7 @@ class ADX(Indicator):
         self.dx = []
         self.add_managed_sequence(self.dx)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.input_values) < 2:

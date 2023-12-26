@@ -1,6 +1,6 @@
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.MeanDev import MeanDev
 from talipp.ohlcv import OHLCV
 
@@ -12,13 +12,13 @@ class CCI(Indicator):
     Output: a list of OHLCV objects
     """
 
-    def __init__(self, period: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.mean_dev = MeanDev(period)
         self.add_managed_sequence(self.mean_dev)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         value = self.input_values[-1]

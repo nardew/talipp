@@ -1,7 +1,7 @@
 from typing import List, Any
 from dataclasses import dataclass
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
 
@@ -26,8 +26,8 @@ class Ichimoku(Indicator):
                  chikou_lag_period: int,
                  senkou_slow_period: int,
                  senkou_lookup_period: int,
-                 input_values: List[OHLCV] = None):
-        super().__init__()
+                 input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.kijun_period = kijun_period
         self.tenkan_period = tenkan_period
@@ -47,7 +47,7 @@ class Ichimoku(Indicator):
         self.add_managed_sequence(self.cloud_leading_fast_line)
         self.add_managed_sequence(self.cloud_leading_slow_line)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.input_values) >= self.kijun_period:

@@ -1,7 +1,7 @@
 from typing import List, Any
 from dataclasses import dataclass
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.SMA import SMA
 from talipp.indicators.ROC import ROC
 
@@ -29,8 +29,8 @@ class KST(Indicator):
                  roc4_period: int,
                  roc4_ma_period: int,
                  signal_period: int,
-                 input_values: List[float] = None, input_indicator: Indicator = None):
-        super().__init__()
+                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.roc1 = ROC(roc1_period)
         self.roc2 = ROC(roc2_period)

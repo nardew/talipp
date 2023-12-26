@@ -1,7 +1,7 @@
 from typing import List, Any
 from dataclasses import dataclass
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.SMA import SMA
 from talipp.indicators.StdDev import StdDev
 from talipp.indicators.ATR import ATR
@@ -20,8 +20,9 @@ class SFX(Indicator):
     Output: A list of SFXVal
     """
 
-    def __init__(self, atr_period: int, std_dev_period: int, std_dev_smoothing_period: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, atr_period: int, std_dev_period: int, std_dev_smoothing_period: int, input_values: List[OHLCV] = None,
+                 input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.atr = ATR(atr_period)
         self.std_dev = StdDev(std_dev_period, value_extractor = ValueExtractor.extract_close)
@@ -32,7 +33,7 @@ class SFX(Indicator):
 
         self.add_managed_sequence(self.sma_std_dev)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.std_dev) > 0:

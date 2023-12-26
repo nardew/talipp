@@ -1,7 +1,7 @@
 from math import log10
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.ATR import ATR
 from talipp.ohlcv import OHLCV
 
@@ -13,15 +13,15 @@ class CHOP(Indicator):
     Output: a list of OHLCV objects
     """
 
-    def __init__(self, period: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.period = period
 
         self.atr = ATR(1)
         self.add_sub_indicator(self.atr)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.atr) < self.period or len(self.input_values) < self.period:

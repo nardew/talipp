@@ -12,8 +12,8 @@ class KVO(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, fast_period: int, slow_period: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, fast_period: int, slow_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.fast_ema = EMA(fast_period)
         self.add_managed_sequence(self.fast_ema)
@@ -27,7 +27,7 @@ class KVO(Indicator):
         self.cumulative_measurement = []
         self.add_managed_sequence(self.cumulative_measurement)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.input_values) < 2:
