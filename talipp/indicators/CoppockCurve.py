@@ -13,8 +13,8 @@ class CoppockCurve(Indicator):
     """
 
     def __init__(self, fast_roc_period: int, slow_roc_period: int, wma_period: int,
-                 input_values: List[float] = None, input_indicator: Indicator = None):
-        super().__init__()
+                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.fast_roc = ROC(fast_roc_period)
         self.add_sub_indicator(self.fast_roc)

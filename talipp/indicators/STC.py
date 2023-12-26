@@ -1,6 +1,6 @@
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.MACD import MACD, MACDVal
 from talipp.indicators.Stoch import Stoch, StochVal
 from talipp.ohlcv import OHLCV
@@ -13,8 +13,9 @@ class STC(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, fast_macd_period: int, slow_macd_period: int, stoch_period: int, stoch_smoothing_period:int, input_values: List[float] = None, input_indicator: Indicator = None):
-        super().__init__()
+    def __init__(self, fast_macd_period: int, slow_macd_period: int, stoch_period: int, stoch_smoothing_period:int,
+                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         # use slow_macd_period for signal line as signal line is not relevant here
         self.macd = MACD(fast_macd_period, slow_macd_period, slow_macd_period)

@@ -5,7 +5,7 @@
 
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
 
@@ -15,8 +15,8 @@ class VWAP(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.sum_price_vol = []
         self.sum_vol = []
@@ -24,7 +24,7 @@ class VWAP(Indicator):
         self.add_managed_sequence(self.sum_price_vol)
         self.add_managed_sequence(self.sum_vol)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         # initialize sums

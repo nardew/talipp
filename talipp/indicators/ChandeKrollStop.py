@@ -1,7 +1,7 @@
 from typing import List, Any
 from dataclasses import dataclass
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators import ATR
 from talipp.ohlcv import OHLCV
 
@@ -19,8 +19,8 @@ class ChandeKrollStop(Indicator):
     Output: a list of ChandeKrollStopVal objects
     """
 
-    def __init__(self, atr_period: int, atr_mult: float, period: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, atr_period: int, atr_mult: float, period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.atr_period = atr_period
         self.atr_mult = atr_mult
@@ -34,7 +34,7 @@ class ChandeKrollStop(Indicator):
         self.add_managed_sequence(self.preliminary_high_stop)
         self.add_managed_sequence(self.preliminary_low_stop)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.input_values) < self.atr_period:

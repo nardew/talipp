@@ -1,9 +1,9 @@
 import enum
-from typing import List, Any
 from dataclasses import dataclass
+from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
 from talipp.indicators.ATR import ATR
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
 
@@ -23,8 +23,8 @@ class SuperTrend(Indicator):
     Output: A list of SuperTrendVal
     """
 
-    def __init__(self, atr_period: int, mult: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, atr_period: int, mult: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor = value_extractor)
 
         self.atr = ATR(atr_period)
         self.mult = mult
@@ -38,7 +38,7 @@ class SuperTrend(Indicator):
         self.add_managed_sequence(self.fub)
         self.add_managed_sequence(self.flb)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         if len(self.atr) == 0:

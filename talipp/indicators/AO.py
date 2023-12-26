@@ -1,6 +1,6 @@
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.SMA import SMA
 from talipp.ohlcv import OHLCV
 
@@ -12,7 +12,7 @@ class AO(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, fast_period: int, slow_period: int, input_values: List[OHLCV] = None):
+    def __init__(self, fast_period: int, slow_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
         super(AO, self).__init__()
 
         self.fast_period = fast_period
@@ -24,7 +24,7 @@ class AO(Indicator):
         self.add_managed_sequence(self.sma_fast)
         self.add_managed_sequence(self.sma_slow)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         median = (self.input_values[-1].high + self.input_values[-1].low) / 2.0
