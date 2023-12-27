@@ -1,9 +1,10 @@
 from dataclasses import dataclass
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.ATR import ATR
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
+
 
 @dataclass
 class VTXVal:

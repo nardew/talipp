@@ -1,7 +1,7 @@
 from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.SMA import SMA
+from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV
 
 
@@ -12,13 +12,14 @@ class EMV(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period: int, volume_div: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+    def __init__(self, period: int, volume_div: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None,
+                 value_extractor: ValueExtractorType = None, ma_type: MAType = MAType.SMA):
         super().__init__(value_extractor = value_extractor)
 
         self.period = period
         self.volume_div = volume_div
 
-        self.emv_sma = SMA(self.period)
+        self.emv_sma = MAFactory.get_ma(ma_type, period)
         self.add_managed_sequence(self.emv_sma)
 
         self.initialize(input_values, input_indicator)

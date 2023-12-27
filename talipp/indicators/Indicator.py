@@ -158,7 +158,7 @@ class Indicator(Sequence):
 
     def set_input_values(self, input_values: ListAny, initialize: bool = True) -> None:
         if initialize:
-            self.initialize(input_values, input_indicator)
+            self.initialize(input_values)
         else:
             self.input_values = input_values
 

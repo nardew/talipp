@@ -1,9 +1,9 @@
-from typing import List, Any
 from dataclasses import dataclass
+from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.EMA import EMA
 from talipp.indicators.ATR import ATR
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV, ValueExtractor
 
 
@@ -27,14 +27,15 @@ class KeltnerChannels(Indicator):
     """
 
     def __init__(self, ma_period: int, atr_period: int, atr_mult_up: float, atr_mult_down: float, input_values: List[OHLCV] = None,
-                 input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+                 input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
+                 ma_type: MAType = MAType.EMA):
         super().__init__(value_extractor = value_extractor)
 
         self.atr_mult_up = atr_mult_up
         self.atr_mult_down = atr_mult_down
 
         self.atr = ATR(atr_period)
-        self.cb = EMA(ma_period, value_extractor = ValueExtractor.extract_close)
+        self.cb = MAFactory.get_ma(ma_type, ma_period, value_extractor=ValueExtractor.extract_close)
 
         self.add_sub_indicator(self.cb)
         self.add_sub_indicator(self.atr)
