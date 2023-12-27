@@ -3,8 +3,8 @@ from typing import List, Any
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.MACD import MACD, MACDVal
 from talipp.indicators.Stoch import Stoch, StochVal
+from talipp.ma import MAType
 from talipp.ohlcv import OHLCV
-from talipp.ma import MAType, MAFactory
 
 
 class STC(Indicator):

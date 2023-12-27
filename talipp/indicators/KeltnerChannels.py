@@ -1,12 +1,10 @@
-from typing import List, Any
 from dataclasses import dataclass
+from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.EMA import EMA
 from talipp.indicators.ATR import ATR
-from talipp.ohlcv import OHLCV, ValueExtractor
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ma import MAType, MAFactory
-
+from talipp.ohlcv import OHLCV, ValueExtractor
 
 
 @dataclass

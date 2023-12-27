@@ -1,8 +1,8 @@
-from typing import List, Any
 from dataclasses import dataclass
+from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.EMA import EMA
+from talipp.ma import MAType, MAFactory
 
 
 @dataclass
@@ -19,22 +19,24 @@ class MACD(Indicator):
     Output: a list of MACDVal
     """
 
-    def __init__(self, fast_period: int, slow_period: int, signal_period: int, input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+    def __init__(self, fast_period: int, slow_period: int, signal_period: int, input_values: List[float] = None,
+                 input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
+                 ma_type: MAType = MAType.EMA):
         super().__init__(value_extractor = value_extractor)
 
-        self.ema_fast = EMA(fast_period)
-        self.ema_slow = EMA(slow_period)
-        self.signal_line = EMA(signal_period)
+        self.ma_fast = MAFactory.get_ma(ma_type, fast_period)
+        self.ma_slow = MAFactory.get_ma(ma_type, slow_period)
+        self.signal_line = MAFactory.get_ma(ma_type, signal_period)
 
-        self.add_sub_indicator(self.ema_fast)
-        self.add_sub_indicator(self.ema_slow)
+        self.add_sub_indicator(self.ma_fast)
+        self.add_sub_indicator(self.ma_slow)
         self.add_managed_sequence(self.signal_line)
 
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.ema_fast) > 0 and len(self.ema_slow) > 0:
-            macd = self.ema_fast[-1] - self.ema_slow[-1]
+        if len(self.ma_fast) > 0 and len(self.ma_slow) > 0:
+            macd = self.ma_fast[-1] - self.ma_slow[-1]
             self.signal_line.add_input_value(macd)
 
             if len(self.signal_line) > 0:

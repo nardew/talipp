@@ -30,4 +30,4 @@ class CCI(Indicator):
             return None
 
         # take SMA(typical_price) directly form MeanDev since it is already calculating it in the background
-        return (typical_price - self.mean_dev.sma[-1]) / (0.015 * self.mean_dev[-1])
+        return (typical_price - self.mean_dev.ma[-1]) / (0.015 * self.mean_dev[-1])

@@ -1,10 +1,9 @@
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.EMA import EMA
 from talipp.indicators.AccuDist import AccuDist
-from talipp.ohlcv import OHLCV
+from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ma import MAType, MAFactory
+from talipp.ohlcv import OHLCV
 
 
 class ChaikinOsc(Indicator):

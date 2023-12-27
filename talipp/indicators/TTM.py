@@ -1,14 +1,15 @@
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.indicators import BB, DonchianChannels, KeltnerChannels
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators import BB, DonchianChannels, KeltnerChannels, SMA
+from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV, ValueExtractor
 
 
 @dataclass
 class TTMVal:
-    # squeeze is on (=True) or off (=False
+    # squeeze is on (=True) or off (=False+
     squeeze: bool = None
 
     # histogram of the linear regression
@@ -23,7 +24,8 @@ class TTM(Indicator):
     """
 
     def __init__(self, period: int, bb_std_dev_mult: float = 2, kc_atr_mult: float = 1.5,
-                 input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+                 input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
+                 ma_type: MAType = MAType.SMA):
         super().__init__(value_extractor = value_extractor)
 
         self.period = period
@@ -31,12 +33,12 @@ class TTM(Indicator):
         self.bb = BB(period, bb_std_dev_mult, value_extractor = ValueExtractor.extract_close)
         self.dc = DonchianChannels(period)
         self.kc = KeltnerChannels(period, period, kc_atr_mult, kc_atr_mult)
-        self.sma = SMA(period, value_extractor = ValueExtractor.extract_close)
+        self.ma = MAFactory.get_ma(ma_type, period, value_extractor = ValueExtractor.extract_close)
 
         self.add_sub_indicator(self.bb)
         self.add_sub_indicator(self.dc)
         self.add_sub_indicator(self.kc)
-        self.add_sub_indicator(self.sma)
+        self.add_sub_indicator(self.ma)
 
         self.deltas = []
         self.add_managed_sequence(self.deltas)
@@ -56,8 +58,8 @@ class TTM(Indicator):
         # squeeze is on if BB is entirely encompassed in KC
         squeeze = self.bb[-1].ub < self.kc[-1].ub and self.bb[-1].lb > self.kc[-1].lb
 
-        if len(self.sma) > 0 and len(self.dc) > 0:
-            self.deltas.append(self.input_values[-1].close - (self.dc[-1].cb + self.sma[-1]) / 2.0)
+        if len(self.ma) > 0 and len(self.dc) > 0:
+            self.deltas.append(self.input_values[-1].close - (self.dc[-1].cb + self.ma[-1]) / 2.0)
 
         hist = None
         if len(self.deltas) >= self.period:

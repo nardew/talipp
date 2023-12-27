@@ -2,7 +2,6 @@ from dataclasses import dataclass
 from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.SMA import SMA
 from talipp.indicators.StdDev import StdDev
 from talipp.ma import MAType, MAFactory
 

@@ -1,9 +1,8 @@
 from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.EMA import EMA
-from talipp.ohlcv import OHLCV
 from talipp.ma import MAFactory, MAType
+from talipp.ohlcv import OHLCV
 
 
 class ForceIndex(Indicator):
