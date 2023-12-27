@@ -10,7 +10,8 @@ class McGinleyDynamic(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period: int, input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+    def __init__(self, period: int, input_values: List[float] = None, input_indicator: Indicator = None,
+                 value_extractor: ValueExtractorType = None):
         super().__init__(value_extractor = value_extractor)
 
         self.period = period

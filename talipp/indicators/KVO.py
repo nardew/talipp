@@ -1,7 +1,7 @@
 from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.EMA import EMA
+from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV
 
 
@@ -12,14 +12,15 @@ class KVO(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, fast_period: int, slow_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+    def __init__(self, fast_period: int, slow_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None,
+                 value_extractor: ValueExtractorType = None, ma_type: MAType = MAType.EMA):
         super().__init__(value_extractor = value_extractor)
 
-        self.fast_ema = EMA(fast_period)
-        self.add_managed_sequence(self.fast_ema)
+        self.fast_ma = MAFactory.get_ma(ma_type, fast_period)
+        self.add_managed_sequence(self.fast_ma)
 
-        self.slow_ema = EMA(slow_period)
-        self.add_managed_sequence(self.slow_ema)
+        self.slow_ma = MAFactory.get_ma(ma_type, slow_period)
+        self.add_managed_sequence(self.slow_ma)
 
         self.trend = []
         self.add_managed_sequence(self.trend)
@@ -65,12 +66,12 @@ class KVO(Indicator):
         else:
             volume_force = value.volume * abs(2 * (dm / self.cumulative_measurement[-1] - 1)) * self.trend[-1] * 100
 
-        self.fast_ema.add_input_value(volume_force)
-        self.slow_ema.add_input_value(volume_force)
+        self.fast_ma.add_input_value(volume_force)
+        self.slow_ma.add_input_value(volume_force)
 
-        if len(self.fast_ema) < 1 or len(self.slow_ema) < 1:
+        if len(self.fast_ma) < 1 or len(self.slow_ma) < 1:
             return None
 
         #print(f"kvo: {self.fast_ema[-1] - self.slow_ema[-1]} vf: {volume_force} dm: {dm} cm: {self.cumulative_measurement[-1]} trend: {self.trend[-1]} volume: {value.volume}")
 
-        return self.fast_ema[-1] - self.slow_ema[-1]
+        return self.fast_ma[-1] - self.slow_ma[-1]

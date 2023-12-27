@@ -1,7 +1,7 @@
 from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.SMA import SMA
+from talipp.ma import MAType, MAFactory
 
 
 class MeanDev(Indicator):
@@ -11,18 +11,19 @@ class MeanDev(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period: int, input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+    def __init__(self, period: int, input_values: List[float] = None, input_indicator: Indicator = None,
+                 value_extractor: ValueExtractorType = None, ma_type: MAType = MAType.SMA):
         super().__init__(value_extractor = value_extractor)
 
         self.period = period
 
-        self.sma = SMA(period)
-        self.add_sub_indicator(self.sma)
+        self.ma = MAFactory.get_ma(ma_type, period)
+        self.add_sub_indicator(self.ma)
 
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.sma) < 1:
+        if len(self.ma) < 1:
             return None
 
-        return sum(map(lambda x: abs(x - self.sma[-1]), self.input_values[-self.period:])) / float(self.period)
+        return sum(map(lambda x: abs(x - self.ma[-1]), self.input_values[-self.period:])) / float(self.period)

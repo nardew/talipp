@@ -1,7 +1,7 @@
 from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.EMA import EMA
+from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV
 
 
@@ -12,36 +12,38 @@ class MassIndex(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, ema_period: int, ema_ema_period: int, ema_ratio_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+    def __init__(self, ema_period: int, ema_ema_period: int, ema_ratio_period: int, input_values: List[OHLCV] = None,
+                 input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
+                 ma_type: MAType = MAType.EMA):
         super().__init__(value_extractor = value_extractor)
 
         self.ema_ratio_period = ema_ratio_period
 
-        self.ema = EMA(ema_period)
-        self.ema_ema = EMA(ema_ema_period)
-        self.ema_ratio = []
+        self.ma = MAFactory.get_ma(ma_type, ema_period)
+        self.ma_ma = MAFactory.get_ma(ma_type, ema_ema_period)
+        self.ma_ratio = []
 
-        self.add_managed_sequence(self.ema)
-        self.add_managed_sequence(self.ema_ema)
-        self.add_managed_sequence(self.ema_ratio)
+        self.add_managed_sequence(self.ma)
+        self.add_managed_sequence(self.ma_ma)
+        self.add_managed_sequence(self.ma_ratio)
 
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         value = self.input_values[-1]
-        self.ema.add_input_value(value.high - value.low)
+        self.ma.add_input_value(value.high - value.low)
 
-        if not self.ema.has_output_value():
+        if not self.ma.has_output_value():
             return None
 
-        self.ema_ema.add_input_value(self.ema[-1])
+        self.ma_ma.add_input_value(self.ma[-1])
 
-        if not self.ema_ema.has_output_value():
+        if not self.ma_ma.has_output_value():
             return None
 
-        self.ema_ratio.append(self.ema[-1] / float(self.ema_ema[-1]))
+        self.ma_ratio.append(self.ma[-1] / float(self.ma_ma[-1]))
 
-        if len(self.ema_ratio) < self.ema_ratio_period:
+        if len(self.ma_ratio) < self.ema_ratio_period:
             return None
 
-        return sum(self.ema_ratio[-self.ema_ratio_period:])
+        return sum(self.ma_ratio[-self.ema_ratio_period:])

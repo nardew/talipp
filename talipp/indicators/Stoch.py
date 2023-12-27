@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.SMA import SMA
+from talipp.ma import MAFactory, MAType
 from talipp.ohlcv import OHLCV
 
 
@@ -19,12 +19,13 @@ class Stoch(Indicator):
     Output: a list of StochVal
     """
 
-    def __init__(self, period: int, smoothing_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
+    def __init__(self, period: int, smoothing_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None,
+                 value_extractor: ValueExtractorType = None, ma_type: MAType = MAType.SMA):
         super().__init__(value_extractor=value_extractor)
 
         self.period = period
 
-        self.values_d = SMA(smoothing_period)
+        self.values_d = MAFactory.get_ma(ma_type, smoothing_period)
         self.add_managed_sequence(self.values_d)
 
         self.initialize(input_values, input_indicator)

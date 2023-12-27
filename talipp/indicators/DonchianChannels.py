@@ -1,5 +1,5 @@
-from typing import List, Any
 from dataclasses import dataclass
+from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
