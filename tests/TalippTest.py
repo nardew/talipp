@@ -41,7 +41,7 @@ class TalippTest(unittest.TestCase):
             if isinstance(last_input_value, OHLCV):
                 new_val = OHLCV((i + 1)**2, (i + 3)**2, (i + 5)**2, (i + 7)**2, i**2)
             else:
-                new_val = i
+                new_val = (i + 1)**2
             indicator.add_input_value(new_val)
 
         for i in range(1, iterations_no):
