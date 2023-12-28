@@ -13,13 +13,13 @@ from talipp.indicators.WMA import WMA
 
 
 class MAType(Enum):
-    #ALMA = auto()
+    ALMA = auto()
     SMA = auto()
     SMMA = auto()
     DEMA = auto()
     EMA = auto()
     HMA = auto()
-    #KAMA = auto()
+    KAMA = auto()
     TEMA = auto()
     VWMA = auto()
     WMA = auto()

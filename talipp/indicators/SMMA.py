@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 
 
@@ -17,9 +18,9 @@ class SMMA(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < self.period:
+        if not has_valid_values(self.input_values, self.period):
             return None
-        elif len(self.input_values) == self.period:
+        elif has_valid_values(self.input_values, self.period, exact=True):
             return float(sum(self.input_values)) / self.period
         else:
             return (self.output_values[-1] * (self.period - 1) + self.input_values[-1]) / self.period

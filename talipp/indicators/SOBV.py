@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.OBV import OBV
 from talipp.ohlcv import OHLCV
@@ -23,7 +24,7 @@ class SOBV(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.obv) < self.period:
+        if not has_valid_values(self.obv, self.period):
             return None
 
         return sum(self.obv[-self.period:]) / float(self.period)

@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
@@ -26,7 +27,7 @@ class Aroon(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < self.period + 1:
+        if not has_valid_values(self.input_values, self.period+1):
             return None
 
         # search in reversed list in order to get the right-most index

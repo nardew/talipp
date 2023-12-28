@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators import BB, DonchianChannels, KeltnerChannels
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ma import MAType, MAFactory
@@ -52,17 +53,17 @@ class TTM(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.bb) < 1 or len(self.kc) < 1:
+        if not has_valid_values(self.bb, 1) or not has_valid_values(self.kc, 1):
             return None
 
         # squeeze is on if BB is entirely encompassed in KC
         squeeze = self.bb[-1].ub < self.kc[-1].ub and self.bb[-1].lb > self.kc[-1].lb
 
-        if len(self.ma) > 0 and len(self.dc) > 0:
+        if has_valid_values(self.ma, 1) and has_valid_values(self.dc, 1):
             self.deltas.append(self.input_values[-1].close - (self.dc[-1].cb + self.ma[-1]) / 2.0)
 
         hist = None
-        if len(self.deltas) >= self.period:
+        if has_valid_values(self.deltas, self.period):
             # calculate linear regression y = ax + b
             mean_y = sum(self.deltas[-self.period:]) / float(self.period)
 

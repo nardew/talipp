@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.ATR import ATR
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
@@ -20,8 +21,9 @@ class ADX(Indicator):
     Output: a list of ADXVal
     """
 
-    def __init__(self, di_period: int, adx_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
-        super(ADX, self).__init__()
+    def __init__(self, di_period: int, adx_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None,
+                 value_extractor: ValueExtractorType = None):
+        super().__init__(value_extractor=value_extractor)
 
         self.di_period = di_period
         self.adx_period = adx_period
@@ -60,7 +62,7 @@ class ADX(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < 2:
+        if not has_valid_values(self.input_values, 2):
             return None
 
         current_input = self.input_values[-1]
@@ -76,9 +78,9 @@ class ADX(Indicator):
         else:
             self.mdm.append(0)
 
-        if len(self.pdm) < self.di_period:
+        if not has_valid_values(self.pdm, self.di_period):
             return None
-        elif len(self.pdm) == self.di_period:
+        elif has_valid_values(self.pdm, self.di_period, exact=True):
             self.spdm.append(sum(self.pdm[-self.di_period:]) / float(self.di_period))
             self.smdm.append(sum(self.mdm[-self.di_period:]) / float(self.di_period))
         elif len(self.pdm) > self.di_period:

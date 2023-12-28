@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.StdDev import StdDev
 from talipp.ma import MAType, MAFactory
@@ -28,7 +29,7 @@ class BB(Indicator):
     def __init__(self, period: int, std_dev_multiplier: float, input_values: List[float] = None,
                  input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
                  ma_type: MAType = MAType.SMA):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(value_extractor = value_extractor, output_value_type=BBVal)
 
         self.period = period
         self.std_dev_multiplier = std_dev_multiplier
@@ -42,11 +43,11 @@ class BB(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < self.period:
+        if not has_valid_values(self.input_values, self.period):
             return None
-        else:
-            return BBVal(
-                self.central_band[-1] - self.std_dev_multiplier * self.std_dev[-1],
-                self.central_band[-1],
-                self.central_band[-1] + self.std_dev_multiplier * self.std_dev[-1]
-            )
+
+        return BBVal(
+            self.central_band[-1] - self.std_dev_multiplier * self.std_dev[-1],
+            self.central_band[-1],
+            self.central_band[-1] + self.std_dev_multiplier * self.std_dev[-1]
+        )

@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.MeanDev import MeanDev
 from talipp.ohlcv import OHLCV
@@ -26,7 +27,7 @@ class CCI(Indicator):
 
         self.mean_dev.add_input_value(typical_price)
 
-        if len(self.mean_dev) < 1:
+        if not has_valid_values(self.mean_dev, 1):
             return None
 
         # take SMA(typical_price) directly form MeanDev since it is already calculating it in the background

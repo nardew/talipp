@@ -1,6 +1,7 @@
 from math import sqrt
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.WMA import WMA
 
@@ -28,12 +29,12 @@ class HMA(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.wma) < sqrt(self.period):
+        if not has_valid_values(self.wma, int(sqrt(self.period))):
             return None
 
         self.hma.add_input_value(2.0 * self.wma2[-1] - self.wma[-1])
 
-        if not self.hma.has_output_value():
+        if not has_valid_values(self.hma, 1):
             return None
 
         return self.hma[-1]

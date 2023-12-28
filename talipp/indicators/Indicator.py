@@ -1,10 +1,6 @@
 from abc import ABCMeta, abstractmethod
-from collections import defaultdict
 from collections.abc import MutableSequence, Sequence
-from dataclasses import is_dataclass
-from itertools import chain
-from operator import methodcaller, attrgetter
-from typing import List, Any, Callable, Dict, Union
+from typing import List, Any, Callable, Union, Type
 
 ListAny = List[Any]
 ManagedSequenceType = Union['Indicator', MutableSequence]
@@ -14,8 +10,9 @@ ValueExtractorType = Callable[..., Any]
 class Indicator(Sequence):
     __metaclass__ = ABCMeta
 
-    def __init__(self, value_extractor: ValueExtractorType = None):
+    def __init__(self, value_extractor: ValueExtractorType = None, output_value_type: Type = float):
         self.value_extractor = value_extractor
+        self.output_value_type = output_value_type
 
         self.input_values: ListAny = []
         self.output_values: ListAny = []
@@ -66,16 +63,22 @@ class Indicator(Sequence):
             value = [value]
 
         for input_value in value:
-            if self.value_extractor is not None:
+            if input_value is not None and self.value_extractor is not None:
                 input_value = self.value_extractor(input_value)
             self.input_values.append(input_value)
 
-            new_value = self._calculate_new_value()
-            if new_value is not None:
-                self.output_values.append(new_value)
+            if input_value is not None:
+                new_value = self._calculate_new_value()
+            else:
+                new_value = None
 
-                for listener in self.output_listeners:
-                    listener.add_input_value(new_value)
+            if new_value is None and len(self.output_values) > 0:
+                new_value = self.output_values[-1]
+
+            self._add_to_output_values(new_value)
+
+            for listener in self.output_listeners:
+                listener.add_input_value(new_value)
 
     def update_input_value(self, value: Any) -> None:
         self.remove_input_value()
@@ -101,6 +104,9 @@ class Indicator(Sequence):
 
         for listener in self.output_listeners:
             listener.remove_input_value()
+
+    def _add_to_output_values(self, value: Any) -> None:
+        self.output_values.append(value)
 
     def _remove_output_value(self) -> None:
         if len(self.output_values) > 0:
@@ -162,23 +168,8 @@ class Indicator(Sequence):
         else:
             self.input_values = input_values
 
-    def has_output_value(self) -> bool:
-        if len(self.output_values) > 0 and self.output_values[-1] is not None:
-            return True
-        else:
-            return False
-
-    def to_lists(self, align_with_input: bool = False) -> Dict[str, List[float]]:
-        if len(self.output_values) == 0:
-            return {}
-        else:
-            if is_dataclass(self.output_values[0]):
-                result = defaultdict(list)
-                for key, value in chain.from_iterable(map(methodcaller('items'), map(attrgetter('__dict__'), self.output_values))):
-                    result[key].extend([value])
-                return dict(result)
-            else:
-                raise Exception("to_lists() method can be used only with indicators returning multiple values as their result.")
-
     def add_output_listener(self, listener: 'Indicator') -> None:
         self.output_listeners.append(listener)
+
+    def get_output_value_type(self):
+        return self.output_value_type

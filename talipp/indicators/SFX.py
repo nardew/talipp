@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.ATR import ATR
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.StdDev import StdDev
@@ -27,30 +28,25 @@ class SFX(Indicator):
 
         self.atr = ATR(atr_period)
         self.std_dev = StdDev(std_dev_period, value_extractor = ValueExtractor.extract_close)
-        self.ma_std_dev = MAFactory.get_ma(ma_type, std_dev_smoothing_period)
+        self.ma_std_dev = MAFactory.get_ma(ma_type, std_dev_smoothing_period, input_indicator=self.std_dev)
 
         self.add_sub_indicator(self.atr)
         self.add_sub_indicator(self.std_dev)
 
-        self.add_managed_sequence(self.ma_std_dev)
-
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.std_dev) > 0:
-            self.ma_std_dev.add_input_value(self.std_dev[-1])
-
-        if len(self.atr) > 0:
+        if has_valid_values(self.atr, 1):
             atr = self.atr[-1]
         else:
             atr = None
 
-        if len(self.std_dev) > 0:
+        if has_valid_values(self.std_dev, 1):
             std_dev = self.std_dev[-1]
         else:
             std_dev = None
 
-        if len(self.ma_std_dev) > 0:
+        if has_valid_values(self.ma_std_dev, 1):
             sma_std_dev = self.ma_std_dev[-1]
         else:
             sma_std_dev = None

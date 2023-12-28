@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.ROC import ROC
 from talipp.indicators.WMA import WMA
@@ -28,12 +29,12 @@ class CoppockCurve(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.fast_roc) < 1 or len(self.slow_roc) < 1:
+        if not has_valid_values(self.fast_roc, 1) or not has_valid_values(self.slow_roc, 1):
             return None
 
         self.wma.add_input_value(self.slow_roc[-1] + self.fast_roc[-1])
 
-        if len(self.wma) < 1:
+        if not has_valid_values(self.wma, 1):
             return None
 
         return self.wma[-1]

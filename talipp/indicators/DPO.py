@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ma import MAType, MAFactory
 
@@ -23,7 +24,7 @@ class DPO(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < int(self.period / 2) + 2 or len(self.ma) < 1:
+        if not has_valid_values(self.input_values, int(self.period / 2) + 2) or not has_valid_values(self.ma, 1):
             return None
 
         return self.input_values[-(int(self.period / 2) + 1) - 1] - float(self.ma[-1])

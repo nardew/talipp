@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV
@@ -33,7 +34,7 @@ class AO(Indicator):
         self.ma_fast.add_input_value(median)
         self.ma_slow.add_input_value(median)
 
-        if not self.ma_fast.has_output_value() or not self.ma_slow.has_output_value():
+        if not has_valid_values(self.ma_fast) or not has_valid_values(self.ma_slow):
             return None
         else:
             return self.ma_fast[-1] - self.ma_slow[-1]

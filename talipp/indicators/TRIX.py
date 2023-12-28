@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.EMA import EMA
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 
@@ -25,7 +26,7 @@ class TRIX(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.ema3) < 2:
+        if not has_valid_values(self.ema3, 2):
             return None
 
         return 10000.0 * (self.ema3[-1] - self.ema3[-2]) / self.ema3[-2]

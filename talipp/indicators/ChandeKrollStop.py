@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators import ATR
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
@@ -37,16 +38,16 @@ class ChandeKrollStop(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < self.atr_period:
+        if not has_valid_values(self.input_values, self.atr_period):
             return None
 
-        if len(self.atr) < 1:
+        if not has_valid_values(self.atr, 1):
             return None
 
         self.high_stop_list.append(max(self.input_values[-self.atr_period:], key = lambda x: x.high).high - self.atr[-1] * self.atr_mult)
         self.low_stop_list.append(min(self.input_values[-self.atr_period:], key = lambda x: x.low).low + self.atr[-1] * self.atr_mult)
 
-        if len(self.high_stop_list) < self.period:
+        if not has_valid_values(self.high_stop_list, self.period):
             return None
 
         return ChandeKrollStopVal(max(self.high_stop_list[-self.period:]),

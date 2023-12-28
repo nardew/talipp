@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.RSI import RSI
 from talipp.ma import MAType, MAFactory
@@ -38,10 +39,10 @@ class StochRSI(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.rsi) < self.stoch_period:
+        if not has_valid_values(self.rsi, self.stoch_period):
             return None
 
-        recent_rsi = self.rsi[-1 * self.stoch_period:]
+        recent_rsi = self.rsi[-self.stoch_period:]
 
         max_high = max(recent_rsi)
         min_low = min(recent_rsi)
@@ -52,14 +53,6 @@ class StochRSI(Indicator):
             k = 100.0 * (self.rsi[-1] - min_low) / (max_high - min_low)
 
         self.smoothed_k.add_input_value(k)
+        self.values_d.add_input_value(self.smoothed_k[-1])
 
-        smoothed_k = None
-        if len(self.smoothed_k) > 0:
-            smoothed_k = self.smoothed_k[-1]
-            self.values_d.add_input_value(self.smoothed_k[-1])
-
-        d = None
-        if len(self.values_d) > 0:
-            d = self.values_d[-1]
-
-        return StochRSIVal(smoothed_k, d)
+        return StochRSIVal(self.smoothed_k[-1], self.values_d[-1])

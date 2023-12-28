@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.ATR import ATR
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ma import MAType, MAFactory
@@ -43,7 +44,7 @@ class KeltnerChannels(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.cb) < 1 or len(self.atr) < 1:
+        if not has_valid_values(self.cb, 1) or not has_valid_values(self.atr, 1):
             return None
 
         return KeltnerChannelsVal(self.cb[-1] - self.atr_mult_down * self.atr[-1],
