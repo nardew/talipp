@@ -1,7 +1,7 @@
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV
 
@@ -14,8 +14,8 @@ class KVO(Indicator):
     """
 
     def __init__(self, fast_period: int, slow_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None,
-                 value_extractor: ValueExtractorType = None, ma_type: MAType = MAType.EMA):
-        super().__init__(value_extractor = value_extractor)
+                 input_modifier: InputModifierType = None, ma_type: MAType = MAType.EMA):
+        super().__init__(input_modifier=input_modifier)
 
         self.fast_ma = MAFactory.get_ma(ma_type, fast_period)
         self.add_managed_sequence(self.fast_ma)

@@ -5,14 +5,14 @@ from typing import List, Any, Callable, Union, Type
 
 ListAny = List[Any]
 ManagedSequenceType = Union['Indicator', MutableSequence]
-ValueExtractorType = Callable[..., Any]
+InputModifierType = Callable[..., Any]
 
 
 class Indicator(Sequence):
     __metaclass__ = ABCMeta
 
-    def __init__(self, value_extractor: ValueExtractorType = None, output_value_type: Type = float):
-        self.value_extractor = value_extractor
+    def __init__(self, input_modifier: InputModifierType = None, output_value_type: Type = float):
+        self.input_modifier =input_modifier
         self.output_value_type = output_value_type
 
         self.input_values: ListAny = []
@@ -71,8 +71,8 @@ class Indicator(Sequence):
             value = [value]
 
         for input_value in value:
-            if input_value is not None and self.value_extractor is not None:
-                input_value = self.value_extractor(input_value)
+            if input_value is not None and self.input_modifier is not None:
+                input_value = self.input_modifier(input_value)
             self.input_values.append(input_value)
 
             if input_value is not None:

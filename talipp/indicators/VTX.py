@@ -3,7 +3,7 @@ from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
 from talipp.indicators.ATR import ATR
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ohlcv import OHLCV
 
 
@@ -20,8 +20,8 @@ class VTX(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor = value_extractor, output_value_type=VTXVal)
+    def __init__(self, period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier, output_value_type=VTXVal)
 
         self.period = period
 

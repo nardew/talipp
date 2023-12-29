@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ohlcv import OHLCV
 
 
@@ -25,8 +25,8 @@ class PivotsHL(Indicator):
     Output: a list of PivotsHLVal
     """
 
-    def __init__(self, high_period: int, low_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor = value_extractor, output_value_type=PivotsHLVal)
+    def __init__(self, high_period: int, low_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier, output_value_type=PivotsHLVal)
 
         self.high_period = high_period
         self.low_period = low_period

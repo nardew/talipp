@@ -1,7 +1,7 @@
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ma import MAType, MAFactory
 
 
@@ -13,9 +13,9 @@ class TSI(Indicator):
     """
 
     def __init__(self, fast_period: int, slow_period: int,
-                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
+                 input_values: List[float] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None,
                  ma_type: MAType = MAType.EMA):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(input_modifier=input_modifier)
 
         self.slow_ma = MAFactory.get_ma(ma_type, slow_period)
         self.add_managed_sequence(self.slow_ma)

@@ -1,7 +1,7 @@
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV
 
@@ -14,8 +14,8 @@ class EMV(Indicator):
     """
 
     def __init__(self, period: int, volume_div: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None,
-                 value_extractor: ValueExtractorType = None, ma_type: MAType = MAType.SMA):
-        super().__init__(value_extractor = value_extractor)
+                 input_modifier: InputModifierType = None, ma_type: MAType = MAType.SMA):
+        super().__init__(input_modifier=input_modifier)
 
         self.period = period
         self.volume_div = volume_div

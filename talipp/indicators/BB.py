@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.indicators.StdDev import StdDev
 from talipp.ma import MAType, MAFactory
 
@@ -27,15 +27,15 @@ class BB(Indicator):
     """
 
     def __init__(self, period: int, std_dev_mult: float, input_values: List[float] = None,
-                 input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
+                 input_indicator: Indicator = None, input_modifier: InputModifierType = None,
                  ma_type: MAType = MAType.SMA):
-        super().__init__(value_extractor=value_extractor, output_value_type=BBVal)
+        super().__init__(input_modifier=input_modifier, output_value_type=BBVal)
 
         self.period = period
         self.std_dev_mult = std_dev_mult
 
-        self.central_band = MAFactory.get_ma(ma_type, period, value_extractor=value_extractor)
-        self.std_dev = StdDev(self.period, value_extractor = value_extractor)
+        self.central_band = MAFactory.get_ma(ma_type, period, input_modifier=input_modifier)
+        self.std_dev = StdDev(self.period, input_modifier=input_modifier)
 
         self.add_sub_indicator(self.central_band)
         self.add_sub_indicator(self.std_dev)

@@ -3,7 +3,7 @@ from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
 from talipp.indicators.ATR import ATR
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ohlcv import OHLCV
 
 
@@ -22,8 +22,8 @@ class ADX(Indicator):
     """
 
     def __init__(self, di_period: int, adx_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None,
-                 value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor=value_extractor, output_value_type=ADXVal)
+                 input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier, output_value_type=ADXVal)
 
         self.di_period = di_period
         self.adx_period = adx_period

@@ -1,7 +1,7 @@
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 
 
 class SMMA(Indicator):
@@ -10,8 +10,8 @@ class SMMA(Indicator):
 
     Output: a list of floats
     """
-    def __init__(self, period: int, input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor = value_extractor)
+    def __init__(self, period: int, input_values: List[float] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier)
 
         self.period = period
 
