@@ -26,7 +26,7 @@ class ForceIndex(Indicator):
         if not has_valid_values(self.input_values, 2):
             return None
 
-        self.ma.add_input_value((self.input_values[-1].close - self.input_values[-2].close) * self.input_values[-1].volume)
+        self.ma.add((self.input_values[-1].close - self.input_values[-2].close) * self.input_values[-1].volume)
 
         if not has_valid_values(self.ma, 1):
             return None

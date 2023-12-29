@@ -32,7 +32,7 @@ class CoppockCurve(Indicator):
         if not has_valid_values(self.fast_roc, 1) or not has_valid_values(self.slow_roc, 1):
             return None
 
-        self.wma.add_input_value(self.slow_roc[-1] + self.fast_roc[-1])
+        self.wma.add(self.slow_roc[-1] + self.fast_roc[-1])
 
         if not has_valid_values(self.wma, 1):
             return None

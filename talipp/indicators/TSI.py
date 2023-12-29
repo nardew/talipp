@@ -31,8 +31,8 @@ class TSI(Indicator):
         if not has_valid_values(self.input_values, 2):
             return None
 
-        self.slow_ma.add_input_value(self.input_values[-1] - self.input_values[-2])
-        self.abs_slow_ma.add_input_value(abs(self.input_values[-1] - self.input_values[-2]))
+        self.slow_ma.add(self.input_values[-1] - self.input_values[-2])
+        self.abs_slow_ma.add(abs(self.input_values[-1] - self.input_values[-2]))
 
         if not has_valid_values(self.fast_ma, 1):
             return None

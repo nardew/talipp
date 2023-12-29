@@ -1,8 +1,7 @@
 import unittest
 
-from talipp.indicators import SMA
-
 from TalippTest import TalippTest
+from talipp.indicators import SMA
 
 
 class Test(TalippTest):

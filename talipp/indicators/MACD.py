@@ -40,7 +40,7 @@ class MACD(Indicator):
             return None
 
         macd = self.ma_fast[-1] - self.ma_slow[-1]
-        self.signal_line.add_input_value(macd)
+        self.signal_line.add(macd)
 
         if has_valid_values(self.signal_line, 1):
             signal = self.signal_line[-1]

@@ -31,8 +31,8 @@ class AO(Indicator):
     def _calculate_new_value(self) -> Any:
         median = (self.input_values[-1].high + self.input_values[-1].low) / 2.0
 
-        self.ma_fast.add_input_value(median)
-        self.ma_slow.add_input_value(median)
+        self.ma_fast.add(median)
+        self.ma_slow.add(median)
 
         if not has_valid_values(self.ma_fast) or not has_valid_values(self.ma_slow):
             return None

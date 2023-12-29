@@ -52,7 +52,7 @@ class StochRSI(Indicator):
         else:
             k = 100.0 * (self.rsi[-1] - min_low) / (max_high - min_low)
 
-        self.smoothed_k.add_input_value(k)
-        self.values_d.add_input_value(self.smoothed_k[-1])
+        self.smoothed_k.add(k)
+        self.values_d.add(self.smoothed_k[-1])
 
         return StochRSIVal(self.smoothed_k[-1], self.values_d[-1])

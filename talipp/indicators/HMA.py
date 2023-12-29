@@ -32,7 +32,7 @@ class HMA(Indicator):
         if not has_valid_values(self.wma, int(sqrt(self.period))):
             return None
 
-        self.hma.add_input_value(2.0 * self.wma2[-1] - self.wma[-1])
+        self.hma.add(2.0 * self.wma2[-1] - self.wma[-1])
 
         if not has_valid_values(self.hma, 1):
             return None

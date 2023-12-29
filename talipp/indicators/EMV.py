@@ -38,7 +38,7 @@ class EMV(Indicator):
         else:
             emv = 0.0
 
-        self.emv_sma.add_input_value(emv)
+        self.emv_sma.add(emv)
 
         if not has_valid_values(self.emv_sma, 1):
             return None

@@ -106,19 +106,19 @@ print(f'EMA(3): {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125]
 print(f'Last EMA value: {ema[-1]}') # 8.28125
 
 # append a new input value incrementally
-ema.add_input_value(11)
+ema.add(11)
 print(f'EMA after adding a new value:      {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125, 9.640625]
 
 # change the last added value
-ema.update_input_value(15)
+ema.update(15)
 print(f'EMA after updating the last value: {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125, 11.640625]
 
 # change the last added value again
-ema.update_input_value(18)
+ema.update(18)
 print(f'EMA after updating the last value: {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125, 13.140625]
 
 # remove the last added value
-ema.remove_input_value()
+ema.remove()
 print(f'EMA after removing the last value: {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125]
 
 # purge the oldest input value
@@ -144,7 +144,7 @@ sma2 = SMA(3, input_indicator = sma1)
 sma3 = SMA(3, input_indicator = sma2)
 
 print(f"Chain three moving averages:")
-sma1.add_input_value([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+sma1.add([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 print(f"SMA1: {sma1}") # [2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
 print(f"SMA2: {sma2}") # [3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
 print(f"SMA3: {sma3}") # [4.0, 5.0, 6.0, 7.0]

@@ -59,7 +59,7 @@ class KST(Indicator):
             return None
 
         kst = 1.0 * self.roc1_ma[-1] + 2.0 * self.roc2_ma[-1] + 3.0 * self.roc3_ma[-1] + 4.0 * self.roc4_ma[-1]
-        self.signal_line.add_input_value(kst)
+        self.signal_line.add(kst)
 
         if has_valid_values(self.signal_line):
             signal_value = self.signal_line[-1]
