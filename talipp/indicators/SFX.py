@@ -47,8 +47,8 @@ class SFX(Indicator):
             std_dev = None
 
         if has_valid_values(self.ma_std_dev, 1):
-            sma_std_dev = self.ma_std_dev[-1]
+            ma_std_dev = self.ma_std_dev[-1]
         else:
-            sma_std_dev = None
+            ma_std_dev = None
 
-        return SFXVal(atr, std_dev, sma_std_dev)
+        return SFXVal(atr, std_dev, ma_std_dev)
