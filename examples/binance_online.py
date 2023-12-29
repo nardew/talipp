@@ -9,7 +9,7 @@ from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI,
     CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, Ichimoku, \
     KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, McGinleyDynamic, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, \
     SFX, SMA, SMMA, SOBV, STC, StdDev, \
-    Stoch, StochRSI, SuperTrend, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, WMA
+    Stoch, StochRSI, SuperTrend, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, WMA, ZLEMA
 from talipp.ohlcv import OHLCV
 
 
@@ -19,12 +19,14 @@ async def run():
 
     client = CryptoXLib.create_binance_client(api_key, sec_key)
 
-    start_date = datetime.datetime.now() - datetime.timedelta(days = 500)
+    start_date = datetime.datetime.now() - datetime.timedelta(days=1000)
     candles = await client.get_candlesticks(Pair('BTC', 'USDT'), interval=enums.Interval.I_1D,
-                                  start_tmstmp_ms=int(start_date.timestamp())*1000)
+                                            start_tmstmp_ms=int(start_date.timestamp())*1000,
+                                            limit=1000)
     candles = candles['response']
     close = [float(x[4]) for x in candles]
-    ohlcv = [OHLCV(float(x[1]), float(x[2]), float(x[3]), float(x[4]), float(x[5])) for x in candles]
+    ohlcv = [OHLCV(float(x[1]), float(x[2]), float(x[3]), float(x[4]), float(x[5]), datetime.datetime.fromtimestamp(x[0]/1000)) for x in candles]
+    print(f"Start date: {start_date}")
     print(f"Last OHLCV: {ohlcv[-1]}")
 
     print(f'AccuDist: {AccuDist(ohlcv)[-1]}')
@@ -79,6 +81,7 @@ async def run():
     print(f'VWAP: {VWAP(ohlcv)[-1]}')
     print(f'VWMA: {VWMA(20, ohlcv)[-1]}')
     print(f'WMA: {WMA(9, close)[-1]}')
+    print(f'ZLEMA: {ZLEMA(14, close)[-10:]}')
 
     await client.close()
 

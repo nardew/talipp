@@ -61,7 +61,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Mass Index
 - McGinley Dynamic
 - Mean Deviation
-- Moving Average (ALMA, SMA, SMMA, DEMA, EMA, HMA, KAMA, TEMA, VWMA, WMA)
+- Moving Average (ALMA, DEMA, EMA, HMA, KAMA, SMA, SMMA, TEMA, VWMA, WMA, ZLEMA)
 - Moving Average Convergence Divergence (MACD)
 - On-balance Volume (OBV), Smoothed On-balance Volume (SOBV)
 - Parabolic SAR
