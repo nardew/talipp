@@ -1,7 +1,7 @@
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.indicators.ROC import ROC
 from talipp.indicators.WMA import WMA
 
@@ -14,8 +14,8 @@ class CoppockCurve(Indicator):
     """
 
     def __init__(self, fast_roc_period: int, slow_roc_period: int, wma_period: int,
-                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor = value_extractor)
+                 input_values: List[float] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier)
 
         self.fast_roc = ROC(fast_roc_period)
         self.add_sub_indicator(self.fast_roc)

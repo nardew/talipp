@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ma import MAFactory, MAType
 from talipp.ohlcv import OHLCV
 
@@ -21,8 +21,8 @@ class Stoch(Indicator):
     """
 
     def __init__(self, period: int, smoothing_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None,
-                 value_extractor: ValueExtractorType = None, ma_type: MAType = MAType.SMA):
-        super().__init__(value_extractor=value_extractor, output_value_type=StochVal)
+                 input_modifier: InputModifierType = None, ma_type: MAType = MAType.SMA):
+        super().__init__(input_modifier=input_modifier, output_value_type=StochVal)
 
         self.period = period
 

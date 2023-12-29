@@ -2,7 +2,7 @@ from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
 from talipp.indicators.AccuDist import AccuDist
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV
 
@@ -15,8 +15,8 @@ class ChaikinOsc(Indicator):
     """
 
     def __init__(self, fast_period: int, slow_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None,
-                 value_extractor: ValueExtractorType = None, ma_type: MAType = MAType.EMA):
-        super().__init__(value_extractor = value_extractor)
+                 input_modifier: InputModifierType = None, ma_type: MAType = MAType.EMA):
+        super().__init__(input_modifier=input_modifier)
 
         self.fast_period = fast_period
         self.slow_period = slow_period
@@ -24,10 +24,10 @@ class ChaikinOsc(Indicator):
         self.accu_dist = AccuDist()
         self.add_sub_indicator(self.accu_dist)
 
-        self.ma_fast = MAFactory.get_ma(ma_type, fast_period, value_extractor=value_extractor)
+        self.ma_fast = MAFactory.get_ma(ma_type, fast_period, input_modifier=input_modifier)
         self.add_managed_sequence(self.ma_fast)
 
-        self.ma_slow = MAFactory.get_ma(ma_type, slow_period, value_extractor=value_extractor)
+        self.ma_slow = MAFactory.get_ma(ma_type, slow_period, input_modifier=input_modifier)
         self.add_managed_sequence(self.ma_slow)
 
         self.initialize(input_values, input_indicator)

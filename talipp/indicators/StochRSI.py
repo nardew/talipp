@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.indicators.RSI import RSI
 from talipp.ma import MAType, MAFactory
 
@@ -21,9 +21,9 @@ class StochRSI(Indicator):
     """
 
     def __init__(self, rsi_period: int, stoch_period: int, k_smoothing_period: int, d_smoothing_period: int,
-                 input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
+                 input_values: List[float] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None,
                  ma_type: MAType = MAType.SMA):
-        super().__init__(value_extractor = value_extractor, output_value_type=StochRSIVal)
+        super().__init__(input_modifier=input_modifier, output_value_type=StochRSIVal)
 
         self.stoch_period = stoch_period
 
