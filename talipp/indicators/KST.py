@@ -32,7 +32,7 @@ class KST(Indicator):
                  signal_period: int,
                  input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
                  ma_type: MAType = MAType.SMA):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(value_extractor = value_extractor, output_value_type=KSTVal)
 
         self.roc1 = ROC(roc1_period)
         self.roc2 = ROC(roc2_period)

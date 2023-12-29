@@ -23,7 +23,7 @@ class ADX(Indicator):
 
     def __init__(self, di_period: int, adx_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None,
                  value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor=value_extractor)
+        super().__init__(value_extractor=value_extractor, output_value_type=ADXVal)
 
         self.di_period = di_period
         self.adx_period = adx_period

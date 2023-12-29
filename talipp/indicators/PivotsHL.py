@@ -26,7 +26,7 @@ class PivotsHL(Indicator):
     """
 
     def __init__(self, high_period: int, low_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(value_extractor = value_extractor, output_value_type=PivotsHLVal)
 
         self.high_period = high_period
         self.low_period = low_period

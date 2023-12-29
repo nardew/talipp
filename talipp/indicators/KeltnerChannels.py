@@ -30,7 +30,7 @@ class KeltnerChannels(Indicator):
     def __init__(self, ma_period: int, atr_period: int, atr_mult_up: float, atr_mult_down: float, input_values: List[OHLCV] = None,
                  input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
                  ma_type: MAType = MAType.EMA):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(value_extractor = value_extractor, output_value_type=KeltnerChannelsVal)
 
         self.atr_mult_up = atr_mult_up
         self.atr_mult_down = atr_mult_down

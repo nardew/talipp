@@ -24,7 +24,7 @@ class SFX(Indicator):
     def __init__(self, atr_period: int, std_dev_period: int, std_dev_smoothing_period: int, input_values: List[OHLCV] = None,
                  input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
                  ma_type: MAType = MAType.SMA):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(value_extractor = value_extractor, output_value_type=SFXVal)
 
         self.atr = ATR(atr_period)
         self.std_dev = StdDev(std_dev_period, value_extractor = ValueExtractor.extract_close)

@@ -31,7 +31,7 @@ class ParabolicSAR(Indicator):
 
     def __init__(self, init_accel_factor: float, accel_factor_inc: float, max_accel_factor: float, input_values: List[OHLCV] = None,
                  input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(value_extractor = value_extractor, output_value_type=ParabolicSARVal)
 
         self.init_accel_factor = init_accel_factor
         self.accel_factor_inc = accel_factor_inc

@@ -23,7 +23,7 @@ class MACD(Indicator):
     def __init__(self, fast_period: int, slow_period: int, signal_period: int, input_values: List[float] = None,
                  input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
                  ma_type: MAType = MAType.EMA):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(value_extractor = value_extractor, output_value_type=MACDVal)
 
         self.ma_fast = MAFactory.get_ma(ma_type, fast_period)
         self.ma_slow = MAFactory.get_ma(ma_type, slow_period)

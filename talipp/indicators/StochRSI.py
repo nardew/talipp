@@ -23,7 +23,7 @@ class StochRSI(Indicator):
     def __init__(self, rsi_period: int, stoch_period: int, k_smoothing_period: int, d_smoothing_period: int,
                  input_values: List[float] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None,
                  ma_type: MAType = MAType.SMA):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(value_extractor = value_extractor, output_value_type=StochRSIVal)
 
         self.stoch_period = stoch_period
 

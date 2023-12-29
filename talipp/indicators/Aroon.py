@@ -20,7 +20,7 @@ class Aroon(Indicator):
     """
 
     def __init__(self, period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(value_extractor = value_extractor, output_value_type=AroonVal)
 
         self.period = period
 
