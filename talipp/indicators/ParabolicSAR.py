@@ -2,6 +2,7 @@ import enum
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
@@ -30,7 +31,7 @@ class ParabolicSAR(Indicator):
 
     def __init__(self, init_accel_factor: float, accel_factor_inc: float, max_accel_factor: float, input_values: List[OHLCV] = None,
                  input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(value_extractor = value_extractor, output_value_type=ParabolicSARVal)
 
         self.init_accel_factor = init_accel_factor
         self.accel_factor_inc = accel_factor_inc
@@ -39,9 +40,9 @@ class ParabolicSAR(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < ParabolicSAR.SAR_INIT_LEN:
+        if not has_valid_values(self.input_values, ParabolicSAR.SAR_INIT_LEN):
             return None
-        elif len(self.input_values) == ParabolicSAR.SAR_INIT_LEN:
+        elif has_valid_values(self.input_values, ParabolicSAR.SAR_INIT_LEN, exact=True):
             min_low = min(self.input_values[-ParabolicSAR.SAR_INIT_LEN:], key = lambda x: x.low).low
             max_high = max(self.input_values[-ParabolicSAR.SAR_INIT_LEN:], key = lambda x: x.high).high
 

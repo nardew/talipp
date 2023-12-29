@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV
@@ -31,13 +32,13 @@ class KVO(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < 2:
+        if not has_valid_values(self.input_values, 2):
             return None
 
         value = self.input_values[-1]
         value2 = self.input_values[-2]
 
-        if len(self.trend) < 1:
+        if not has_valid_values(self.trend, 1):
             self.trend.append(0.0)
         else:
             if (value.high + value.low + value.close) > (value2.high + value2.low + value2.close):
@@ -45,13 +46,13 @@ class KVO(Indicator):
             else:
                 self.trend.append(-1.0)
 
-        if len(self.trend) < 2:
+        if not has_valid_values(self.trend, 2):
             return None
 
         dm = value.high - value.low
         dm2 = value2.high - value2.low
 
-        if len(self.cumulative_measurement) < 1:
+        if not has_valid_values(self.cumulative_measurement, 1):
             prev_cm = dm
         else:
             prev_cm = self.cumulative_measurement[-1]
@@ -69,9 +70,7 @@ class KVO(Indicator):
         self.fast_ma.add_input_value(volume_force)
         self.slow_ma.add_input_value(volume_force)
 
-        if len(self.fast_ma) < 1 or len(self.slow_ma) < 1:
+        if not has_valid_values(self.fast_ma, 1) or not has_valid_values(self.slow_ma, 1):
             return None
-
-        #print(f"kvo: {self.fast_ema[-1] - self.slow_ema[-1]} vf: {volume_force} dm: {dm} cm: {self.cumulative_measurement[-1]} trend: {self.trend[-1]} volume: {value.volume}")
 
         return self.fast_ma[-1] - self.slow_ma[-1]

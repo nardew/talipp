@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.indicators.MACD import MACD, MACDVal
 from talipp.indicators.Stoch import Stoch, StochVal
@@ -29,7 +30,7 @@ class STC(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.stoch_d) > 0 and self.stoch_d[-1].d is not None:
+        if has_valid_values(self.stoch_d, 1) and self.stoch_d[-1].d is not None:
             return max(min(self.stoch_d[-1].d, 100), 0)
         else:
             return None

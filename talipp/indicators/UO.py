@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
@@ -28,7 +29,7 @@ class UO(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < 2:
+        if not has_valid_values(self.input_values, 2):
             return None
 
         value = self.input_values[-1]
@@ -37,7 +38,7 @@ class UO(Indicator):
         self.buy_press.append(value.close - min(value.low, prev_value.close))
         self.true_range.append(max(value.high, prev_value.close) - min(value.low, prev_value.close))
 
-        if len(self.buy_press) < self.slow_period:
+        if not has_valid_values(self.buy_press, self.slow_period):
             return None
 
         avg_fast = sum(self.buy_press[-self.fast_period:]) / float(sum(self.true_range[-self.fast_period:]))

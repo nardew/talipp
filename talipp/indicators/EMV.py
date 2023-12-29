@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV
@@ -25,7 +26,7 @@ class EMV(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < 2:
+        if not has_valid_values(self.input_values, 2):
             return None
 
         value = self.input_values[-1]
@@ -39,7 +40,7 @@ class EMV(Indicator):
 
         self.emv_sma.add_input_value(emv)
 
-        if len(self.emv_sma) < 1:
+        if not has_valid_values(self.emv_sma, 1):
             return None
         else:
             return self.emv_sma[-1]

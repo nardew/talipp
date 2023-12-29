@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.EMA import EMA
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 
@@ -25,12 +26,12 @@ class DEMA(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if not self.ema.has_output_value():
+        if not has_valid_values(self.ema, 1):
             return None
 
         self.ema_ema.add_input_value(self.ema[-1])
 
-        if not self.ema_ema.has_output_value():
+        if not has_valid_values(self.ema_ema, 1):
             return None
 
         return 2.0 * self.ema[-1] - self.ema_ema[-1]

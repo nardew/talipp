@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV
@@ -33,17 +34,17 @@ class MassIndex(Indicator):
         value = self.input_values[-1]
         self.ma.add_input_value(value.high - value.low)
 
-        if not self.ma.has_output_value():
+        if not has_valid_values(self.ma, 1):
             return None
 
         self.ma_ma.add_input_value(self.ma[-1])
 
-        if not self.ma_ma.has_output_value():
+        if not has_valid_values(self.ma_ma, 1):
             return None
 
         self.ma_ratio.append(self.ma[-1] / float(self.ma_ma[-1]))
 
-        if len(self.ma_ratio) < self.ema_ratio_period:
+        if not has_valid_values(self.ma_ratio, self.ema_ratio_period):
             return None
 
         return sum(self.ma_ratio[-self.ema_ratio_period:])

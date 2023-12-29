@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 
 
@@ -23,9 +24,9 @@ class RSI(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < self.period + 1:
+        if not has_valid_values(self.input_values, self.period+1):
             return None
-        elif len(self.input_values) == self.period + 1:
+        elif has_valid_values(self.input_values, self.period+1, exact=True):
             # calculate initial changes in price
             init_changes = [self.input_values[i] - self.input_values[i - 1] for i in range(1, self.period)]
 

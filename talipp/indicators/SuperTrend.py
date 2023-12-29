@@ -2,6 +2,7 @@ import enum
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.ATR import ATR
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
@@ -24,7 +25,7 @@ class SuperTrend(Indicator):
     """
 
     def __init__(self, atr_period: int, mult: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor = value_extractor)
+        super().__init__(value_extractor = value_extractor, output_value_type=SuperTrendVal)
 
         self.atr = ATR(atr_period)
         self.mult = mult
@@ -41,7 +42,7 @@ class SuperTrend(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.atr) == 0:
+        if not has_valid_values(self.atr, 1):
             return None
 
         """
@@ -86,7 +87,7 @@ class SuperTrend(Indicator):
         IF P.ST == P.FLB AND C.CLOSE < C.FLB: C.ST = C.FUB
         """
 
-        if len(self.output_values) == 0:
+        if not has_valid_values(self.output_values, 1):
             supertrend = 0
         elif (self.output_values[-1].value == self.fub[-2] and self.input_values[-1].close <= self.fub[-1]):
             supertrend = self.fub[-1]

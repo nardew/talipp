@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
@@ -23,14 +24,10 @@ class AccuDist(Indicator):
             mfm = ((value.close - value.low) - (value.high - value.close)) / float(value.high - value.low)
             mfv = mfm * value.volume
         else:
-            # in case high and low are equal (and hence division by zero above), return previous value if exists, otherwise
-            # return None
-            if self.has_output_value():
-                return self.output_values[-1]
-            else:
-                return None
+            # in case high and low are equal (and hence division by zero above), return None
+            return None
 
-        if not self.has_output_value():
+        if not has_valid_values(self.output_values):
             return mfv
         else:
             return self.output_values[-1] + mfv

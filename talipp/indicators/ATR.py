@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
@@ -25,7 +26,7 @@ class ATR(Indicator):
         high = self.input_values[-1].high
         low = self.input_values[-1].low
 
-        if len(self.input_values) == 1:
+        if has_valid_values(self.input_values, 1, exact=True):
             self.tr.append(high - low)
         else:
             close2 = self.input_values[-2].close

@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ohlcv import OHLCV
 
@@ -17,7 +18,9 @@ class OBV(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) == 1:
+        if not has_valid_values(self.input_values, 1):
+            return None
+        elif has_valid_values(self.input_values, 1, exact=True):
             return self.input_values[0].volume
         else:
             value = self.input_values[-1]

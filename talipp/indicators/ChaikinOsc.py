@@ -1,5 +1,6 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.AccuDist import AccuDist
 from talipp.indicators.Indicator import Indicator, ValueExtractorType
 from talipp.ma import MAType, MAFactory
@@ -32,13 +33,13 @@ class ChaikinOsc(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if not self.accu_dist.has_output_value():
+        if not has_valid_values(self.accu_dist):
             return None
 
         self.ma_fast.add_input_value(self.accu_dist[-1])
         self.ma_slow.add_input_value(self.accu_dist[-1])
 
-        if not self.ma_fast.has_output_value() or not self.ma_slow.has_output_value():
+        if not has_valid_values(self.ma_fast) or not has_valid_values(self.ma_slow):
             return None
 
         return self.ma_fast[-1] - self.ma_slow[-1]
