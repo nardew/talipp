@@ -9,7 +9,7 @@ from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI,
     CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, Ichimoku, \
     KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, McGinleyDynamic, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, \
     SFX, SMA, SMMA, SOBV, STC, StdDev, \
-    Stoch, StochRSI, SuperTrend, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, WMA, ZLEMA
+    Stoch, StochRSI, SuperTrend, T3, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, WMA, ZLEMA
 from talipp.ohlcv import OHLCV
 
 
@@ -72,6 +72,7 @@ async def run():
     print(f'Stoch: {Stoch(14, 3, ohlcv)[-1]}')
     print(f'StochRSI: {StochRSI(14, 14, 3, 3, close)[-1]}')
     print(f'SuperTrend: {SuperTrend(10, 3, ohlcv)[-20:]}')
+    print(f'T3: {T3(9, 0.7, close)[-10:]}')
     print(f'TEMA: {TEMA(20, close)[-1]}')
     print(f'TRIX: {TRIX(18, close)[-1]}')
     print(f'TSI: {TSI(13, 25, close)[-1]}')
@@ -81,7 +82,7 @@ async def run():
     print(f'VWAP: {VWAP(ohlcv)[-1]}')
     print(f'VWMA: {VWMA(20, ohlcv)[-1]}')
     print(f'WMA: {WMA(9, close)[-1]}')
-    print(f'ZLEMA: {ZLEMA(14, close)[-10:]}')
+    print(f'ZLEMA: {ZLEMA(14, close)[-1]}')
 
     await client.close()
 
