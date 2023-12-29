@@ -48,7 +48,7 @@ class Stoch(Indicator):
         else:
             k = 100.0 * (self.input_values[-1].close - min_low) / (max_high - min_low)
 
-        self.values_d.add_input_value(k)
+        self.values_d.add(k)
 
         if has_valid_values(self.values_d, 1):
             d = self.values_d[-1]

@@ -67,8 +67,8 @@ class KVO(Indicator):
         else:
             volume_force = value.volume * abs(2 * (dm / self.cumulative_measurement[-1] - 1)) * self.trend[-1] * 100
 
-        self.fast_ma.add_input_value(volume_force)
-        self.slow_ma.add_input_value(volume_force)
+        self.fast_ma.add(volume_force)
+        self.slow_ma.add(volume_force)
 
         if not has_valid_values(self.fast_ma, 1) or not has_valid_values(self.slow_ma, 1):
             return None

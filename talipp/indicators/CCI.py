@@ -25,7 +25,7 @@ class CCI(Indicator):
         value = self.input_values[-1]
         typical_price = (value.high + value.low + value.close) / 3.0
 
-        self.mean_dev.add_input_value(typical_price)
+        self.mean_dev.add(typical_price)
 
         if not has_valid_values(self.mean_dev, 1):
             return None

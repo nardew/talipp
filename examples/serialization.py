@@ -11,8 +11,8 @@ if __name__ == "__main__":
 
     print('\nUpdating indicators...\n')
 
-    bb.add_input_value(100)
-    bb_unpickled.add_input_value(100)
+    bb.add(100)
+    bb_unpickled.add(100)
 
     print(f"Updated BB:           {bb[-1]}")
     print(f"Updated unpickled BB: {bb_unpickled[-1]}")

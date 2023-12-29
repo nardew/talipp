@@ -32,12 +32,12 @@ class MassIndex(Indicator):
 
     def _calculate_new_value(self) -> Any:
         value = self.input_values[-1]
-        self.ma.add_input_value(value.high - value.low)
+        self.ma.add(value.high - value.low)
 
         if not has_valid_values(self.ma, 1):
             return None
 
-        self.ma_ma.add_input_value(self.ma[-1])
+        self.ma_ma.add(self.ma[-1])
 
         if not has_valid_values(self.ma_ma, 1):
             return None

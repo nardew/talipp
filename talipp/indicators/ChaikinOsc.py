@@ -36,8 +36,8 @@ class ChaikinOsc(Indicator):
         if not has_valid_values(self.accu_dist):
             return None
 
-        self.ma_fast.add_input_value(self.accu_dist[-1])
-        self.ma_slow.add_input_value(self.accu_dist[-1])
+        self.ma_fast.add(self.accu_dist[-1])
+        self.ma_slow.add(self.accu_dist[-1])
 
         if not has_valid_values(self.ma_fast) or not has_valid_values(self.ma_slow):
             return None

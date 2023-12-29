@@ -31,7 +31,7 @@ class Test(TalippTest):
         sma4 = SMA(3, input_indicator = sma3)
 
         for i in range(1, 11):
-            sma1.add_input_value(i)
+            sma1.add(i)
 
         print(sma1)
         print(sma2)
@@ -53,9 +53,9 @@ class Test(TalippTest):
         last_input_value = sma1.input_values[-1]
 
         for i in range(1, 20):
-            sma1.update_input_value(i)
+            sma1.update(i)
 
-        sma1.update_input_value(last_input_value)
+        sma1.update(last_input_value)
 
         self.assertEqual(last_indicator_value, sma4[-1])
 
@@ -68,10 +68,10 @@ class Test(TalippTest):
         last_indicator_value = sma4[-1]
 
         for i in range(1, 20):
-            sma1.add_input_value(i)
+            sma1.add(i)
 
         for i in range(1, 20):
-            sma1.remove_input_value()
+            sma1.remove()
 
         self.assertEqual(last_indicator_value, sma4[-1])
 

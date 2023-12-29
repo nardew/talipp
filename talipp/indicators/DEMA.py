@@ -29,7 +29,7 @@ class DEMA(Indicator):
         if not has_valid_values(self.ema, 1):
             return None
 
-        self.ema_ema.add_input_value(self.ema[-1])
+        self.ema_ema.add(self.ema[-1])
 
         if not has_valid_values(self.ema_ema, 1):
             return None

@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from collections.abc import MutableSequence, Sequence
+from warnings import warn
 from typing import List, Any, Callable, Union, Type
 
 ListAny = List[Any]
@@ -47,17 +48,24 @@ class Indicator(Sequence):
 
         if input_values is not None:
             for value in input_values:
-                self.add_input_value(value)
+                self.add(value)
 
         if input_indicator is not None:
             for value in input_indicator:
-                self.add_input_value(value)
+                self.add(value)
 
             input_indicator.add_output_listener(self)
 
     def add_input_value(self, value: Any) -> None:
+        warn('This method is deprecated and will be removed in the next major version. '
+             'Please use add(...) method with the same signature instead.',
+             DeprecationWarning,
+             stacklevel=2)
+        return self.add(value)
+
+    def add(self, value: Any) -> None:
         for sub_indicator in self.sub_indicators:
-            sub_indicator.add_input_value(value)
+            sub_indicator.add(value)
 
         if not isinstance(value, list):
             value = [value]
@@ -78,15 +86,29 @@ class Indicator(Sequence):
             self._add_to_output_values(new_value)
 
             for listener in self.output_listeners:
-                listener.add_input_value(new_value)
+                listener.add(new_value)
 
     def update_input_value(self, value: Any) -> None:
-        self.remove_input_value()
-        self.add_input_value(value)
+        warn('This method is deprecated and will be removed in the next major version. '
+             'Please use update(...) method with the same signature instead.',
+             DeprecationWarning,
+             stacklevel=2)
+        return self.update(value)
+
+    def update(self, value: Any) -> None:
+        self.remove()
+        self.add(value)
 
     def remove_input_value(self) -> None:
+        warn('This method is deprecated and will be removed in the next major version. '
+             'Please use remove(...) method with the same signature instead.',
+             DeprecationWarning,
+             stacklevel=2)
+        return self.remove()
+
+    def remove(self) -> None:
         for sub_indicator in self.sub_indicators:
-            sub_indicator.remove_input_value()
+            sub_indicator.remove()
 
         if len(self.input_values) > 0:
             self.input_values.pop(-1)
@@ -95,15 +117,15 @@ class Indicator(Sequence):
 
         for lst in self.managed_sequences:
             if isinstance(lst, Indicator):
-                lst.remove_input_value()
+                lst.remove()
             else:
                 if len(lst) > 0:
                     lst.pop(-1)
 
-        self._remove_input_value_custom()
+        self._remove_custom()
 
         for listener in self.output_listeners:
-            listener.remove_input_value()
+            listener.remove()
 
     def _add_to_output_values(self, value: Any) -> None:
         self.output_values.append(value)
@@ -112,7 +134,7 @@ class Indicator(Sequence):
         if len(self.output_values) > 0:
             self.output_values.pop(-1)
 
-    def _remove_input_value_custom(self) -> None:
+    def _remove_custom(self) -> None:
         pass
 
     def remove_all(self) -> None:
