@@ -7,6 +7,18 @@
 ![PyPy](https://img.shields.io/badge/pypy-3-blue.svg)
 ![unit tests](https://github.com/nardew/talipp/workflows/unit%20tests/badge.svg)
 
+---
+
+## New major release `talipp 2.0.0-rc.1` available!
+
+- Scope: https://github.com/nardew/talipp/issues/111
+- PR: https://github.com/nardew/talipp/pull/96
+- Installation:
+  - `pip install talipp==2.0.0rc1`, or
+  - `pip install git+https://github.com/nardew/talipp.git@v2.x`
+
+---
+
 `talipp` (or `tali++`) is a Python library implementing financial indicators for technical analysis. The distinctive feature of the library is its incremental computation which fits extremely well real-time applications or applications with iterative input in general.  
 
 Unlike existing libraries for technical analysis which typically have to work on the whole input vector in order to calculate new values of indicators, `talipp` due to its incremental architecture calculates new indicators' values exclusively based on the delta input data. That implies, among others, it requires `O(1)` time to produce new values in comparison to `O(n)` required by other libraries.
