@@ -1,4 +1,4 @@
-# TALIpp - Incremental Technical Analysis Library 1.10.0
+# TALIpp - Incremental Technical Analysis Library
 
 ![](https://img.shields.io/badge/python-3.8-blue.svg) 
 ![](https://img.shields.io/badge/python-3.9-blue.svg)
