@@ -1,4 +1,4 @@
-# TALIpp - Incremental Technical Analysis Library 1.10.0
+# TALIpp - Incremental Technical Analysis Library
 
 ![](https://img.shields.io/badge/python-3.8-blue.svg) 
 ![](https://img.shields.io/badge/python-3.9-blue.svg)
@@ -6,6 +6,18 @@
 ![](https://img.shields.io/badge/python-3.11-blue.svg)
 ![PyPy](https://img.shields.io/badge/pypy-3-blue.svg)
 ![unit tests](https://github.com/nardew/talipp/workflows/unit%20tests/badge.svg)
+
+---
+
+## New major release `talipp 2.0.0-rc.1` available!
+
+- Scope: https://github.com/nardew/talipp/issues/111
+- PR: https://github.com/nardew/talipp/pull/96
+- Installation:
+  - `pip install talipp==2.0.0rc1`, or
+  - `pip install git+https://github.com/nardew/talipp.git@v2.x`
+
+---
 
 `talipp` (or `tali++`) is a Python library implementing financial indicators for technical analysis. The distinctive feature of the library is its incremental computation which fits extremely well real-time applications or applications with iterative input in general.  
 
