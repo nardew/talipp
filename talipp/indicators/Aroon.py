@@ -1,8 +1,8 @@
-from typing import List, Any
 from dataclasses import dataclass
+from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
-from talipp.indicators.SMA import SMA
+from talipp.indicator_util import has_valid_values
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ohlcv import OHLCV
 
 
@@ -19,15 +19,15 @@ class Aroon(Indicator):
     Output: a list of AroonVal
     """
 
-    def __init__(self, period: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier, output_value_type=AroonVal)
 
         self.period = period
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < self.period + 1:
+        if not has_valid_values(self.input_values, self.period+1):
             return None
 
         # search in reversed list in order to get the right-most index

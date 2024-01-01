@@ -1,8 +1,9 @@
-from typing import List, Any
 from dataclasses import dataclass
+from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicator_util import has_valid_values
 from talipp.indicators import ATR
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ohlcv import OHLCV
 
 
@@ -19,35 +20,35 @@ class ChandeKrollStop(Indicator):
     Output: a list of ChandeKrollStopVal objects
     """
 
-    def __init__(self, preliminary_period: int, atr_mult: float, period: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, atr_period: int, atr_mult: float, period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier, output_value_type=ChandeKrollStopVal)
 
-        self.preliminary_period = preliminary_period
+        self.atr_period = atr_period
         self.atr_mult = atr_mult
         self.period = period
 
-        self.atr = ATR(preliminary_period)
+        self.atr = ATR(atr_period)
         self.add_sub_indicator(self.atr)
 
-        self.preliminary_high_stop = []
-        self.preliminary_low_stop = []
-        self.add_managed_sequence(self.preliminary_high_stop)
-        self.add_managed_sequence(self.preliminary_low_stop)
+        self.high_stop_list = []
+        self.low_stop_list = []
+        self.add_managed_sequence(self.high_stop_list)
+        self.add_managed_sequence(self.low_stop_list)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < self.preliminary_period:
+        if not has_valid_values(self.input_values, self.atr_period):
             return None
 
-        if len(self.atr) < 1:
+        if not has_valid_values(self.atr, 1):
             return None
 
-        self.preliminary_high_stop.append(max(self.input_values[-self.preliminary_period:], key = lambda x: x.high).high - self.atr[-1] * self.atr_mult)
-        self.preliminary_low_stop.append(min(self.input_values[-self.preliminary_period:], key = lambda x: x.low).low + self.atr[-1] * self.atr_mult)
+        self.high_stop_list.append(max(self.input_values[-self.atr_period:], key = lambda x: x.high).high - self.atr[-1] * self.atr_mult)
+        self.low_stop_list.append(min(self.input_values[-self.atr_period:], key = lambda x: x.low).low + self.atr[-1] * self.atr_mult)
 
-        if len(self.preliminary_high_stop) < self.period:
+        if not has_valid_values(self.high_stop_list, self.period):
             return None
 
-        return ChandeKrollStopVal(max(self.preliminary_high_stop[-self.period:]),
-                                  min(self.preliminary_low_stop[-self.period:]))
+        return ChandeKrollStopVal(max(self.high_stop_list[-self.period:]),
+                                  min(self.low_stop_list[-self.period:]))

@@ -1,14 +1,16 @@
 from dataclasses import dataclass
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
-from talipp.indicators import BB, DonchianChannels, KeltnerChannels, SMA
+from talipp.indicator_util import has_valid_values
+from talipp.indicators import BB, DonchianChannels, KeltnerChannels
+from talipp.indicators.Indicator import Indicator, InputModifierType
+from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV, ValueExtractor
 
 
 @dataclass
 class TTMVal:
-    # squeeze is on (=True) or off (=False
+    # squeeze is on (=True) or off (=False+
     squeeze: bool = None
 
     # histogram of the linear regression
@@ -23,20 +25,21 @@ class TTM(Indicator):
     """
 
     def __init__(self, period: int, bb_std_dev_mult: float = 2, kc_atr_mult: float = 1.5,
-                 input_values: List[OHLCV] = None, input_indicator: Indicator = None):
-        super().__init__()
+                 input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None,
+                 ma_type: MAType = MAType.SMA):
+        super().__init__(input_modifier=input_modifier, output_value_type=TTMVal)
 
         self.period = period
 
-        self.bb = BB(period, bb_std_dev_mult, value_extractor = ValueExtractor.extract_close)
+        self.bb = BB(period, bb_std_dev_mult, input_modifier=ValueExtractor.extract_close)
         self.dc = DonchianChannels(period)
         self.kc = KeltnerChannels(period, period, kc_atr_mult, kc_atr_mult)
-        self.sma = SMA(period, value_extractor = ValueExtractor.extract_close)
+        self.ma = MAFactory.get_ma(ma_type, period, input_modifier=ValueExtractor.extract_close)
 
         self.add_sub_indicator(self.bb)
         self.add_sub_indicator(self.dc)
         self.add_sub_indicator(self.kc)
-        self.add_sub_indicator(self.sma)
+        self.add_sub_indicator(self.ma)
 
         self.deltas = []
         self.add_managed_sequence(self.deltas)
@@ -50,17 +53,17 @@ class TTM(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.bb) < 1 or len(self.kc) < 1:
+        if not has_valid_values(self.bb, 1) or not has_valid_values(self.kc, 1):
             return None
 
         # squeeze is on if BB is entirely encompassed in KC
         squeeze = self.bb[-1].ub < self.kc[-1].ub and self.bb[-1].lb > self.kc[-1].lb
 
-        if len(self.sma) > 0 and len(self.dc) > 0:
-            self.deltas.append(self.input_values[-1].close - (self.dc[-1].cb + self.sma[-1]) / 2.0)
+        if has_valid_values(self.ma, 1) and has_valid_values(self.dc, 1):
+            self.deltas.append(self.input_values[-1].close - (self.dc[-1].cb + self.ma[-1]) / 2.0)
 
         hist = None
-        if len(self.deltas) >= self.period:
+        if has_valid_values(self.deltas, self.period):
             # calculate linear regression y = ax + b
             mean_y = sum(self.deltas[-self.period:]) / float(self.period)
 

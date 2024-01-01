@@ -1,6 +1,7 @@
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicator_util import has_valid_values
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ohlcv import OHLCV
 
 
@@ -11,7 +12,7 @@ class ATR(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period: int, input_values: List[OHLCV] = None):
+    def __init__(self, period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
         super(ATR, self).__init__()
 
         self.period = period
@@ -19,13 +20,13 @@ class ATR(Indicator):
 
         self.add_managed_sequence(self.tr)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         high = self.input_values[-1].high
         low = self.input_values[-1].low
 
-        if len(self.input_values) == 1:
+        if has_valid_values(self.input_values, 1, exact=True):
             self.tr.append(high - low)
         else:
             close2 = self.input_values[-2].close

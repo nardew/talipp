@@ -1,9 +1,10 @@
 import enum
-from typing import List, Any
 from dataclasses import dataclass
+from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.ATR import ATR
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ohlcv import OHLCV
 
 
@@ -23,8 +24,8 @@ class SuperTrend(Indicator):
     Output: A list of SuperTrendVal
     """
 
-    def __init__(self, atr_period: int, mult: int, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, atr_period: int, mult: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier, output_value_type=SuperTrendVal)
 
         self.atr = ATR(atr_period)
         self.mult = mult
@@ -38,10 +39,10 @@ class SuperTrend(Indicator):
         self.add_managed_sequence(self.fub)
         self.add_managed_sequence(self.flb)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.atr) == 0:
+        if not has_valid_values(self.atr, 1):
             return None
 
         """
@@ -86,7 +87,7 @@ class SuperTrend(Indicator):
         IF P.ST == P.FLB AND C.CLOSE < C.FLB: C.ST = C.FUB
         """
 
-        if len(self.output_values) == 0:
+        if not has_valid_values(self.output_values, 1):
             supertrend = 0
         elif (self.output_values[-1].value == self.fub[-2] and self.input_values[-1].close <= self.fub[-1]):
             supertrend = self.fub[-1]

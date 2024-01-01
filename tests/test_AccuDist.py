@@ -29,7 +29,7 @@ class TestAccuDist(TalippTest):
 
     def test_low_high_equal(self):
         ind = AccuDist(self.input_values)
-        ind.add_input_value(OHLCV(1, 1, 1, 1, 1))
+        ind.add(OHLCV(1, 1, 1, 1, 1))
 
         # no assert since the check verifies no exception was raised
 

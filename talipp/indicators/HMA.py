@@ -1,7 +1,8 @@
+from math import sqrt
 from typing import List, Any
 
-from math import sqrt
-from talipp.indicators.Indicator import Indicator
+from talipp.indicator_util import has_valid_values
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.indicators.WMA import WMA
 
 
@@ -12,8 +13,8 @@ class HMA(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period: int, input_values: List[float] = None, input_indicator: Indicator = None):
-        super().__init__()
+    def __init__(self, period: int, input_values: List[float] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier)
 
         self.period = period
 
@@ -28,12 +29,12 @@ class HMA(Indicator):
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.wma) < sqrt(self.period):
+        if not has_valid_values(self.wma, int(sqrt(self.period))):
             return None
 
-        self.hma.add_input_value(2.0 * self.wma2[-1] - self.wma[-1])
+        self.hma.add(2.0 * self.wma2[-1] - self.wma[-1])
 
-        if not self.hma.has_output_value():
+        if not has_valid_values(self.hma, 1):
             return None
 
         return self.hma[-1]

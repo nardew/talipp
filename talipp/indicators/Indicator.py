@@ -1,21 +1,19 @@
-from dataclasses import is_dataclass
 from abc import ABCMeta, abstractmethod
-from typing import List, Any, Callable, Dict, Union
-from collections import defaultdict
 from collections.abc import MutableSequence, Sequence
-from itertools import chain
-from operator import methodcaller, attrgetter
+from warnings import warn
+from typing import List, Any, Callable, Union, Type
 
 ListAny = List[Any]
 ManagedSequenceType = Union['Indicator', MutableSequence]
-ValueExtractorType = Callable[..., Any]
+InputModifierType = Callable[..., Any]
 
 
 class Indicator(Sequence):
     __metaclass__ = ABCMeta
 
-    def __init__(self, value_extractor: ValueExtractorType = None):
-        self.value_extractor = value_extractor
+    def __init__(self, input_modifier: InputModifierType = None, output_value_type: Type = float):
+        self.input_modifier =input_modifier
+        self.output_value_type = output_value_type
 
         self.input_values: ListAny = []
         self.output_values: ListAny = []
@@ -50,40 +48,67 @@ class Indicator(Sequence):
 
         if input_values is not None:
             for value in input_values:
-                self.add_input_value(value)
+                self.add(value)
 
         if input_indicator is not None:
             for value in input_indicator:
-                self.add_input_value(value)
+                self.add(value)
 
             input_indicator.add_output_listener(self)
 
     def add_input_value(self, value: Any) -> None:
+        warn('This method is deprecated and will be removed in the next major version. '
+             'Please use add(...) method with the same signature instead.',
+             DeprecationWarning,
+             stacklevel=2)
+        return self.add(value)
+
+    def add(self, value: Any) -> None:
         for sub_indicator in self.sub_indicators:
-            sub_indicator.add_input_value(value)
+            sub_indicator.add(value)
 
         if not isinstance(value, list):
             value = [value]
 
         for input_value in value:
-            if self.value_extractor is not None:
-                input_value = self.value_extractor(input_value)
+            if input_value is not None and self.input_modifier is not None:
+                input_value = self.input_modifier(input_value)
             self.input_values.append(input_value)
 
-            new_value = self._calculate_new_value()
-            if new_value is not None:
-                self.output_values.append(new_value)
+            if input_value is not None:
+                new_value = self._calculate_new_value()
+            else:
+                new_value = None
 
-                for listener in self.output_listeners:
-                    listener.add_input_value(new_value)
+            if new_value is None and len(self.output_values) > 0:
+                new_value = self.output_values[-1]
+
+            self._add_to_output_values(new_value)
+
+            for listener in self.output_listeners:
+                listener.add(new_value)
 
     def update_input_value(self, value: Any) -> None:
-        self.remove_input_value()
-        self.add_input_value(value)
+        warn('This method is deprecated and will be removed in the next major version. '
+             'Please use update(...) method with the same signature instead.',
+             DeprecationWarning,
+             stacklevel=2)
+        return self.update(value)
+
+    def update(self, value: Any) -> None:
+        self.remove()
+        self.add(value)
 
     def remove_input_value(self) -> None:
+        warn('This method is deprecated and will be removed in the next major version. '
+             'Please use remove(...) method with the same signature instead.',
+             DeprecationWarning,
+             stacklevel=2)
+        return self.remove()
+
+    def remove(self) -> None:
         for sub_indicator in self.sub_indicators:
-            sub_indicator.remove_input_value()
+            sub_indicator.remove()
 
         if len(self.input_values) > 0:
             self.input_values.pop(-1)
@@ -92,21 +117,24 @@ class Indicator(Sequence):
 
         for lst in self.managed_sequences:
             if isinstance(lst, Indicator):
-                lst.remove_input_value()
+                lst.remove()
             else:
                 if len(lst) > 0:
                     lst.pop(-1)
 
-        self._remove_input_value_custom()
+        self._remove_custom()
 
         for listener in self.output_listeners:
-            listener.remove_input_value()
+            listener.remove()
+
+    def _add_to_output_values(self, value: Any) -> None:
+        self.output_values.append(value)
 
     def _remove_output_value(self) -> None:
         if len(self.output_values) > 0:
             self.output_values.pop(-1)
 
-    def _remove_input_value_custom(self) -> None:
+    def _remove_custom(self) -> None:
         pass
 
     def remove_all(self) -> None:
@@ -162,23 +190,8 @@ class Indicator(Sequence):
         else:
             self.input_values = input_values
 
-    def has_output_value(self) -> bool:
-        if len(self.output_values) > 0 and self.output_values[-1] is not None:
-            return True
-        else:
-            return False
-
-    def to_lists(self, align_with_input: bool = False) -> Dict[str, List[float]]:
-        if len(self.output_values) == 0:
-            return {}
-        else:
-            if is_dataclass(self.output_values[0]):
-                result = defaultdict(list)
-                for key, value in chain.from_iterable(map(methodcaller('items'), map(attrgetter('__dict__'), self.output_values))):
-                    result[key].extend([value])
-                return dict(result)
-            else:
-                raise Exception("to_lists() method can be used only with indicators returning multiple values as their result.")
-
     def add_output_listener(self, listener: 'Indicator') -> None:
         self.output_listeners.append(listener)
+
+    def get_output_value_type(self):
+        return self.output_value_type

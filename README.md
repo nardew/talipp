@@ -42,7 +42,7 @@ Last but not least, `talipp` is a community project and therefore open to any su
 - new 'Schaff Trend Cycle' indicator added!
 - talipp is on [conda-forge](https://github.com/conda-forge/talipp-feedstock) too!
 
-For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/master/CHANGELOG.md).
+For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/main/CHANGELOG.md).
 
 ---
 
@@ -73,7 +73,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Mass Index
 - McGinley Dynamic
 - Mean Deviation
-- Moving Average (ALMA, SMA, SMMA, DEMA, EMA, HMA, KAMA, TEMA, VWMA, WMA)
+- Moving Average (ALMA, DEMA, EMA, HMA, KAMA, SMA, SMMA, T3, TEMA, VWMA, WMA, ZLEMA)
 - Moving Average Convergence Divergence (MACD)
 - On-balance Volume (OBV), Smoothed On-balance Volume (SOBV)
 - Parabolic SAR
@@ -99,7 +99,7 @@ pip install talipp
 ```
 In case you want to install the latest version from the repo, use
 ```bash
-pip install git+https://github.com/nardew/talipp.git@master
+pip install git+https://github.com/nardew/talipp.git@main
 ```
 
 ### Examples
@@ -118,19 +118,19 @@ print(f'EMA(3): {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125]
 print(f'Last EMA value: {ema[-1]}') # 8.28125
 
 # append a new input value incrementally
-ema.add_input_value(11)
+ema.add(11)
 print(f'EMA after adding a new value:      {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125, 9.640625]
 
 # change the last added value
-ema.update_input_value(15)
+ema.update(15)
 print(f'EMA after updating the last value: {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125, 11.640625]
 
 # change the last added value again
-ema.update_input_value(18)
+ema.update(18)
 print(f'EMA after updating the last value: {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125, 13.140625]
 
 # remove the last added value
-ema.remove_input_value()
+ema.remove()
 print(f'EMA after removing the last value: {ema}') # [3.0, 5.0, 7.0, 4.5, 4.25, 5.125, 6.5625, 8.28125]
 
 # purge the oldest input value
@@ -156,7 +156,7 @@ sma2 = SMA(3, input_indicator = sma1)
 sma3 = SMA(3, input_indicator = sma2)
 
 print(f"Chain three moving averages:")
-sma1.add_input_value([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+sma1.add([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 print(f"SMA1: {sma1}") # [2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
 print(f"SMA2: {sma2}") # [3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
 print(f"SMA3: {sma3}") # [4.0, 5.0, 6.0, 7.0]
@@ -176,9 +176,9 @@ To illustrate performance scaling of `talipp` we ran several tests together with
 - where `talipp` clearly takes the lead is  incremental calculation. Again this is well expected since `talipp`'s CUD operations take `O(1)` time compared to `O(n)` time of `talib`. For 50k input the difference is as big as ~200ms vs. ~6800ms.
 - from the graphs it is apparent that `talipp` scales linearly with the size of the input compared to quadratic curve of `talib` when incremental operations are concerned. This follows from `talipp`'s `O(1)` time for delta operations vs. `talib`'s `O(n)`.
 
-![SMA(20)](https://raw.githubusercontent.com/nardew/talipp/master/images/SMA_20.svg)
-![TEMA(20)](https://raw.githubusercontent.com/nardew/talipp/master/images/TEMA_20.svg)
-![StochRSI(14,3,3)](https://raw.githubusercontent.com/nardew/talipp/master/images/StochRSI_14_3_3.svg)
+![SMA(20)](https://raw.githubusercontent.com/nardew/talipp/main/images/SMA_20.svg)
+![TEMA(20)](https://raw.githubusercontent.com/nardew/talipp/main/images/TEMA_20.svg)
+![StochRSI(14,3,3)](https://raw.githubusercontent.com/nardew/talipp/main/images/StochRSI_14_3_3.svg)
 
 ### Contact
 

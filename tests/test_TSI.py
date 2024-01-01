@@ -23,7 +23,9 @@ class Test(TalippTest):
         """ Check that if there is no price difference between two consecutive prices, the indicator does not crash"""
         ind = TSI(3, 5, self.input_values_equal)
 
-        self.assertEqual(len(ind), 0)
+        print(ind)
+
+        self.assertSetEqual(set(ind), {None})
 
     def test_update(self):
         self.assertIndicatorUpdate(TSI(14, 23, self.input_values))

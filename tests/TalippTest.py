@@ -27,9 +27,9 @@ class TalippTest(unittest.TestCase):
                 new_val = OHLCV(i + 1, i + 2, i + 3, i + 4, i + 5)
             else:
                 new_val = i
-            indicator.update_input_value(new_val)
+            indicator.update(new_val)
 
-        indicator.update_input_value(last_input_value)
+        indicator.update(last_input_value)
 
         self.assertEqual(last_indicator_value, indicator[-1])
 
@@ -42,17 +42,17 @@ class TalippTest(unittest.TestCase):
                 new_val = OHLCV((i + 1)**2, (i + 3)**2, (i + 5)**2, (i + 7)**2, i**2)
             else:
                 new_val = (i + 1)**2
-            indicator.add_input_value(new_val)
+            indicator.add(new_val)
 
         for i in range(1, iterations_no):
-            indicator.remove_input_value()
+            indicator.remove()
 
         # verify that adding and then removing X input values returns the original output value
         self.assertEqual(last_indicator_value, indicator[-1])
 
         # delete the original last input value and add it back and check the original last output value is returned
-        indicator.remove_input_value()
-        indicator.add_input_value(last_input_value)
+        indicator.remove()
+        indicator.add(last_input_value)
 
         self.assertEqual(last_indicator_value, indicator[-1])
 

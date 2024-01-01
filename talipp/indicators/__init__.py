@@ -42,6 +42,7 @@ from .StdDev import StdDev as StdDev
 from .Stoch import Stoch as Stoch
 from .StochRSI import StochRSI as StochRSI
 from .SuperTrend import SuperTrend as SuperTrend
+from .T3 import T3 as T3
 from .TEMA import TEMA as TEMA
 from .TRIX import TRIX as TRIX
 from .TSI import TSI as TSI
@@ -51,6 +52,7 @@ from .VTX import VTX as VTX
 from .VWAP import VWAP as VWAP
 from .VWMA import VWMA as VWMA
 from .WMA import WMA as WMA
+from .ZLEMA import ZLEMA as ZLEMA
 
 __all__ = (
     "AccuDist",
@@ -97,6 +99,7 @@ __all__ = (
     "Stoch",
     "StochRSI",
     "SuperTrend",
+    "T3",
     "TEMA",
     "TRIX",
     "TSI",
@@ -106,4 +109,5 @@ __all__ = (
     "VWAP",
     "VWMA",
     "WMA",
+    "ZLEMA"
 )

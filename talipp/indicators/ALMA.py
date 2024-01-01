@@ -1,7 +1,7 @@
+from math import exp
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
-from math import exp
+from talipp.indicators.Indicator import Indicator, InputModifierType
 
 
 class ALMA(Indicator):
@@ -11,8 +11,8 @@ class ALMA(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, period: int, offset: float, sigma: float, input_values: List[float] = None, input_indicator: Indicator = None):
-        super().__init__()
+    def __init__(self, period: int, offset: float, sigma: float, input_values: List[float] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier)
 
         self.period = period
         self.offset = offset

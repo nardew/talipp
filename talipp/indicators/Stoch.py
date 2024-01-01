@@ -1,8 +1,9 @@
 from dataclasses import dataclass
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator, ValueExtractorType
-from talipp.indicators.SMA import SMA
+from talipp.indicator_util import has_valid_values
+from talipp.indicators.Indicator import Indicator, InputModifierType
+from talipp.ma import MAFactory, MAType
 from talipp.ohlcv import OHLCV
 
 
@@ -19,18 +20,19 @@ class Stoch(Indicator):
     Output: a list of StochVal
     """
 
-    def __init__(self, period: int, smoothing_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, value_extractor: ValueExtractorType = None):
-        super().__init__(value_extractor=value_extractor)
+    def __init__(self, period: int, smoothing_period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None,
+                 input_modifier: InputModifierType = None, ma_type: MAType = MAType.SMA):
+        super().__init__(input_modifier=input_modifier, output_value_type=StochVal)
 
         self.period = period
 
-        self.values_d = SMA(smoothing_period)
+        self.values_d = MAFactory.get_ma(ma_type, smoothing_period)
         self.add_managed_sequence(self.values_d)
 
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        if len(self.input_values) < self.period:
+        if not has_valid_values(self.input_values, self.period):
             return None
 
         input_period = self.input_values[-1 * self.period:]
@@ -46,9 +48,9 @@ class Stoch(Indicator):
         else:
             k = 100.0 * (self.input_values[-1].close - min_low) / (max_high - min_low)
 
-        self.values_d.add_input_value(k)
+        self.values_d.add(k)
 
-        if len(self.values_d) > 0:
+        if has_valid_values(self.values_d, 1):
             d = self.values_d[-1]
         else:
             d = None

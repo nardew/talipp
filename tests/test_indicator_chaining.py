@@ -1,8 +1,7 @@
 import unittest
 
-from talipp.indicators import SMA
-
 from TalippTest import TalippTest
+from talipp.indicators import SMA
 
 
 class Test(TalippTest):
@@ -20,8 +19,10 @@ class Test(TalippTest):
         print(sma3)
         print(sma4)
 
-        self.assertAlmostEqual(sma4[-2], 5)
-        self.assertAlmostEqual(sma4[-1], 6)
+        self.assertListEqual(list(sma1), [None, None, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0])
+        self.assertListEqual(list(sma2), [None, None, None, None, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0])
+        self.assertListEqual(list(sma3), [None, None, None, None, None, None, 4.0, 5.0, 6.0, 7.0])
+        self.assertListEqual(list(sma4), [None, None, None, None, None, None, None, None, 5.0, 6.0])
 
     def test_iterative_add(self):
         sma1 = SMA(3)
@@ -30,15 +31,17 @@ class Test(TalippTest):
         sma4 = SMA(3, input_indicator = sma3)
 
         for i in range(1, 11):
-            sma1.add_input_value(i)
+            sma1.add(i)
 
         print(sma1)
         print(sma2)
         print(sma3)
         print(sma4)
 
-        self.assertAlmostEqual(sma4[-2], 5)
-        self.assertAlmostEqual(sma4[-1], 6)
+        self.assertListEqual(list(sma1), [None, None, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0])
+        self.assertListEqual(list(sma2), [None, None, None, None, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0])
+        self.assertListEqual(list(sma3), [None, None, None, None, None, None, 4.0, 5.0, 6.0, 7.0])
+        self.assertListEqual(list(sma4), [None, None, None, None, None, None, None, None, 5.0, 6.0])
 
     def test_update(self):
         sma1 = SMA(3, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
@@ -50,9 +53,9 @@ class Test(TalippTest):
         last_input_value = sma1.input_values[-1]
 
         for i in range(1, 20):
-            sma1.update_input_value(i)
+            sma1.update(i)
 
-        sma1.update_input_value(last_input_value)
+        sma1.update(last_input_value)
 
         self.assertEqual(last_indicator_value, sma4[-1])
 
@@ -65,10 +68,10 @@ class Test(TalippTest):
         last_indicator_value = sma4[-1]
 
         for i in range(1, 20):
-            sma1.add_input_value(i)
+            sma1.add(i)
 
         for i in range(1, 20):
-            sma1.remove_input_value()
+            sma1.remove()
 
         self.assertEqual(last_indicator_value, sma4[-1])
 

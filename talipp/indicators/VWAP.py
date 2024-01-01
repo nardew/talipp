@@ -1,11 +1,6 @@
-# =============================================================================
-# Created By   : Pramit Biswas
-# Creation Date: Sun Jun 06 19:55:00 IST 2021
-# =============================================================================
-
 from typing import List, Any
 
-from talipp.indicators.Indicator import Indicator
+from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.ohlcv import OHLCV
 
 
@@ -15,8 +10,8 @@ class VWAP(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, input_values: List[OHLCV] = None):
-        super().__init__()
+    def __init__(self, input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier)
 
         self.sum_price_vol = []
         self.sum_vol = []
@@ -24,7 +19,7 @@ class VWAP(Indicator):
         self.add_managed_sequence(self.sum_price_vol)
         self.add_managed_sequence(self.sum_vol)
 
-        self.initialize(input_values)
+        self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
         # initialize sums
