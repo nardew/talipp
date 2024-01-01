@@ -6,7 +6,9 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Pending release]
 
-## [2.0.0] - 2024-01-??
+## [2.0.0] - 2024-01-01
+
+- scope: https://github.com/nardew/talipp/issues/111
 
 ## [1.10.0] - 2023-12-24
 
