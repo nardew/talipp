@@ -36,8 +36,7 @@ Last but not least, `talipp` is a community project and therefore open to any su
 
 ### What's new in the latest version
 
-- new 'Schaff Trend Cycle' indicator added!
-- talipp is on [conda-forge](https://github.com/conda-forge/talipp-feedstock) too!
+- [v2.0.0 scope](https://github.com/nardew/talipp/issues/111)
 
 For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/main/CHANGELOG.md).
 
