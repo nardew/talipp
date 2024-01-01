@@ -9,13 +9,10 @@
 
 ---
 
-## New major release `talipp 2.0.0-rc.1` available!
+## New major release `talipp 2.0.0` available!
 
 - Scope: https://github.com/nardew/talipp/issues/111
 - PR: https://github.com/nardew/talipp/pull/96
-- Installation:
-  - `pip install talipp==2.0.0rc1`, or
-  - `pip install git+https://github.com/nardew/talipp.git@v2.x`
 
 ---
 
