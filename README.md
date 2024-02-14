@@ -154,8 +154,8 @@ sma3 = SMA(3, input_indicator = sma2)
 print(f"Chain three moving averages:")
 sma1.add([1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
 print(f"SMA1: {sma1}") # [0, 0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0]
-print(f"SMA2: {sma2}") # [0, 0, 0, 0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
-print(f"SMA3: {sma3}") # [0, 0, 0, 0, 0, 0, 4.0, 5.0, 6.0, 7.0]
+print(f"SMA2: {sma2}") # [0, 0, 0,   0,   3.0, 4.0, 5.0, 6.0, 7.0, 8.0]
+print(f"SMA3: {sma3}") # [0, 0, 0,   0,   0,   0,   4.0, 5.0, 6.0, 7.0]
 
 print(f"Purge oldest 3 values:")
 sma1.purge_oldest(3)
