@@ -19,8 +19,13 @@ class Aroon(Indicator):
     Output: a list of AroonVal
     """
 
-    def __init__(self, period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
-        super().__init__(input_modifier=input_modifier, output_value_type=AroonVal)
+    def __init__(self, period: int,
+                 input_values: List[OHLCV] = None,
+                 input_indicator: Indicator = None,
+                 input_modifier: InputModifierType = None):
+        super().__init__(input_modifier=input_modifier,
+                         output_value_type=AroonVal,
+                         input_sampling=input_modifier)
 
         self.period = period
 

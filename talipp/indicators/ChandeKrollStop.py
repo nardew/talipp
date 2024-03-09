@@ -4,6 +4,7 @@ from typing import List, Any
 from talipp.indicator_util import has_valid_values
 from talipp.indicators import ATR
 from talipp.indicators.Indicator import Indicator, InputModifierType
+from talipp.input import SamplingPeriodType
 from talipp.ohlcv import OHLCV
 
 
@@ -20,8 +21,16 @@ class ChandeKrollStop(Indicator):
     Output: a list of ChandeKrollStopVal objects
     """
 
-    def __init__(self, atr_period: int, atr_mult: float, period: int, input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
-        super().__init__(input_modifier=input_modifier, output_value_type=ChandeKrollStopVal)
+    def __init__(self, atr_period: int,
+                 atr_mult: float,
+                 period: int,
+                 input_values: List[OHLCV] = None,
+                 input_indicator: Indicator = None,
+                 input_modifier: InputModifierType = None,
+                 input_sampling: SamplingPeriodType = None):
+        super().__init__(input_modifier=input_modifier,
+                         output_value_type=ChandeKrollStopVal,
+                         input_sampling=input_sampling)
 
         self.atr_period = atr_period
         self.atr_mult = atr_mult

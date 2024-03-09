@@ -4,6 +4,7 @@ from typing import List, Any
 from talipp.indicator_util import has_valid_values
 from talipp.indicators.ATR import ATR
 from talipp.indicators.Indicator import Indicator, InputModifierType
+from talipp.input import SamplingPeriodType
 from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV, ValueExtractor
 
@@ -27,10 +28,18 @@ class KeltnerChannels(Indicator):
     Output: a list of KeltnerChannelsVal
     """
 
-    def __init__(self, ma_period: int, atr_period: int, atr_mult_up: float, atr_mult_down: float, input_values: List[OHLCV] = None,
-                 input_indicator: Indicator = None, input_modifier: InputModifierType = None,
-                 ma_type: MAType = MAType.EMA):
-        super().__init__(input_modifier=input_modifier, output_value_type=KeltnerChannelsVal)
+    def __init__(self, ma_period: int,
+                 atr_period: int,
+                 atr_mult_up: float,
+                 atr_mult_down: float,
+                 input_values: List[OHLCV] = None,
+                 input_indicator: Indicator = None,
+                 input_modifier: InputModifierType = None,
+                 ma_type: MAType = MAType.EMA,
+                 input_sampling: SamplingPeriodType = None):
+        super().__init__(input_modifier=input_modifier,
+                         output_value_type=KeltnerChannelsVal,
+                         input_sampling=input_sampling)
 
         self.atr_mult_up = atr_mult_up
         self.atr_mult_down = atr_mult_down

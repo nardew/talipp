@@ -3,6 +3,7 @@ from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, InputModifierType
+from talipp.input import SamplingPeriodType
 from talipp.ma import MAType, MAFactory
 
 
@@ -20,10 +21,17 @@ class MACD(Indicator):
     Output: a list of MACDVal
     """
 
-    def __init__(self, fast_period: int, slow_period: int, signal_period: int, input_values: List[float] = None,
-                 input_indicator: Indicator = None, input_modifier: InputModifierType = None,
-                 ma_type: MAType = MAType.EMA):
-        super().__init__(input_modifier=input_modifier, output_value_type=MACDVal)
+    def __init__(self, fast_period: int,
+                 slow_period: int,
+                 signal_period: int,
+                 input_values: List[float] = None,
+                 input_indicator: Indicator = None,
+                 input_modifier: InputModifierType = None,
+                 ma_type: MAType = MAType.EMA,
+                 input_sampling: SamplingPeriodType = None):
+        super().__init__(input_modifier=input_modifier,
+                         output_value_type=MACDVal,
+                         input_sampling=input_sampling)
 
         self.ma_fast = MAFactory.get_ma(ma_type, fast_period)
         self.ma_slow = MAFactory.get_ma(ma_type, slow_period)

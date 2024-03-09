@@ -5,6 +5,7 @@ from talipp.indicator_util import has_valid_values
 from talipp.indicators.ATR import ATR
 from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.indicators.StdDev import StdDev
+from talipp.input import SamplingPeriodType
 from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV, ValueExtractor
 
@@ -21,10 +22,17 @@ class SFX(Indicator):
     Output: A list of SFXVal
     """
 
-    def __init__(self, atr_period: int, std_dev_period: int, std_dev_smoothing_period: int, input_values: List[OHLCV] = None,
-                 input_indicator: Indicator = None, input_modifier: InputModifierType = None,
-                 ma_type: MAType = MAType.SMA):
-        super().__init__(input_modifier=input_modifier, output_value_type=SFXVal)
+    def __init__(self, atr_period: int,
+                 std_dev_period: int,
+                 std_dev_smoothing_period: int,
+                 input_values: List[OHLCV] = None,
+                 input_indicator: Indicator = None,
+                 input_modifier: InputModifierType = None,
+                 ma_type: MAType = MAType.SMA,
+                 input_sampling: SamplingPeriodType = None):
+        super().__init__(input_modifier=input_modifier,
+                         output_value_type=SFXVal,
+                         input_sampling=input_sampling)
 
         self.atr = ATR(atr_period)
         self.std_dev = StdDev(std_dev_period, input_modifier=ValueExtractor.extract_close)

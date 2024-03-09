@@ -4,6 +4,7 @@ from typing import List, Any
 from talipp.indicator_util import has_valid_values
 from talipp.indicators import BB, DonchianChannels, KeltnerChannels
 from talipp.indicators.Indicator import Indicator, InputModifierType
+from talipp.input import SamplingPeriodType
 from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV, ValueExtractor
 
@@ -24,10 +25,17 @@ class TTM(Indicator):
     Output: a list of TTMVal
     """
 
-    def __init__(self, period: int, bb_std_dev_mult: float = 2, kc_atr_mult: float = 1.5,
-                 input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None,
-                 ma_type: MAType = MAType.SMA):
-        super().__init__(input_modifier=input_modifier, output_value_type=TTMVal)
+    def __init__(self, period: int,
+                 bb_std_dev_mult: float = 2,
+                 kc_atr_mult: float = 1.5,
+                 input_values: List[OHLCV] = None,
+                 input_indicator: Indicator = None,
+                 input_modifier: InputModifierType = None,
+                 ma_type: MAType = MAType.SMA,
+                 input_sampling: SamplingPeriodType = None):
+        super().__init__(input_modifier=input_modifier,
+                         output_value_type=TTMVal,
+                         input_sampling=input_sampling)
 
         self.period = period
 

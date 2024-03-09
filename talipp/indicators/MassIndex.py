@@ -2,6 +2,7 @@ from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, InputModifierType
+from talipp.input import SamplingPeriodType
 from talipp.ma import MAType, MAFactory
 from talipp.ohlcv import OHLCV
 
@@ -13,10 +14,16 @@ class MassIndex(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, ema_period: int, ema_ema_period: int, ema_ratio_period: int, input_values: List[OHLCV] = None,
-                 input_indicator: Indicator = None, input_modifier: InputModifierType = None,
-                 ma_type: MAType = MAType.EMA):
-        super().__init__(input_modifier=input_modifier)
+    def __init__(self, ema_period: int,
+                 ema_ema_period: int,
+                 ema_ratio_period: int,
+                 input_values: List[OHLCV] = None,
+                 input_indicator: Indicator = None,
+                 input_modifier: InputModifierType = None,
+                 ma_type: MAType = MAType.EMA,
+                 input_sampling: SamplingPeriodType = None):
+        super().__init__(input_modifier=input_modifier,
+                         input_sampling=input_sampling)
 
         self.ema_ratio_period = ema_ratio_period
 

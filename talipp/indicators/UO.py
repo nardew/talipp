@@ -2,6 +2,7 @@ from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, InputModifierType
+from talipp.input import SamplingPeriodType
 from talipp.ohlcv import OHLCV
 
 
@@ -12,9 +13,15 @@ class UO(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, fast_period: int, mid_period: int, slow_period: int,
-                 input_values: List[OHLCV] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
-        super().__init__(input_modifier=input_modifier)
+    def __init__(self, fast_period: int,
+                 mid_period: int,
+                 slow_period: int,
+                 input_values: List[OHLCV] = None,
+                 input_indicator: Indicator = None,
+                 input_modifier: InputModifierType = None,
+                 input_sampling: SamplingPeriodType = None):
+        super().__init__(input_modifier=input_modifier,
+                         input_sampling=input_sampling)
 
         self.fast_period = fast_period
         self.mid_period = mid_period

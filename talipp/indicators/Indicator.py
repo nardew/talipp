@@ -1,7 +1,10 @@
 from abc import ABCMeta, abstractmethod
 from collections.abc import MutableSequence, Sequence
-from warnings import warn
 from typing import List, Any, Callable, Union, Type
+from warnings import warn
+
+from talipp.indicator_util import has_valid_values
+from talipp.input import SamplingPeriodType, Sampler
 
 ListAny = List[Any]
 ManagedSequenceType = Union['Indicator', MutableSequence]
@@ -11,9 +14,15 @@ InputModifierType = Callable[..., Any]
 class Indicator(Sequence):
     __metaclass__ = ABCMeta
 
-    def __init__(self, input_modifier: InputModifierType = None, output_value_type: Type = float):
-        self.input_modifier =input_modifier
+    def __init__(self,
+                 input_modifier: InputModifierType = None,
+                 output_value_type: Type = float,
+                 input_sampling: SamplingPeriodType = None):
+        self.input_modifier = input_modifier
         self.output_value_type = output_value_type
+        self.input_sampler: Sampler = None
+        if input_sampling is not None:
+            self.input_sampler = Sampler(input_sampling)
 
         self.input_values: ListAny = []
         self.output_values: ListAny = []
@@ -64,29 +73,34 @@ class Indicator(Sequence):
         return self.add(value)
 
     def add(self, value: Any) -> None:
-        for sub_indicator in self.sub_indicators:
-            sub_indicator.add(value)
+        if (self.input_sampler is not None
+                and has_valid_values(self.input_values)
+                and self.input_sampler.is_same_period(value, self.input_values[-1])):
+            self.update(value)
+        else:
+            for sub_indicator in self.sub_indicators:
+                sub_indicator.add(value)
 
-        if not isinstance(value, list):
-            value = [value]
+            if not isinstance(value, list):
+                value = [value]
 
-        for input_value in value:
-            if input_value is not None and self.input_modifier is not None:
-                input_value = self.input_modifier(input_value)
-            self.input_values.append(input_value)
+            for input_value in value:
+                if input_value is not None and self.input_modifier is not None:
+                    input_value = self.input_modifier(input_value)
+                self.input_values.append(input_value)
 
-            if input_value is not None:
-                new_value = self._calculate_new_value()
-            else:
-                new_value = None
+                if input_value is not None:
+                    new_value = self._calculate_new_value()
+                else:
+                    new_value = None
 
-            if new_value is None and len(self.output_values) > 0:
-                new_value = self.output_values[-1]
+                if new_value is None and len(self.output_values) > 0:
+                    new_value = self.output_values[-1]
 
-            self._add_to_output_values(new_value)
+                self._add_to_output_values(new_value)
 
-            for listener in self.output_listeners:
-                listener.add(new_value)
+                for listener in self.output_listeners:
+                    listener.add(new_value)
 
     def update_input_value(self, value: Any) -> None:
         warn('This method is deprecated and will be removed in the next major version. '

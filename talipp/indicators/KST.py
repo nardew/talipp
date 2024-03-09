@@ -4,6 +4,7 @@ from typing import List, Any
 from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.indicators.ROC import ROC
+from talipp.input import SamplingPeriodType
 from talipp.ma import MAType, MAFactory
 
 
@@ -30,9 +31,14 @@ class KST(Indicator):
                  roc4_period: int,
                  roc4_ma_period: int,
                  signal_period: int,
-                 input_values: List[float] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None,
-                 ma_type: MAType = MAType.SMA):
-        super().__init__(input_modifier=input_modifier, output_value_type=KSTVal)
+                 input_values: List[float] = None,
+                 input_indicator: Indicator = None,
+                 input_modifier: InputModifierType = None,
+                 ma_type: MAType = MAType.SMA,
+                 input_sampling: SamplingPeriodType = None):
+        super().__init__(input_modifier=input_modifier,
+                         output_value_type=KSTVal,
+                         input_sampling=input_sampling)
 
         self.roc1 = ROC(roc1_period)
         self.roc2 = ROC(roc2_period)
