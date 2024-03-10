@@ -1,0 +1,5 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+site_name: talipp
+theme:
+  name: material
+repo_url: https://github.com/nardew/talipp
