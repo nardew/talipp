@@ -12,7 +12,7 @@ setuptools.setup(
     version="2.1.1",
     author="nardew",
     author_email="talipp.pyth@gmail.com",
-    description="TALi++ - Incremental Technical Analysis Library",
+    description="talipp - Incremental Technical Analysis Library",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/nardew/talipp",

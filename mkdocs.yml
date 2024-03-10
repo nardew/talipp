@@ -1,0 +1,137 @@
+site_name: talipp
+theme:
+  name: material
+  language: en
+  custom_dir: docs/overrides
+  icon:
+    logo: material/library
+  palette:
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to system preference
+  features:
+    - announce.dismiss
+    - search.suggest
+    - search.highlight
+    - search.share
+    - announce.dismiss
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
+    - content.tooltips
+#    - navigation.footer
+#    - navigation.indexes
+    - navigation.sections
+#    - navigation.tabs
+#    - navigation.tabs.sticky
+#    - navigation.top
+    - search.highlight
+    - search.suggest
+    - toc.follow
+repo_url: https://github.com/nardew/talipp
+copyright: Copyright &copy; 2024 nardew
+#markdown_extensions:
+#  - attr_list
+#  - pymdownx.emoji:
+#      emoji_index: !!python/name:material.extensions.emoji.twemoji
+#      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
+markdown_extensions:
+  - attr_list
+  - def_list
+  - admonition
+  - callouts
+  - footnotes
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.inlinehilite:
+      style_plain_text: python
+  - pymdownx.magiclink
+  - pymdownx.snippets:
+      base_path: [!relative $config_dir]
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - tables
+  - toc:
+      permalink: "#"
+plugins:
+  - search
+  - link-marker
+  - gen-files:
+      scripts:
+        - scripts/gen_ref_pages.py
+  - literate-nav:
+      nav_file: SUMMARY.md
+  - mkdocstrings:
+      handlers:
+        python:
+          import:
+            - https://docs.python.org/3/objects.inv
+            #- https://installer.readthedocs.io/en/stable/objects.inv  # demonstration purpose in the docs
+            #- https://mkdocstrings.github.io/autorefs/objects.inv
+          paths: [ src ]
+          options:
+            docstring_options:
+              ignore_init_summary: true
+            docstring_section_style: table
+            show_if_no_docstring: false
+            filters: [ "!^_" ]
+            heading_level: 1
+            inherited_members: false
+            merge_init_into_class: true
+            separate_signature: true
+            show_root_heading: true
+            show_root_full_path: false
+            show_signature_annotations: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            signature_crossrefs: true
+            summary: true
+  - section-index
+nav:
+  - Home: index.md
+  - Getting started: getting-started.md
+  - Features:
+      - Indicators catalogue: indicators.md
+      - Indicator operations: indicator-operations.md
+      - Input types: input-types.md
+      - Output types: output-types.md
+#      - Indicator parametrization: indicators.md
+      - Indicator chaining: indicator-chaining.md
+      - Timeframe auto-resampling: timeframe-sampling.md
+  - Guides:
+      - Serialization: serialization.md
+#      - Create a new indicator: guides.md
+  - API reference: reference/
