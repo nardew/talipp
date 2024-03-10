@@ -1,17 +1,21 @@
 # Home
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+![python](https://img.shields.io/pypi/pyversions/talipp?logo=python)
+![pypi](https://img.shields.io/pypi/v/talipp?logo=pypi)
+![GitHub Release Date](https://img.shields.io/github/release-date/nardew/talipp?logo=pypi)
+![pypi](https://img.shields.io/pypi/l/talipp)
 
-## Commands
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+**talipp** (a.k.a. **tali++**) is a Python library implementing [financial indicators](indicators.md) for technical analysis. The distinctive feature of the library is its _incremental computation_ which fits well real-time applications or applications with iterative input in general.  
 
-## Project layout
+Supported incremental operations are:
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+- **adding** a new input value
+- **updating** the last input value
+- **removing** input values
+
+Incremental nature of the library means that any update of the input data is reflected in the indicators' values in O(1) in contrary to O(n) of standard libraries which need to recalculate *all* indicator values from scratch. 
+
+To give you better perspective about the performance gain look at the below figure. It compares running time of incremental (talipp) and non-incremental (talib) libraries when calculating SMA(20) for inputs of various sizes where input values are fed one by one. 
+
+![SMA(20) comparison](images/sma20-comparison.svg "SMA(20) comparison")
