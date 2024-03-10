@@ -1,3 +1,4 @@
+from talipp.indicator_util import composite_to_lists
 from talipp.indicators import EMA, SMA, Stoch
 from talipp.ohlcv import OHLCVFactory
 
@@ -39,7 +40,7 @@ stoch = Stoch(5, 3, OHLCVFactory.from_dict({
 print(f'Stoch(5, 3) composite result: {stoch}') # [StochVal(k=70.83333333333333, d=None), StochVal(k=50.0, d=None), StochVal(k=42.857142857142854, d=54.563492063492056)]
 
 # print result as lists per output parameters
-print(f'Stoch(5, 3) decomposed result: {stoch.to_lists()}') # {'k': [70.83333333333333, 50.0, 42.857142857142854], 'd': [None, None, 54.563492063492056]}
+print(f'Stoch(5, 3) decomposed result: {composite_to_lists(stoch)}') # {'k': [70.83333333333333, 50.0, 42.857142857142854], 'd': [None, None, 54.563492063492056]}
 
 # Indicator chaining
 sma1 = SMA(3)
