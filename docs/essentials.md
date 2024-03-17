@@ -1,5 +1,1 @@
-# Getting started
-
-## Installation
-
-## Examples
+# Essentials
