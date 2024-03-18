@@ -126,6 +126,7 @@ nav:
       - Examples: examples.md
   - Features:
       - Indicators catalogue: indicators.md
+      - Indicator operations: indicators.md
       - Indicator chaining: features.md
       - Timeframe resampling: features.md
   - Guides:

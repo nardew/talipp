@@ -1,60 +1,60 @@
 # Indicators catalogue
 
-| Name                                                    | Full name                      | Description                                                                                              |
-|---------------------------------------------------------|--------------------------------|----------------------------------------------------------------------------------------------------------|
-| [ADL][talipp.indicators.AccuDist.AccuDist]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [ADX][talipp.indicators.ADX.ADX]                        | Average Directional Index      | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:average_directional_index_adx) |
-| [ALMA][talipp.indicators.ALMA.ALMA]                     | Arnaud Legoux Moving Average   |  |
-| [AO][talipp.indicators.AO.AO]                           | Awesome Oscillator             | [:link:](https://www.babypips.com/forexpedia/awesome-oscillator) |
-| [Aroon][talipp.indicators.Aroon.Aroon]                  | Aroon Indicator                | [:link:](https://www.investopedia.com/terms/a/aroon.asp) |
-| [ATR][talipp.indicators.ATR.ATR]                        | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [BB][talipp.indicators.BB.BB]                           | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [BOP][talipp.indicators.BOP.BOP]                        | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [CCI][talipp.indicators.CCI.CCI]                        | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [ChaikinOsc][talipp.indicators.ChaikinOsc.ChaikinOsc]   | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [ChandeKrollStop][talipp.indicators.ChandeKrollStop.ChandeKrollStop] | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [CHOP][talipp.indicators.CHOP.CHOP]             | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [CoppockCurve][talipp.indicators.CoppockCurve.CoppockCurve] | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [DEMA][talipp.indicators.DEMA.DEMA]             | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [DonchianChannels][talipp.indicators.DonchianChannels.DonchianChannels] | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [DPO][talipp.indicators.DPO.DPO]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [EMA][talipp.indicators.EMA.EMA]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [EMV][talipp.indicators.EMV.EMV]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [ForceIndex][talipp.indicators.ForceIndex.ForceIndex]   | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [HMA][talipp.indicators.HMA.HMA]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [IchimokuCloud][talipp.indicators.Ichimoku.Ichimoku]    | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [KAMA][talipp.indicators.KAMA.KAMA]             | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [KeltnerChannels][talipp.indicators.KeltnerChannels.KeltnerChannels]  | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [KST][talipp.indicators.KST.KST]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [KVO][talipp.indicators.KVO.KVO]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [MACD][talipp.indicators.MACD.MACD]             | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [MassIndex][talipp.indicators.MassIndex.MassIndex]        | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [McGinleyDynamic][talipp.indicators.McGinleyDynamic.McGinleyDynamic]  | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [MeanDev][talipp.indicators.MeanDev.MeanDev]          | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [OBV][talipp.indicators.OBV.OBV]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [ParabolicSAR][talipp.indicators.ParabolicSAR.ParabolicSAR]     | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [PivotsHL][talipp.indicators.PivotsHL.PivotsHL]         | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [ROC][talipp.indicators.ROC.ROC]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [RSI][talipp.indicators.RSI.RSI]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [SFX][talipp.indicators.SFX.SFX]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [SMA][talipp.indicators.SMA.SMA]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [SMMA][talipp.indicators.SMMA.SMMA]             | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [SOBV][talipp.indicators.SOBV.SOBV]             | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [STC][talipp.indicators.STC.STC]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [StdDev][talipp.indicators.StdDev.StdDev]           | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [Stoch][talipp.indicators.Stoch.Stoch]            | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [StochRSI][talipp.indicators.StochRSI.StochRSI]         | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [SuperTrend][talipp.indicators.SuperTrend.SuperTrend]       | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [T3][talipp.indicators.T3.T3]               | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [TEMA][talipp.indicators.TEMA.TEMA]             | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [TRIX][talipp.indicators.TRIX.TRIX]             | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [TSI][talipp.indicators.TSI.TSI]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [TTM][talipp.indicators.TTM.TTM]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [UO][talipp.indicators.UO.UO]               | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [VTX][talipp.indicators.VTX.VTX]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [VWAP][talipp.indicators.VWAP.VWAP]             | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [VWMA][talipp.indicators.VWMA.VWMA]             | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [WMA][talipp.indicators.WMA.WMA]              | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
-| [ZLEMA][talipp.indicators.ZLEMA.ZLEMA]            | Accumulation Distribution Line | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line) |
+| Name                                                    | Full name                             | Description                                                                                                          |
+|---------------------------------------------------------|---------------------------------------|----------------------------------------------------------------------------------------------------------------------|
+| [ADL][talipp.indicators.AccuDist.AccuDist]              | Accumulation Distribution Line        | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line)             |
+| [ADX][talipp.indicators.ADX.ADX]                        | Average Directional Index             | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:average_directional_index_adx)              |
+| [ALMA][talipp.indicators.ALMA.ALMA]                     | Arnaud Legoux Moving Average          |                                                                                                                      |
+| [AO][talipp.indicators.AO.AO]                           | Awesome Oscillator                    | [:link:](https://www.babypips.com/forexpedia/awesome-oscillator)                                                     |
+| [Aroon][talipp.indicators.Aroon.Aroon]                  | Aroon Indicator                       | [:link:](https://www.investopedia.com/terms/a/aroon.asp)                                                             |
+| [ATR][talipp.indicators.ATR.ATR]                        | Average True Range                    | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:average_true_range_atr)                     |
+| [BB][talipp.indicators.BB.BB]                           | Bollinger Bands                       | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:bollinger_bands)                            |
+| [BOP][talipp.indicators.BOP.BOP]                        | Balance of Power                      | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:balance_of_power)                           |
+| [CCI][talipp.indicators.CCI.CCI]                        | Commodity Channel Index               | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:commodity_channel_index_cci)                |
+| [ChaikinOsc][talipp.indicators.ChaikinOsc.ChaikinOsc]   | Chaikin Oscillator                    | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:chaikin_oscillator)                         |
+| [ChandeKrollStop][talipp.indicators.ChandeKrollStop.ChandeKrollStop] | Chande Kroll Stop                     | [:link:](https://trendspider.com/learning-center/chande-kroll-stop-a-comprehensive-guide/)                           |
+| [CHOP][talipp.indicators.CHOP.CHOP]             | Choppiness Index                      | [:link:](https://www.incrediblecharts.com/indicators/choppiness-index.php)                                           |
+| [CoppockCurve][talipp.indicators.CoppockCurve.CoppockCurve] | Coppock Curve                         | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:coppock_curve)                              |
+| [DEMA][talipp.indicators.DEMA.DEMA]             | Double Exponential Moving Average     | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:dema)                                       |
+| [DonchianChannels][talipp.indicators.DonchianChannels.DonchianChannels] | Donchian Channels                     | [:link:](https://www.investopedia.com/terms/d/donchianchannels.asp)                                                  |
+| [DPO][talipp.indicators.DPO.DPO]              | Detrended Price Oscillator            | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:detrended_price_osci)                       |
+| [EMA][talipp.indicators.EMA.EMA]              | Exponential Moving Average            | [:link:](https://www.investopedia.com/terms/e/ema.asp)                                                               |
+| [EMV][talipp.indicators.EMV.EMV]              | Ease of Movement                      | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:ease_of_movement_emv)                       |
+| [ForceIndex][talipp.indicators.ForceIndex.ForceIndex]   | Force Index                           | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:force_index)                                |
+| [HMA][talipp.indicators.HMA.HMA]              | Hull Moving Average                   | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:hull_moving_average)                        |
+| [IchimokuCloud][talipp.indicators.Ichimoku.Ichimoku]    | Ichimoku Cloud                        | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:ichimoku_cloud)                             |
+| [KAMA][talipp.indicators.KAMA.KAMA]             | Kauffman's Adaptive Moving Average    | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:kaufman_s_adaptive_moving_average)          |
+| [KeltnerChannels][talipp.indicators.KeltnerChannels.KeltnerChannels]  | Keltner Channels                      | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:keltner_channels)                           |
+| [KST][talipp.indicators.KST.KST]              | Know Sure Thing                       | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:know_sure_thing_kst)                        |
+| [KVO][talipp.indicators.KVO.KVO]              | Klinger Volume Oscilator              | [:link:](https://www.investopedia.com/terms/k/klingeroscillator.asp)                                                 |
+| [MACD][talipp.indicators.MACD.MACD]             | Moving Average Convergence Divergence | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:moving_average_convergence_divergence_macd) |
+| [MassIndex][talipp.indicators.MassIndex.MassIndex]        | Mass Index                            | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:mass_index)                                 |
+| [McGinleyDynamic][talipp.indicators.McGinleyDynamic.McGinleyDynamic]  | McGinley Dynamic                      | [:link:](https://www.investopedia.com/terms/m/mcginley-dynamic.asp)                                                  |
+| [MeanDev][talipp.indicators.MeanDev.MeanDev]          | Mean Deviation                        | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line)             |
+| [OBV][talipp.indicators.OBV.OBV]              | On-balacen Volume                     | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:on_balance_volume_obv)                      |
+| [ParabolicSAR][talipp.indicators.ParabolicSAR.ParabolicSAR]     | Parabolic Stop and Reverse            | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:parabolic_sar)                              |
+| [PivotsHL][talipp.indicators.PivotsHL.PivotsHL]         | Pivot High Low Points                 |                                                                                                                      |
+| [ROC][talipp.indicators.ROC.ROC]              | Rate of Change                        | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:rate_of_change_roc_and_momentum)            |
+| [RSI][talipp.indicators.RSI.RSI]              | Relative Strength Index               | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:relative_strength_index_rsi)                |
+| [SFX][talipp.indicators.SFX.SFX]              |                                       |                                                                                                                      |
+| [SMA][talipp.indicators.SMA.SMA]              | Simple Moving Average                 | [:link:](https://www.investopedia.com/terms/s/sma.asp)                                                               |
+| [SMMA][talipp.indicators.SMMA.SMMA]             | Smoothed Simple Moving Average        |                                                                                                                      |
+| [SOBV][talipp.indicators.SOBV.SOBV]             | Smoothed On-Balance Volume            |                                                                                                                      |
+| [STC][talipp.indicators.STC.STC]              | Schaff Trend Cycle                    | [:link:](https://howtotrade.com/indicators/schaff-trend-cycle/)                                                      |
+| [StdDev][talipp.indicators.StdDev.StdDev]           | Standard Deviation                    |                                                                                                                      |
+| [Stoch][talipp.indicators.Stoch.Stoch]            | Stochastic Oscillator                 | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:stochastic_oscillator_fast_slow_and_full)   |
+| [StochRSI][talipp.indicators.StochRSI.StochRSI]         | Stochastic Relative Strength Index    | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:stochrsi)                                   |
+| [SuperTrend][talipp.indicators.SuperTrend.SuperTrend]       | Super Trend                           | [:link:](https://www.investopedia.com/supertrend-indicator-7976167)                                                  |
+| [T3][talipp.indicators.T3.T3]               | T3 Moving Average                     | [:link:](https://www.tradingpedia.com/forex-trading-indicators/t3-moving-average-indicator/)                         |
+| [TEMA][talipp.indicators.TEMA.TEMA]             | Triple Exponential Moving Average     | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:tema)                                       |
+| [TRIX][talipp.indicators.TRIX.TRIX]             | TRIX                                  | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:trix)                                       |
+| [TSI][talipp.indicators.TSI.TSI]              | True Strength Index                   | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:true_strength_index)                        |
+| [TTM][talipp.indicators.TTM.TTM]              | TTM Squeeze                           | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:ttm_squeeze)                                |
+| [UO][talipp.indicators.UO.UO]               | Ultimate Oscillator                   | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:ultimate_oscillator)                        |
+| [VTX][talipp.indicators.VTX.VTX]              | Vortex Indicator                      | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:vortex_indicator)                           |
+| [VWAP][talipp.indicators.VWAP.VWAP]             | Volume-weighted Average Price         | [:link:](https://school.stockcharts.com/doku.php?id=technical_indicators:vwap_intraday)                              |
+| [VWMA][talipp.indicators.VWMA.VWMA]             | Volume-weighted Moving Average        | [:link:](https://www.tradingsetupsreview.com/volume-weighted-moving-average-vwma/)                                   |
+| [WMA][talipp.indicators.WMA.WMA]              | Weighted Moving Average               | [:link:](https://fxopen.com/blog/en/what-is-a-weighted-moving-average-and-how-do-you-calculate-it/)                  |
+| [ZLEMA][talipp.indicators.ZLEMA.ZLEMA]            | Zero-lag Exponential Moving Average   | [:link:](https://en.wikipedia.org/wiki/Zero_lag_exponential_moving_average)                                          |
 
 Request a new indicator via [GitHub Issues](https://github.com/nardew/talipp/issues/new).
