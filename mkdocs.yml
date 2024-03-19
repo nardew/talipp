@@ -120,13 +120,15 @@ plugins:
   - section-index
 nav:
   - Home: index.md
-  - Getting started:
-      - Installation: installation.md
-      - Essentials: essentials.md
-      - Examples: examples.md
+  - Getting started: getting-started.md
+#      - Installation: installation.md
+#      - Essentials: essentials.md
+#      - Examples: examples.md
   - Features:
       - Indicators catalogue: indicators.md
       - Indicator operations: indicators.md
+      - Input types: indicators.md
+      - Indicator parametrization: indicators.md
       - Indicator chaining: features.md
       - Timeframe resampling: features.md
   - Guides:
