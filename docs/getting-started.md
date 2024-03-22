@@ -41,7 +41,7 @@ List of all indicators can be found in the [Indicator catalogue](indicators.md).
 
 ### Basic usage
 
-Indicators can be fed input values during their initialization
+Indicators can be fed input values either during their initialization
 
 ```python
 from talipp.indicators import EMA
