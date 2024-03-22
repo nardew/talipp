@@ -6,6 +6,10 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Pending release]
 
+## [2.1.0] - 2024-03-24
+
+- auto-sampling of input values added
+
 ## [2.0.0] - 2024-01-01
 
 - scope: https://github.com/nardew/talipp/issues/111
@@ -84,7 +88,8 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 - the official release of `talipp`
 
-[Pending release]: https://github.com/nardew/talipp/compare/2.0.0...HEAD
+[Pending release]: https://github.com/nardew/talipp/compare/2.1.0...HEAD
+[2.1.0]: https://github.com/nardew/talipp/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/nardew/talipp/compare/1.10.0...2.0.0
 [1.10.0]: https://github.com/nardew/talipp/compare/1.9.3...1.10.0
 [1.9.3]: https://github.com/nardew/talipp/compare/1.9.2...1.9.3

@@ -4,6 +4,7 @@ from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.indicators.ROC import ROC
 from talipp.indicators.WMA import WMA
+from talipp.input import SamplingPeriodType
 
 
 class CoppockCurve(Indicator):
@@ -13,9 +14,15 @@ class CoppockCurve(Indicator):
     Output: a list of floats
     """
 
-    def __init__(self, fast_roc_period: int, slow_roc_period: int, wma_period: int,
-                 input_values: List[float] = None, input_indicator: Indicator = None, input_modifier: InputModifierType = None):
-        super().__init__(input_modifier=input_modifier)
+    def __init__(self, fast_roc_period: int,
+                 slow_roc_period: int,
+                 wma_period: int,
+                 input_values: List[float] = None,
+                 input_indicator: Indicator = None,
+                 input_modifier: InputModifierType = None,
+                 input_sampling: SamplingPeriodType = None):
+        super().__init__(input_modifier=input_modifier,
+                         input_sampling=input_sampling)
 
         self.fast_roc = ROC(fast_roc_period)
         self.add_sub_indicator(self.fast_roc)
