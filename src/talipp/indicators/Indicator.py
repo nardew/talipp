@@ -73,6 +73,9 @@ class Indicator(Sequence):
         return self.add(value)
 
     def add(self, value: Any) -> None:
+        """
+        add
+        """
         if (self.input_sampler is not None
                 and has_valid_values(self.input_values)
                 and self.input_sampler.is_same_period(value, self.input_values[-1])):
@@ -110,6 +113,9 @@ class Indicator(Sequence):
         return self.update(value)
 
     def update(self, value: Any) -> None:
+        """
+        update
+        """
         self.remove()
         self.add(value)
 
@@ -121,6 +127,9 @@ class Indicator(Sequence):
         return self.remove()
 
     def remove(self) -> None:
+        """
+        remove
+        """
         for sub_indicator in self.sub_indicators:
             sub_indicator.remove()
 
@@ -152,6 +161,9 @@ class Indicator(Sequence):
         pass
 
     def remove_all(self) -> None:
+        """
+        remova_all
+        """
         for sub_indicator in self.sub_indicators:
             sub_indicator.remove_all()
 
@@ -173,6 +185,9 @@ class Indicator(Sequence):
         pass
 
     def purge_oldest(self, size: int) -> None:
+        """
+        purge_oldest
+        """
         for sub_indicator in self.sub_indicators:
             sub_indicator.purge_oldest(size)
 

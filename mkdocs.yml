@@ -53,6 +53,7 @@ copyright: Copyright &copy; 2024 Andrej Chovanec (a.k.a. nardew)
 
 markdown_extensions:
   - attr_list
+  - def_list
   - admonition
   - callouts
   - footnotes
@@ -87,7 +88,6 @@ markdown_extensions:
       permalink: "#"
 plugins:
   - search
-  - mkdocstrings
   - gen-files:
       scripts:
         - scripts/gen_ref_pages.py
@@ -121,12 +121,9 @@ plugins:
 nav:
   - Home: index.md
   - Getting started: getting-started.md
-#      - Installation: installation.md
-#      - Essentials: essentials.md
-#      - Examples: examples.md
   - Features:
       - Indicators catalogue: indicators.md
-      - Indicator operations: indicators.md
+      - Indicator operations: indicator-operations.md
       - Input types: indicators.md
       - Indicator parametrization: indicators.md
       - Indicator chaining: features.md
