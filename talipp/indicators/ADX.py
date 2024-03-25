@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from typing import List, Any
 
-from talipp.indicator_util import has_valid_values
+from talipp.indicator_util import has_valid_values, previous_if_exists
 from talipp.indicators.ATR import ATR
 from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.input import SamplingPeriodType
@@ -94,10 +94,18 @@ class ADX(Indicator):
             self.spdm.append((self.spdm[-1] * (self.di_period - 1) + self.pdm[-1]) / float(self.di_period))
             self.smdm.append((self.smdm[-1] * (self.di_period - 1) + self.mdm[-1]) / float(self.di_period))
 
-        self.pdi.append(100.0 * self.spdm[-1] / float(self.atr[-1]))
-        self.mdi.append(100.0 * self.smdm[-1] / float(self.atr[-1]))
+        if self.atr[-1] != 0:
+            self.pdi.append(100.0 * self.spdm[-1] / float(self.atr[-1]))
+            self.mdi.append(100.0 * self.smdm[-1] / float(self.atr[-1]))
+        else:
+            self.pdi.append(previous_if_exists(self.pdi))
+            self.mdi.append(previous_if_exists(self.mdi))
 
-        self.dx.append(100.0 * float(abs(self.pdi[-1] - self.mdi[-1])) / (self.pdi[-1] + self.mdi[-1]))
+        dx_denom = (self.pdi[-1] + self.mdi[-1])
+        if dx_denom != 0:
+            self.dx.append(100.0 * float(abs(self.pdi[-1] - self.mdi[-1])) / dx_denom)
+        else:
+            self.dx.append(previous_if_exists(self.dx, default=0))
 
         adx = None
         if len(self.dx) == self.adx_period:

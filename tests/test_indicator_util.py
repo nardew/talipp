@@ -1,6 +1,6 @@
 import unittest
 
-from talipp.indicator_util import composite_to_lists, has_valid_values
+from talipp.indicator_util import composite_to_lists, has_valid_values, previous_if_exists
 from talipp.indicators import BB, SMA
 
 
@@ -52,6 +52,13 @@ class Test(unittest.TestCase):
         self.assertFalse(has_valid_values([], 1))
         self.assertFalse(has_valid_values([None], 1))
         self.assertFalse(has_valid_values([1, None], 1))
+
+    def test_previous_if_exists(self):
+        self.assertEqual(previous_if_exists([]), 0)
+        self.assertEqual(previous_if_exists([], default=1), 1)
+        self.assertEqual(previous_if_exists([1]), 1)
+        self.assertEqual(previous_if_exists([1], previous_index=-2), 0)
+        self.assertEqual(previous_if_exists([1,2], previous_index=-2), 1)
 
 
 if __name__ == '__main__':
