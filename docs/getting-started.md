@@ -72,7 +72,7 @@ print(ema[-5:])
 print(ema)
 ```
 
-Detailed description of indicator manipulation can be found in the section [Indicator operations](indicators.md).
+Detailed description of indicator manipulation can be found in the section [Indicator operations](indicator-operations.md).
 
 ### Input types
 

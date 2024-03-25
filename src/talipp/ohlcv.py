@@ -6,6 +6,9 @@ from typing import List, Dict, Optional
 
 @dataclass
 class OHLCV:
+    """
+    OHLCV
+    """
     open: Optional[float]
     high: Optional[float]
     low: Optional[float]
@@ -15,6 +18,10 @@ class OHLCV:
 
 
 class OHLCVFactory:
+    """
+    OHLCVFactory
+    """
+
     @staticmethod
     def from_matrix(values: List[List[float]]) -> List[OHLCV]:
         """

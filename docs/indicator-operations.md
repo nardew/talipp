@@ -4,9 +4,9 @@ Each indicator provides operations to read, add, update and remove its values.
 
 ## Reading values
 
-Indicator implement [Sequence][collections.abc.Sequence] interface, meaning they can be treated as any other list when reading data.
+Indicators implement [Sequence][collections.abc.Sequence] interface, meaning they can be treated as any other list when reading data.
 
-Following operations demonstrate how to read indicators' values:
+Following operations demonstrate how to read indicator's values:
 
 ```python
 from talipp.indicators import SMA
@@ -44,7 +44,7 @@ sma.add([4, 5, 6])
 
 ## Updating values
 
-To update the **last** value use [update][talipp.indicators.Indicator.Indicator.update] method:
+To update **the most recent** value use [update][talipp.indicators.Indicator.Indicator.update] method:
 
 ```python
 from talipp.indicators import SMA
@@ -63,7 +63,7 @@ sma.update(4)
 
 Indicators provide several ways how to remove data:
 
-1. To remove the last input value, use [remove][talipp.indicators.Indicator.Indicator.remove] method:
+1. To remove the most recent input value, use [remove][talipp.indicators.Indicator.Indicator.remove] method:
     ```python
     from talipp.indicators import SMA
     
@@ -92,7 +92,7 @@ Indicators provide several ways how to remove data:
    print(sma)
    ```
 
-1. To remove the **oldest** values, use [purge_oldest][talipp.indicators.Indicator.Indicator.purge_oldest] method:
+1. To remove **the oldest** values, use [purge_oldest][talipp.indicators.Indicator.Indicator.purge_oldest] method:
    ```python
    from talipp.indicators import SMA
    
