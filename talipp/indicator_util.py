@@ -15,6 +15,13 @@ def has_valid_values(sequence: Union[Indicator, List[Any]], window: int = 1, exa
             (len(sequence) > window and sequence[-window] is not None and sequence[-window-1] is None)
 
 
+def previous_if_exists(sequence: Union[Indicator, List[Any]], previous_index: int = -1, default: Any = 0):
+    try:
+        return sequence[previous_index]
+    except IndexError:
+        return default
+
+
 def composite_to_lists(indicator: Indicator) -> Dict[str, List[float]]:
     if not has_valid_values(indicator, 1):
         return {}
