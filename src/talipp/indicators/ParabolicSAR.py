@@ -15,6 +15,9 @@ class SARTrend(enum.Enum):
 
 @dataclass
 class ParabolicSARVal:
+    """
+    ParabolicSARVal
+    """
     value: float = None
     trend: SARTrend = None
     ep: float = None

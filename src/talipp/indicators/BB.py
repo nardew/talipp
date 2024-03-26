@@ -10,6 +10,10 @@ from talipp.ma import MAType, MAFactory
 
 @dataclass
 class BBVal:
+    """
+    BBVal
+    """
+
     # lower band
     lb: float = None
 

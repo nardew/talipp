@@ -10,6 +10,9 @@ from talipp.ma import MAType, MAFactory
 
 @dataclass
 class StochRSIVal:
+    """
+    StochRSOVal
+    """
     k: float = None
     d: float = None
 

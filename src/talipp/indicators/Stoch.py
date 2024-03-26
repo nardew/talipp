@@ -10,6 +10,9 @@ from talipp.ohlcv import OHLCV
 
 @dataclass
 class StochVal:
+    """
+    StochVal
+    """
     k: float = None
     d: float = None
 

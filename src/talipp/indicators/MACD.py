@@ -9,6 +9,9 @@ from talipp.ma import MAType, MAFactory
 
 @dataclass
 class MACDVal:
+    """
+    MACDVal
+    """
     macd: float = None
     signal: float = None
     histogram: float = None

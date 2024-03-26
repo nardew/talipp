@@ -23,6 +23,9 @@ def previous_if_exists(sequence: Union[Indicator, List[Any]], previous_index: in
 
 
 def composite_to_lists(indicator: Indicator) -> Dict[str, List[float]]:
+    """
+    composite_to_lists
+    """
     if not has_valid_values(indicator, 1):
         return {}
     else:
