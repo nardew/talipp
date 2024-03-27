@@ -88,7 +88,7 @@ sma = SMA(period=3, input_values=[1, 2, 3])
 stoch = Stoch(period=3, smoothing_period=2, input_values=[OHLCV(1, 2, 3, 4), OHLCV(5, 6, 7, 8)])
 ```
 
-Read more about input types in the [Input types](features.md) section.
+Read more about input types in the [Input types](input-types.md) section.
 
 ## Examples
 

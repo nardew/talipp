@@ -44,7 +44,7 @@ theme:
     - search.suggest
     - toc.follow
 repo_url: https://github.com/nardew/talipp
-copyright: Copyright &copy; 2024 Andrej Chovanec (a.k.a. nardew)
+copyright: Copyright &copy; 2024 nardew
 #markdown_extensions:
 #  - attr_list
 #  - pymdownx.emoji:
@@ -126,9 +126,9 @@ nav:
       - Indicator operations: indicator-operations.md
       - Input types: input-types.md
       - Output types: output-types.md
-      - Indicator parametrization: indicators.md
-      - Indicator chaining: features.md
-      - Timeframe resampling: features.md
+      #- Indicator parametrization: indicators.md
+      - Indicator chaining: indicator-chaining.md
+      - Timeframe resampling: timeframe-sampling.md
   - Guides:
       - Pickling: guides.md
       - Create a new indicator: guides.md
