@@ -126,10 +126,10 @@ nav:
       - Indicator operations: indicator-operations.md
       - Input types: input-types.md
       - Output types: output-types.md
-      #- Indicator parametrization: indicators.md
+#      - Indicator parametrization: indicators.md
       - Indicator chaining: indicator-chaining.md
-      - Timeframe resampling: timeframe-sampling.md
+      - Timeframe auto-resampling: timeframe-sampling.md
   - Guides:
       - Pickling: guides.md
-      - Create a new indicator: guides.md
+#      - Create a new indicator: guides.md
   - API reference: reference/

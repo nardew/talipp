@@ -14,13 +14,32 @@ class TimeUnitType(Enum):
 
 
 class SamplingPeriodType(Enum):
+    """
+    SamplingPeriodType
+    """
+
     SEC_1 = (TimeUnitType.SEC, 1)
+    """
+    1 second
+    """
     SEC_3 = (TimeUnitType.SEC, 3)
+    """
+    3 seconds
+    """
     SEC_5 = (TimeUnitType.SEC, 5)
+    """
+    5 seconds
+    """
     SEC_10 = (TimeUnitType.SEC, 10)
     SEC_15 = (TimeUnitType.SEC, 15)
     SEC_30 = (TimeUnitType.SEC, 30)
+    """
+    30 seconds
+    """
     MIN_1 = (TimeUnitType.MIN, 1)
+    """
+    1 minute
+    """
     MIN_3 = (TimeUnitType.MIN, 3)
     MIN_5 = (TimeUnitType.MIN, 5)
     MIN_10 = (TimeUnitType.MIN, 10)

@@ -1,14 +1,8 @@
 # Indicator chaining
 
-talipp offers a unique feature of chaining multiple indicators into a pipeline. When indicators are chained, each output of one indicator immediately becomes a new input of the next one forming a train of propagated values. As always all this in constant time!
+talipp offers a unique feature of chaining multiple indicators into a pipeline. When indicators are chained, each output of one indicator immediately becomes a new input of the one after forming a train of propagating values. As always, all this in constant time!
 
-Indicator chaining has two major benefits:
-
-- users can define their custom indicators
-- x
-- code deduplication when indicators internally use different sub-indicators
-
-To chain indicators, one links them together via `input_indicator` parameter during initialization as below. Notice how the second indicator produces new outputs even without any explicit calls of `add` method:
+The major benefit of chaining indicators is it allows user to define their custom indicators. To chain indicators, one links them together via `input_indicator` parameter during initialization as illustrated below. Notice how the second indicator produces new outputs even without any explicit calls of `add` method:
 
 ```python
 from talipp.indicators import SMA
