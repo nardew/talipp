@@ -36,7 +36,7 @@ theme:
     - content.tooltips
 #    - navigation.footer
 #    - navigation.indexes
-#    - navigation.sections
+    - navigation.sections
 #    - navigation.tabs
 #    - navigation.tabs.sticky
 #    - navigation.top
@@ -88,6 +88,7 @@ markdown_extensions:
       permalink: "#"
 plugins:
   - search
+  - link-marker
   - gen-files:
       scripts:
         - scripts/gen_ref_pages.py
@@ -130,6 +131,6 @@ nav:
       - Indicator chaining: indicator-chaining.md
       - Timeframe auto-resampling: timeframe-sampling.md
   - Guides:
-      - Pickling: guides.md
+      - Serialization: serialization.md
 #      - Create a new indicator: guides.md
   - API reference: reference/
