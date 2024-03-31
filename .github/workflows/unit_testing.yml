@@ -26,7 +26,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         pip install -r requirements.txt
-        pip install -e src
+        pip install -e .
     - name: Install dependencies for backward compatibility
       run: pip install dataclasses
       if: ${{ matrix.python-version == 'pypy3' }}
