@@ -9,21 +9,45 @@ from talipp.ohlcv import OHLCV
 
 
 class HLType(enum.Enum):
+    """Pivot type."""
+
     LOW = enum.auto()
+    """Low pivot."""
+
     HIGH = enum.auto()
+    """High pivot."""
 
 
 @dataclass
 class PivotsHLVal:
+    """`ParabolicSAR` output type.
+
+    Args:
+        ohlcv: Pivot.
+        type: Pivot type.
+    """
+
     ohlcv: OHLCV = None
     type: HLType = None
 
 
 class PivotsHL(Indicator):
-    """
-    High/Low Pivots
+    """High/Low Pivots.
 
-    Output: a list of PivotsHLVal
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [PivotsHLVal][talipp.indicators.PivotsHL.PivotsHLVal]
+
+    Args:
+        high_period: High pivot lookup period.
+        low_period: Low pivot lookup period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
+
+    Warning:
+        The indicator always works with the last but one input value because it cannot handle updates/removals properly. Furthermore, the indicator does not support removing two values in a row.
     """
 
     def __init__(self, high_period: int,
@@ -42,8 +66,6 @@ class PivotsHL(Indicator):
         self.initialize(input_values, input_indicator)
 
     # Always return None to avoid automatic update of output_results. They are handled in the method manually.
-    # The indicator always works with the last but one input value because it cannot handle updates/removals properly.
-    # Furthermore, the indicator does not support removing two values in a row.
     def _calculate_new_value(self) -> Any:
         if not has_valid_values(self.input_values, 2):
             return None

@@ -10,19 +10,41 @@ from talipp.ohlcv import OHLCV
 
 
 class Trend(enum.Enum):
+    """`SuperTrend` trend."""
+
     UP = enum.auto()
+    """Up trend."""
+
     DOWN = enum.auto()
+    """Down trend."""
 
 
 @dataclass
 class SuperTrendVal:
+    """`SuperTrend` output type.
+
+    Args:
+        value: `SuperTrend` value.
+        trend: `SuperTrend` trend.
+    """
     value: float = None
     trend: Trend = None
 
 
 class SuperTrend(Indicator):
-    """
-    Output: A list of SuperTrendVal
+    """SuperTrend.
+
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [SuperTrendVal][talipp.indicators.SuperTrend.SuperTrendVal]
+
+    Args:
+        atr_period: [ATR][talipp.indicators.ATR] period.
+        mult: ATR multiplier.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, atr_period: int,

@@ -12,14 +12,35 @@ from talipp.ohlcv import OHLCV, ValueExtractor
 
 @dataclass
 class SFXVal:
+    """`SFX` output type.
+
+    Args:
+        atr: `ATR` value.
+        std_dev: Standard deviation.
+        ma_std_dev: Standard deviation moving average.
+    """
+
     atr: float = None
     std_dev: float = None
     ma_std_dev: float = None
 
 
 class SFX(Indicator):
-    """
-    Output: A list of SFXVal
+    """SFX.
+
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [SFXVal][talipp.indicators.SFX.SFXVal]
+
+    Args:
+        atr_period: [ATR][talipp.indicators.ATR] period.
+        std_dev_period: [Standard deviation][talipp.indicators.StdDev] period.
+        std_dev_period: Standard deviation moving average period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        ma_type: Moving average type.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, atr_period: int,

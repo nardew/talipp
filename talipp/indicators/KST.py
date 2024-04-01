@@ -10,15 +10,38 @@ from talipp.ma import MAType, MAFactory
 
 @dataclass
 class KSTVal:
+    """`KST` output type.
+
+    Args:
+        kst: `KST` value.
+        signal: Signal line.
+    """
+
     kst: float = None
     signal: float = None
 
 
 class KST(Indicator):
-    """
-    Know Sure Thing
+    """Know Sure Thing.
 
-    Output: a list of KSTVal
+    Input type: `float`
+
+    Output type: [KSTVal][talipp.indicators.KST.KSTVal]
+
+    Args:
+        roc1_period: [ROC][talipp.indicators.ROC] period.
+        roc1_ma_period: [ROC][talipp.indicators.ROC] moving average period.
+        roc2_period: [ROC][talipp.indicators.ROC] period.
+        roc2_ma_period: [ROC][talipp.indicators.ROC] moving average period.
+        roc3_period: [ROC][talipp.indicators.ROC] period.
+        roc3_ma_period: [ROC][talipp.indicators.ROC] moving average period.
+        roc4_period: [ROC][talipp.indicators.ROC] period.
+        roc4_ma_period: [ROC][talipp.indicators.ROC] moving average period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        ma_type: Moving average type.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self,

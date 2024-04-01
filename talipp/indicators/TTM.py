@@ -11,18 +11,33 @@ from talipp.ohlcv import OHLCV, ValueExtractor
 
 @dataclass
 class TTMVal:
-    # squeeze is on (=True) or off (=False+
-    squeeze: bool = None
+    """`TTM` output type.
 
-    # histogram of the linear regression
+    Args:
+        squeeze: `True` if squeeze is on, otherwise `False`.
+        histogram: Histogram of the linear regression.
+    """
+
+    squeeze: bool = None
     histogram: float = None
 
 
 class TTM(Indicator):
-    """
-    TTM Squeeze
+    """TTM Squeeze.
 
-    Output: a list of TTMVal
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [TTMVal][talipp.indicators.TTM.TTMVal]
+
+    Args:
+        period: Period.
+        bb_std_dev_mult: [BB][talipp.indicators.BB] standard deviation multiplier.
+        kc_atr_mult: [KeltnerChannels][talipp.indicators.KeltnerChannels] [ATR][talipp.indicators.ATR] multiplier.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        ma_type: Moving average type.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, period: int,

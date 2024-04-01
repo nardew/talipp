@@ -9,10 +9,18 @@ from talipp.ohlcv import OHLCV
 
 
 class CHOP(Indicator):
-    """
-    Choppiness Index
+    """Choppiness Index.
 
-    Output: a list of OHLCV objects
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: `float`
+
+    Args:
+        period: Period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, period: int,

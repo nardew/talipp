@@ -6,10 +6,20 @@ from talipp.input import SamplingPeriodType
 
 
 class KAMA(Indicator):
-    """
-    Kaufman's Adaptive Moving Average
+    """Kaufman's Adaptive Moving Average.
 
-    Output: a list of floats
+    Input type: `float`
+
+    Output type: `float`
+
+    Args:
+        period: Volatility period.
+        fast_ema_constant_period: Fast [EMA][talipp.indicators.EMA] smoothing factor.
+        slow_ema_constant_period: Slow [EMA][talipp.indicators.EMA] smoothing factor.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, period: int,

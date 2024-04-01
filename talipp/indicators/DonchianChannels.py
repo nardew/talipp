@@ -9,21 +9,32 @@ from talipp.ohlcv import OHLCV
 
 @dataclass
 class DonchianChannelsVal:
-    # lower band
+    """`DonchianChannels` output type.
+
+    Args:
+        lb: Lower band.
+        cb: Central band.
+        ub: Upper band.
+    """
+
     lb: float = None
-
-    # central band
     cb: float = None
-
-    # upper band
     ub: float = None
 
 
 class DonchianChannels(Indicator):
-    """
-    Donchian Channels
+    """Donchian Channels.
 
-    Output: a list of DonnchianChannelsVal
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [DonchianChannelsVal][talipp.indicators.DonchianChannels.DonchianChannelsVal]
+
+    Args:
+        period: Period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
     def __init__(self, period: int,
                  input_values: List[OHLCV] = None,

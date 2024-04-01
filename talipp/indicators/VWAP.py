@@ -6,9 +6,17 @@ from talipp.ohlcv import OHLCV
 
 
 class VWAP(Indicator):
-    """
-    Volume Weighted Average Price
-    Output: a list of floats
+    """Volume Weighted Average Price.
+
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: `float`
+
+    Args:
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, input_values: List[OHLCV] = None,

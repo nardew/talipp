@@ -10,15 +10,31 @@ from talipp.ohlcv import OHLCV
 
 @dataclass
 class ChandeKrollStopVal:
+    """`ChandeKrollStop` output type.
+
+        Args:
+            short_stop: Stop price for shorts.
+            long_stop: Stop price for longs.
+        """
+
     short_stop: float = None
     long_stop: float = None
 
 
 class ChandeKrollStop(Indicator):
-    """
-    Chande Kroll Stop
+    """Chande Kroll Stop.
 
-    Output: a list of ChandeKrollStopVal objects
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [ChandeKrollStopVal][talipp.indicators.ChandeKrollStop.ChandeKrollStopVal]
+
+    Args:
+        atr_period: ATR period.
+        atr_mult: ATR multiplier.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, atr_period: int,

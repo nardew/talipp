@@ -10,10 +10,22 @@ from talipp.ohlcv import OHLCV
 
 
 class STC(Indicator):
-    """
-    Schaff Trend Cycle
+    """Schaff Trend Cycle.
 
-    Output: a list of floats
+    Input type: `float`
+
+    Output type: `float`
+
+    Args:
+        fast_macd_period: Fast [MACD][talipp.indicators.MACD] period.
+        slow_macd_period: Slow [MACD][talipp.indicators.MACD] period.
+        stoch_period: [Stoch][talipp.indicators.Stoch] period.
+        stoch_smoothing_period: [Stoch][talipp.indicators.Stoch] smooting period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        stoch_ma_type: [Stoch][talipp.indicators.Stoch] moving average type.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, fast_macd_period: int,

@@ -8,18 +8,40 @@ from talipp.ohlcv import OHLCV
 
 @dataclass
 class IchimokuVal:
-    base_line: float = None         # Kijun Sen
-    conversion_line: float = None   # Tenkan Sen
-    lagging_line: float = None      # Chikou Span
-    cloud_leading_fast_line: float = None   # Senkou Span
-    cloud_leading_slow_line: float = None   # Senkou Span
+    """`Ichimoku` output type.
+
+    Args:
+        base_line: Kijun Sen.
+        conversion_line: Tenkan Sen.
+        lagging_line: Chikou Span.
+        cloud_leading_fast_line: Senkou Span.
+        cloud_leading_slow_line: Senkou Span.
+    """
+
+    base_line: float = None
+    conversion_line: float = None
+    lagging_line: float = None
+    cloud_leading_fast_line: float = None
+    cloud_leading_slow_line: float = None
 
 
 class Ichimoku(Indicator):
-    """
-    Ichimoku Clouds
+    """Ichimoku Cloud.
 
-    Output: a list of IchimokuVal
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [IchimokuVal][talipp.indicators.Ichimoku.IchimokuVal]
+
+    Args:
+        kijun_period: Kijun (base line) period.
+        tenkan_period: Tenkan (conversion line) period.
+        chikou_lag_period: Chikou (lagging line) period.
+        senkou_slow_period: Senkoun (leading) slow period.
+        senkou_lookup_period: Senkoun (leading) fast period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
     def __init__(self,
                  kijun_period: int,

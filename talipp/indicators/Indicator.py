@@ -3,6 +3,7 @@ from collections.abc import MutableSequence, Sequence
 from typing import List, Any, Callable, Union, Type
 from warnings import warn
 
+from talipp.exceptions import TalippException
 from talipp.indicator_util import has_valid_values
 from talipp.input import SamplingPeriodType, Sampler
 
@@ -12,6 +13,14 @@ InputModifierType = Callable[..., Any]
 
 
 class Indicator(Sequence):
+    """Base indicator class.
+
+    Args:
+        input_modifier: Input modifier.
+        output_value_type: Output value type.
+        input_sampling: Input sampling type.
+    """
+
     __metaclass__ = ABCMeta
 
     def __init__(self,
@@ -51,7 +60,7 @@ class Indicator(Sequence):
 
     def initialize(self, input_values: ListAny = None, input_indicator: 'Indicator' = None) -> None:
         if input_values is not None and input_indicator is not None:
-            raise Exception('Indicator cannot be initialized with both input_values and input_indicator!')
+            raise TalippException('Indicator cannot be initialized with both input_values and input_indicator!')
 
         self.remove_all()
 
@@ -66,6 +75,14 @@ class Indicator(Sequence):
             input_indicator.add_output_listener(self)
 
     def add_input_value(self, value: Any) -> None:
+        """**Deprecated.** Use [add][talipp.indicators.Indicator.Indicator.add] method instead.
+
+        Add a new input value.
+
+        Args:
+            value: Value to be added.
+        """
+
         warn('This method is deprecated and will be removed in the next major version. '
              'Please use add(...) method with the same signature instead.',
              DeprecationWarning,
@@ -73,6 +90,12 @@ class Indicator(Sequence):
         return self.add(value)
 
     def add(self, value: Any) -> None:
+        """Add a new input value.
+
+        Args:
+            value: Value to be added.
+        """
+
         if (self.input_sampler is not None
                 and has_valid_values(self.input_values)
                 and self.input_sampler.is_same_period(value, self.input_values[-1])):
@@ -103,6 +126,14 @@ class Indicator(Sequence):
                     listener.add(new_value)
 
     def update_input_value(self, value: Any) -> None:
+        """**Deprecated.** Use [update][talipp.indicators.Indicator.Indicator.update] method instead.
+
+        Update the last input value.
+
+        Args:
+            value: Value to be used.
+        """
+
         warn('This method is deprecated and will be removed in the next major version. '
              'Please use update(...) method with the same signature instead.',
              DeprecationWarning,
@@ -110,10 +141,21 @@ class Indicator(Sequence):
         return self.update(value)
 
     def update(self, value: Any) -> None:
+        """Update the last input value.
+
+        Args:
+            value: Value to be used.
+        """
+
         self.remove()
         self.add(value)
 
     def remove_input_value(self) -> None:
+        """**Deprecated.** Use [remove][talipp.indicators.Indicator.Indicator.remove] method instead.
+
+        Remove the last input value.
+        """
+
         warn('This method is deprecated and will be removed in the next major version. '
              'Please use remove(...) method with the same signature instead.',
              DeprecationWarning,
@@ -121,6 +163,8 @@ class Indicator(Sequence):
         return self.remove()
 
     def remove(self) -> None:
+        """Remove the last input value."""
+
         for sub_indicator in self.sub_indicators:
             sub_indicator.remove()
 
@@ -152,6 +196,8 @@ class Indicator(Sequence):
         pass
 
     def remove_all(self) -> None:
+        """Remove all input values."""
+
         for sub_indicator in self.sub_indicators:
             sub_indicator.remove_all()
 
@@ -173,6 +219,12 @@ class Indicator(Sequence):
         pass
 
     def purge_oldest(self, size: int) -> None:
+        """Purge old input values.
+
+        Args:
+            size: number of oldest input values to be purged.
+        """
+
         for sub_indicator in self.sub_indicators:
             sub_indicator.purge_oldest(size)
 

@@ -7,10 +7,18 @@ from talipp.input import SamplingPeriodType
 
 
 class TRIX(Indicator):
-    """
-    TRIX
+    """TRIX.
 
-    Output: a list of floats
+    Input type: `float`
+
+    Output type: `float`
+
+    Args:
+        period: Period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, period: int,

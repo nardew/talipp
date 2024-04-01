@@ -1,5 +1,6 @@
 import unittest
 
+from talipp.exceptions import TalippException
 from talipp.indicator_util import composite_to_lists, has_valid_values, previous_if_exists
 from talipp.indicators import BB, SMA
 
@@ -24,11 +25,11 @@ class Test(unittest.TestCase):
     def test_to_list_simple_type(self):
         sma = SMA(3, [1, 2, 3, 4, 5])
 
-        with self.assertRaises(Exception) as e:
+        with self.assertRaises(TalippException) as e:
             composite_to_lists(sma)
 
         print(e.exception)
-        self.assertTrue('to_lists() method can be used only with indicators returning composite output values, '
+        self.assertTrue('composite_to_lists(...) method can be used only with indicators returning composite output values, '
                         'this indicator returns' in e.exception.args[0])
 
     def test_to_list_empty(self):
@@ -57,8 +58,8 @@ class Test(unittest.TestCase):
         self.assertEqual(previous_if_exists([]), 0)
         self.assertEqual(previous_if_exists([], default=1), 1)
         self.assertEqual(previous_if_exists([1]), 1)
-        self.assertEqual(previous_if_exists([1], previous_index=-2), 0)
-        self.assertEqual(previous_if_exists([1,2], previous_index=-2), 1)
+        self.assertEqual(previous_if_exists([1], index=-2), 0)
+        self.assertEqual(previous_if_exists([1,2], index=-2), 1)
 
 
 if __name__ == '__main__':

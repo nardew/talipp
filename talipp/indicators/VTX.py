@@ -10,15 +10,30 @@ from talipp.ohlcv import OHLCV
 
 @dataclass
 class VTXVal:
+    """`VTX` output type.
+
+    Args:
+        plus_vtx: Positive movement.
+        minus_vtx: Negative movement.
+    """
+
     plus_vtx: float = None
     minus_vtx: float = None
 
 
 class VTX(Indicator):
-    """
-    Vortex Indicator
+    """Vortex Indicator.
 
-    Output: a list of floats
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [VTXVal][talipp.indicators.VTX.VTXVal]
+
+    Args:
+        period: Period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, period: int,

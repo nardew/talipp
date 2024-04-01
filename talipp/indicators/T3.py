@@ -7,10 +7,19 @@ from talipp.input import SamplingPeriodType
 
 
 class T3(Indicator):
-    """
-    T3 Moving Average
+    """T3 Moving Average.
 
-    Output: a list of floats
+    Input type: `float`
+
+    Output type: `float`
+
+    Args:
+        period: Period.
+        factor: Multiplicative factor.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, period: int,

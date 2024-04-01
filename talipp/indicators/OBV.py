@@ -7,10 +7,17 @@ from talipp.ohlcv import OHLCV
 
 
 class OBV(Indicator):
-    """
-    On Balance Volume
+    """On Balance Volume.
 
-    Output: a list of floats
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: `float`
+
+    Args:
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, input_values: List[OHLCV] = None,

@@ -27,7 +27,7 @@ jobs:
         pip install flake8 pytest
         pip install -r requirements.txt
         pip install -e .
-    - name: Install dependencies for backward compaibility
+    - name: Install dependencies for backward compatibility
       run: pip install dataclasses
       if: ${{ matrix.python-version == 'pypy3' }}
     - name: Lint with flake8

@@ -8,15 +8,26 @@ from talipp.ohlcv import OHLCV
 
 
 class MassIndex(Indicator):
-    """
-    Mass Index
+    """Mass Index.
 
-    Output: a list of floats
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: `float`
+
+    Args:
+        ma_period: Moving average period.
+        ma_ma_period: Moving average period of moving average.
+        ma_ratio_period: Moving averages ration period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        ma_type: Moving average type.
+        input_sampling: Input sampling type.
     """
 
-    def __init__(self, ema_period: int,
-                 ema_ema_period: int,
-                 ema_ratio_period: int,
+    def __init__(self, ma_period: int,
+                 ma_ma_period: int,
+                 ma_ratio_period: int,
                  input_values: List[OHLCV] = None,
                  input_indicator: Indicator = None,
                  input_modifier: InputModifierType = None,
@@ -25,10 +36,10 @@ class MassIndex(Indicator):
         super().__init__(input_modifier=input_modifier,
                          input_sampling=input_sampling)
 
-        self.ema_ratio_period = ema_ratio_period
+        self.ma_ratio_period = ma_ratio_period
 
-        self.ma = MAFactory.get_ma(ma_type, ema_period)
-        self.ma_ma = MAFactory.get_ma(ma_type, ema_ema_period)
+        self.ma = MAFactory.get_ma(ma_type, ma_period)
+        self.ma_ma = MAFactory.get_ma(ma_type, ma_ma_period)
         self.ma_ratio = []
 
         self.add_managed_sequence(self.ma)
@@ -51,7 +62,7 @@ class MassIndex(Indicator):
 
         self.ma_ratio.append(self.ma[-1] / float(self.ma_ma[-1]))
 
-        if not has_valid_values(self.ma_ratio, self.ema_ratio_period):
+        if not has_valid_values(self.ma_ratio, self.ma_ratio_period):
             return None
 
-        return sum(self.ma_ratio[-self.ema_ratio_period:])
+        return sum(self.ma_ratio[-self.ma_ratio_period:])

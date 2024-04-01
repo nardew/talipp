@@ -10,21 +10,33 @@ from talipp.ma import MAType, MAFactory
 
 @dataclass
 class BBVal:
-    # lower band
+    """`BB` output type.
+
+    Args:
+        lb: Lower band.
+        cb: Central band.
+        ub: Upper band.
+    """
+
     lb: float = None
-
-    # central band
     cb: float = None
-
-    # upper band
     ub: float = None
 
 
 class BB(Indicator):
-    """
-    Bollinger Bands
+    """Bollinger Bands.
 
-    Output: a list of BBVal
+    Input type: `float`
+
+    Output type: [BBVal][talipp.indicators.BB.BBVal]
+
+    Args:
+        period: Period.
+        std_dev_mult: Standard deviation multiplier.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, period: int,

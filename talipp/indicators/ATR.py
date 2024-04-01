@@ -7,10 +7,18 @@ from talipp.ohlcv import OHLCV
 
 
 class ATR(Indicator):
-    """
-    Average True Range
+    """Average True Range
 
-    Output: a list of floats
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: `float`
+
+    Args:
+        period: Period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, period: int,

@@ -14,8 +14,8 @@ from talipp.ohlcv import OHLCV
 
 
 async def run():
-    api_key = os.environ['B_API_KEY']
-    sec_key = os.environ['B_SEC_KEY']
+    api_key = os.environ['BINANCE_API_KEY']
+    sec_key = os.environ['BINANCE_SEC_KEY']
 
     client = CryptoXLib.create_binance_client(api_key, sec_key)
 

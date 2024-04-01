@@ -9,10 +9,19 @@ from talipp.ohlcv import OHLCV
 
 
 class ChaikinOsc(Indicator):
-    """
-    Chaikin Oscillator
+    """Chaikin Oscillator.
 
-    Output: a list of floats
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: `float`
+
+    Args:
+        fast_period: Fast moving average period.
+        slow_period: Slow moving average period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, fast_period: int,

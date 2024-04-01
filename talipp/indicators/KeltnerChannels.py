@@ -11,21 +11,36 @@ from talipp.ohlcv import OHLCV, ValueExtractor
 
 @dataclass
 class KeltnerChannelsVal:
-    # lower band
+    """`KeltnerChannels` output type.
+
+    Args:
+        lb: Lower band.
+        cb: Central band.
+        ub: Upper band.
+    """
+
     lb: float = None
-
-    # central band
     cb: float = None
-
-    # upper band
     ub: float = None
 
 
 class KeltnerChannels(Indicator):
-    """
-    Keltner Channels
+    """Keltner Channels.
 
-    Output: a list of KeltnerChannelsVal
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [KeltnerChannelsVal][talipp.indicators.KeltnerChannels.KeltnerChannelsVal]
+
+    Args:
+        ma_period: Moving average period.
+        atr_period: [ATR][talipp.indicators.ATR] period.
+        atr_mult_up: Upper band multiplier.
+        atr_mult_down: Lower band multiplier.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        ma_type: Moving average type.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, ma_period: int,

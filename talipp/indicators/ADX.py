@@ -10,16 +10,33 @@ from talipp.ohlcv import OHLCV
 
 @dataclass
 class ADXVal:
+    """`ADX` output type.
+
+    Args:
+        adx: ADX.
+        plus_di: Plus Directional Movement.
+        minus_di: Minus Directional Movement.
+    """
+
     adx: float = None
     plus_di: float = None
     minus_di: float = None
 
 
 class ADX(Indicator):
-    """
-    Average Directional Index
+    """Average Directional Index.
 
-    Output: a list of ADXVal
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [ADXVal][talipp.indicators.ADX.ADXVal]
+
+    Args:
+        di_period: Directional Index period.
+        adx_period: Average Directional Index period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, di_period: int,

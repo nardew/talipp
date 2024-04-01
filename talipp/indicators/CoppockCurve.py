@@ -8,10 +8,20 @@ from talipp.input import SamplingPeriodType
 
 
 class CoppockCurve(Indicator):
-    """
-    CoppockCurve
+    """CoppockCurve.
 
-    Output: a list of floats
+    Input type: `float`
+
+    Output type: `float`
+
+    Args:
+        fast_roc_period: Fast [ROC][talipp.indicators.ROC] period.
+        slow_roc_period: Slow [ROC][talipp.indicators.ROC] period.
+        wma_period: [WMA][talipp.indicators.WMA] period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, fast_roc_period: int,

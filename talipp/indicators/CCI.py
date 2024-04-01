@@ -8,10 +8,18 @@ from talipp.ohlcv import OHLCV
 
 
 class CCI(Indicator):
-    """
-    Commodity Channel Index
+    """Commodity Channel Index.
 
-    Output: a list of OHLCV objects
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: `float`
+
+    Args:
+        period: Period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, period: int,
@@ -36,5 +44,5 @@ class CCI(Indicator):
         if not has_valid_values(self.mean_dev, 1):
             return None
 
-        # take SMA(typical_price) directly form MeanDev since it is already calculating it in the background
+        # take SMA(typical_price) directly from MeanDev since it is already calculating it in the background
         return (typical_price - self.mean_dev.ma[-1]) / (0.015 * self.mean_dev[-1])

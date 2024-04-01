@@ -10,15 +10,32 @@ from talipp.ohlcv import OHLCV
 
 @dataclass
 class StochVal:
+    """`Stoch` output type.
+
+    Args:
+        k: `k` value.
+        d: `d` value.
+    """
+
     k: float = None
     d: float = None
 
 
 class Stoch(Indicator):
-    """
-    Stochastic
+    """Stochastic.
 
-    Output: a list of StochVal
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [StochVal][talipp.indicators.Stoch.StochVal]
+
+    Args:
+        period: Period.
+        smoothing_period: Moving average period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        ma_type: Moving average type.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, period: int,

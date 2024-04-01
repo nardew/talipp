@@ -9,12 +9,26 @@ from talipp.ohlcv import OHLCV
 
 
 class SARTrend(enum.Enum):
+    """`ParabolicSAR` trend."""
+
     UP = enum.auto()
+    """Up trend."""
+
     DOWN = enum.auto()
+    """Down trend."""
 
 
 @dataclass
 class ParabolicSARVal:
+    """`ParabolicSAR` output type.
+
+    Args:
+        value: `SAR` value.
+        trend: Actual trend.
+        ep: Extreme point.
+        accel_factor: Acceleration factor.
+    """
+
     value: float = None
     trend: SARTrend = None
     ep: float = None
@@ -22,10 +36,20 @@ class ParabolicSARVal:
 
 
 class ParabolicSAR(Indicator):
-    """
-    Parabolic Stop And Reverse
+    """Parabolic Stop And Reverse.
 
-    Output: a list of ParabolicSARVal
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: [ParabolicSARVal][talipp.indicators.ParabolicSAR.ParabolicSARVal]
+
+    Args:
+        init_accel_factor: Initial acceleration factor.
+        accel_factor_inc: Acceleration factor increment.
+        max_accel_factor: Maximum acceleration factor.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     SAR_INIT_LEN = 5

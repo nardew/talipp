@@ -10,15 +10,34 @@ from talipp.ma import MAType, MAFactory
 
 @dataclass
 class StochRSIVal:
+    """`StochRSI` output type.
+
+    Args:
+        k: `k` value.
+        d: `d` value.
+    """
+
     k: float = None
     d: float = None
 
 
 class StochRSI(Indicator):
-    """
-    Stochastic RSI
+    """Stochastic RSI.
 
-    Output: a list of StochRSIVal
+    Input type: `float`
+
+    Output type: [StochRSIVal][talipp.indicators.StochRSI.StochRSIVal]
+
+    Args:
+        rsi_period: [RSI][talipp.indicators.RSI] period.
+        stoch_period: [Stoch][talipp.indicators.Stoch] period.
+        k_smoothing_period: Stoch's `k` moving average period.
+        d_smoothing_period: Stoch's `d` moving average period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        ma_type: Moving average type.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, rsi_period: int,

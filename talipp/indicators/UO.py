@@ -7,10 +7,20 @@ from talipp.ohlcv import OHLCV
 
 
 class UO(Indicator):
-    """
-    Ultimate Oscillator
+    """Ultimate Oscillator.
 
-    Output: a list of floats
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+
+    Output type: `float`
+
+    Args:
+        fast_period: Fast period.
+        mid_period: Mid period.
+        slow_period: Slow period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, fast_period: int,

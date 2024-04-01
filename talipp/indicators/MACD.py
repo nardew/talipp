@@ -9,16 +9,35 @@ from talipp.ma import MAType, MAFactory
 
 @dataclass
 class MACDVal:
+    """`MACD` output type.
+
+    Args:
+        macd: `MACD` value.
+        signal: Signal line.
+        histogram: Histogram.
+    """
+
     macd: float = None
     signal: float = None
     histogram: float = None
 
 
 class MACD(Indicator):
-    """
-    Moving Average Convergence Divergence
+    """Moving Average Convergence Divergence.
 
-    Output: a list of MACDVal
+    Input type: `float`
+
+    Output type: [MACDVal][talipp.indicators.MACD.MACDVal]
+
+    Args:
+        fast_period: Fast moving average period.
+        slow_period: Slow moving average period.
+        signal_period: Signal line moving average period.
+        input_values: List of input values.
+        input_indicator: Input indicator.
+        input_modifier: Input modifier.
+        ma_type: Moving average type.
+        input_sampling: Input sampling type.
     """
 
     def __init__(self, fast_period: int,
