@@ -120,6 +120,9 @@ plugins:
             signature_crossrefs: true
             summary: true
   - section-index
+extra:
+  version:
+    provider: mike
 nav:
   - Home: index.md
   - Getting started: getting-started.md
