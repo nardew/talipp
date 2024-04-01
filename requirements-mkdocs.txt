@@ -1,0 +1,9 @@
+black
+markdown-callouts
+mike
+mkdocs-gen-files
+mkdocs-link-marker
+mkdocs-literate-nav
+mkdocs-material
+mkdocs-section-index
+mkdocstrings[python]

@@ -7,9 +7,12 @@ with open("requirements.txt", "r") as fh:
     requirements = fh.readlines()
 requirements = [line.strip() for line in requirements]
 
+with open("VERSION", "r") as fh:
+    version = fh.read()
+
 setuptools.setup(
     name="talipp",
-    version="2.1.1",
+    version=version,
     author="nardew",
     author_email="talipp.pyth@gmail.com",
     description="talipp - Incremental Technical Analysis Library",
