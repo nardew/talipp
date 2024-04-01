@@ -49,7 +49,7 @@ jobs:
         twine upload dist/*
 
   deploy-doc:
-    needs: check
+    needs: deploy
     runs-on: "ubuntu-latest"
 
     steps:
