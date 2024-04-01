@@ -37,7 +37,7 @@ For instance, to import [EMA][talipp.indicators.EMA.EMA] indicator, use
 from talipp.indicators import EMA
 ```
 
-List of all indicators can be found in the [Indicator catalogue](indicators.md).
+List of all indicators can be found in the [Indicator catalogue](indicator-catalogue.md).
 
 ### Basic usage
 

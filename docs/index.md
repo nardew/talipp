@@ -6,7 +6,7 @@
 ![pypi](https://img.shields.io/pypi/l/talipp)
 
 
-**talipp** (a.k.a. **tali++**) is a Python library implementing [financial indicators](indicators.md) for technical analysis. The distinctive feature of the library is its _incremental computation_ which fits well real-time applications or applications with iterative input in general.  
+**talipp** (a.k.a. **tali++**) is a Python library implementing [financial indicators](indicator-catalogue.md) for technical analysis. The distinctive feature of the library is its _incremental computation_ which fits well real-time applications or applications with iterative input in general.  
 
 Supported incremental operations are:
 

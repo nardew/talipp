@@ -1,4 +1,11 @@
 site_name: talipp
+site_url: https://nardew.github.io/talipp/
+repo_name: GitHub
+repo_url: https://github.com/nardew/talipp
+edit_uri: blob/main/docs/
+site_author: nardew
+site_description: talipp - incremental technical analysis library
+copyright: Copyright &copy; 2024 nardew
 theme:
   name: material
   language: en
@@ -28,15 +35,11 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
-    - content.action.edit
-    - content.action.view
     - content.code.annotate
     - content.code.copy
     - content.tooltips
     - navigation.sections
     - toc.follow
-repo_url: https://github.com/nardew/talipp
-copyright: Copyright &copy; 2024 nardew
 markdown_extensions:
   - attr_list
   - def_list
@@ -106,14 +109,12 @@ nav:
   - Home: index.md
   - Getting started: getting-started.md
   - Features:
-      - Indicators catalogue: indicators.md
+      - Indicator catalogue: indicator-catalogue.md
       - Indicator operations: indicator-operations.md
       - Input types: input-types.md
       - Output types: output-types.md
-#      - Indicator parametrization: indicators.md
       - Indicator chaining: indicator-chaining.md
       - Timeframe auto-resampling: timeframe-sampling.md
   - Guides:
       - Serialization: serialization.md
-#      - Create a new indicator: guides.md
   - API reference: reference/
