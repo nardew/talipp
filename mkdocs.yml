@@ -1,6 +1,6 @@
 site_name: talipp
 site_url: https://nardew.github.io/talipp/
-repo_name: GitHub
+repo_name: nardew/talipp
 repo_url: https://github.com/nardew/talipp
 edit_uri: blob/main/docs/
 site_author: nardew
@@ -12,6 +12,7 @@ theme:
   custom_dir: docs/overrides
   icon:
     logo: material/library
+    repo: fontawesome/brands/github
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
@@ -102,6 +103,7 @@ plugins:
             signature_crossrefs: true
             summary: true
   - section-index
+  - git-revision-date-localized:
 extra:
   version:
     provider: mike

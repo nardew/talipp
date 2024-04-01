@@ -2,6 +2,7 @@ black
 markdown-callouts
 mike
 mkdocs-gen-files
+mkdocs-git-revision-date-localized-plugin
 mkdocs-link-marker
 mkdocs-literate-nav
 mkdocs-material
