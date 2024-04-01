@@ -9,10 +9,7 @@
 
 ---
 
-## New major release `talipp 2.0.0` available!
-
-- Scope: https://github.com/nardew/talipp/issues/111
-- PR: https://github.com/nardew/talipp/pull/96
+## !!! [New documentation page available](https://nardew.github.io/talipp) !!!
 
 ---
 
