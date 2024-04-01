@@ -28,29 +28,15 @@ theme:
     - search.suggest
     - search.highlight
     - search.share
-    - announce.dismiss
     - content.action.edit
     - content.action.view
     - content.code.annotate
     - content.code.copy
     - content.tooltips
-#    - navigation.footer
-#    - navigation.indexes
     - navigation.sections
-#    - navigation.tabs
-#    - navigation.tabs.sticky
-#    - navigation.top
-    - search.highlight
-    - search.suggest
     - toc.follow
 repo_url: https://github.com/nardew/talipp
 copyright: Copyright &copy; 2024 nardew
-#markdown_extensions:
-#  - attr_list
-#  - pymdownx.emoji:
-#      emoji_index: !!python/name:material.extensions.emoji.twemoji
-#      emoji_generator: !!python/name:material.extensions.emoji.to_svg
-
 markdown_extensions:
   - attr_list
   - def_list
@@ -65,16 +51,11 @@ markdown_extensions:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
-  - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
   - pymdownx.inlinehilite:
       style_plain_text: python
   - pymdownx.magiclink
-  - pymdownx.snippets:
-      base_path: [!relative $config_dir]
-      check_paths: true
-  - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
       slugify: !!python/object/apply:pymdownx.slugs.slugify
@@ -99,8 +80,6 @@ plugins:
         python:
           import:
             - https://docs.python.org/3/objects.inv
-            #- https://installer.readthedocs.io/en/stable/objects.inv  # demonstration purpose in the docs
-            #- https://mkdocstrings.github.io/autorefs/objects.inv
           paths: [ src ]
           options:
             docstring_options:
