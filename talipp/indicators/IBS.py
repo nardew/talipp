@@ -9,7 +9,7 @@ from talipp.ohlcv import OHLCV
 class IBS(Indicator):
     """Internal Bar Strength.
 
-    Input type: [OHLCV][talipp.ohlcv.OHLCV]`
+    Input type: [OHLCV][talipp.ohlcv.OHLCV]
 
     Output type: `float`
 
