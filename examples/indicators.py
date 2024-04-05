@@ -1,7 +1,7 @@
 import random
 
 from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, \
-    CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, Ichimoku, KAMA, KeltnerChannels, KST, KVO, \
+    CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, IBS, Ichimoku, KAMA, KeltnerChannels, KST, KVO, \
     MACD, MassIndex, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, SFX, SMA, SMMA, SOBV, STC, StdDev, Stoch, StochRSI, \
     SuperTrend, T3, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, WMA, ZLEMA
 from talipp.ohlcv import OHLCVFactory
@@ -38,6 +38,7 @@ if __name__ == "__main__":
     print(f'EMV: {EMV(14, 10000, ohlcv)[-1]}')
     print(f'ForceIndex: {ForceIndex(13, ohlcv)[-1]}')
     print(f'HMA: {HMA(9, close)[-1]}')
+    print(f'IBS: {IBS(ohlcv)[-1]}')
     print(f'Ichimoku: {Ichimoku(26, 9, 52, 52, 26, ohlcv)[-1]}')
     print(f'KAMA: {KAMA(14, 2, 30, close)[-1]}')
     print(f'KeltnerChannels: {KeltnerChannels(20, 26, 1, 1, ohlcv)[-1]}')

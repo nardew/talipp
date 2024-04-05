@@ -5,8 +5,9 @@ from cryptoxlib.CryptoXLib import CryptoXLib
 from cryptoxlib.Pair import Pair
 from cryptoxlib.clients.binance import enums
 from cryptoxlib.version_conversions import async_run
+
 from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, \
-    CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, Ichimoku, \
+    CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, IBS, Ichimoku, \
     KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, McGinleyDynamic, MeanDev, OBV, PivotsHL, ROC, RSI, ParabolicSAR, \
     SFX, SMA, SMMA, SOBV, STC, StdDev, \
     Stoch, StochRSI, SuperTrend, T3, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, WMA, ZLEMA
@@ -49,6 +50,7 @@ async def run():
     print(f'EMV: {EMV(14, 10000, ohlcv)[-1]}')
     print(f'ForceIndex: {ForceIndex(13, ohlcv)[-1]}')
     print(f'HMA: {HMA(9, close)[-1]}')
+    print(f'IBS: {IBS(ohlcv)[-5:]}')
     print(f'Ichimoku: {Ichimoku(26, 9, 52, 52, 26, ohlcv)[-1]}')
     print(f'KAMA: {KAMA(14, 2, 30, close)[-1]}')
     print(f'KeltnerChannels: {KeltnerChannels(20, 26, 1, 1, ohlcv)[-1]}')

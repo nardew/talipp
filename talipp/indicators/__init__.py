@@ -19,6 +19,7 @@ from .EMV import EMV as EMV
 from .FibRetracement import FibRetracement as FibRetracement
 from .ForceIndex import ForceIndex as ForceIndex
 from .HMA import HMA as HMA
+from .IBS import IBS as IBS
 from .Ichimoku import Ichimoku as Ichimoku
 from .KAMA import KAMA as KAMA
 from .KeltnerChannels import KeltnerChannels as KeltnerChannels
@@ -76,6 +77,7 @@ __all__ = (
     "FibRetracement",
     "ForceIndex",
     "HMA",
+    "IBS",
     "Ichimoku",
     "KAMA",
     "KeltnerChannels",
