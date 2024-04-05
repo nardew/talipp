@@ -33,6 +33,7 @@ Last but not least, `talipp` is a community project and therefore open to any su
 
 ### What's new in the latest version
 
+- IBS indicator
 - auto-sampling of input values
 
 - [v2.0.0 scope](https://github.com/nardew/talipp/issues/111)
@@ -61,6 +62,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Detrended Price Oscillator (DPO)
 - Ease of Movement (EMV)
 - Force Index
+- IBS
 - Ichimoku Kinko Hyo
 - Keltner Channel (KC)
 - Klinger Volume Oscillator (KVO)
