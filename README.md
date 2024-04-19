@@ -1,9 +1,6 @@
 # talipp - Incremental Technical Analysis Library
 
-![](https://img.shields.io/badge/python-3.8-blue.svg) 
-![](https://img.shields.io/badge/python-3.9-blue.svg)
-![](https://img.shields.io/badge/python-3.10-blue.svg)
-![](https://img.shields.io/badge/python-3.11-blue.svg)
+![python](https://img.shields.io/pypi/pyversions/talipp?logo=python)
 ![PyPy](https://img.shields.io/badge/pypy-3-blue.svg)
 ![unit tests](https://github.com/nardew/talipp/workflows/unit%20tests/badge.svg)
 

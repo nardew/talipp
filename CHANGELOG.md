@@ -6,6 +6,10 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 ## [Pending release]
 
+## [2.2.1] - 2024-04-19
+
+- fix `ALMA` calculation
+
 ## [2.2.0] - 2024-04-05
 
 - new `IBS` indicator
@@ -100,7 +104,8 @@ The project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html
 
 - the official release of `talipp`
 
-[Pending release]: https://github.com/nardew/talipp/compare/2.2.0...HEAD
+[Pending release]: https://github.com/nardew/talipp/compare/2.2.1...HEAD
+[2.2.1]: https://github.com/nardew/talipp/releases/tag/2.2.1
 [2.2.0]: https://github.com/nardew/talipp/releases/tag/2.2.0
 [2.1.2]: https://github.com/nardew/talipp/releases/tag/2.1.2
 [2.1.1]: https://github.com/nardew/talipp/compare/2.1.0...2.1.1

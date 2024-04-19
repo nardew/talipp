@@ -40,7 +40,7 @@ class ALMA(Indicator):
         self.w = []
         self.w_sum = 0.0
         s = self.period / float(self.sigma)
-        m = int((self.period - 1) * self.offset)
+        m = (self.period - 1) * self.offset
         for i in range(0, self.period):
             self.w.append(exp(-1 * (i - m) * (i - m) / (2 * s * s)))
             self.w_sum += self.w[-1]

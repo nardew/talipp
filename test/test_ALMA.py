@@ -14,9 +14,9 @@ class TestALMA(TalippTest):
 
         print(ind)
 
-        self.assertAlmostEqual(ind[-3], 9.795859, places = 5)
-        self.assertAlmostEqual(ind[-2], 10.121439, places = 5)
-        self.assertAlmostEqual(ind[-1], 10.257038, places = 5)
+        self.assertAlmostEqual(ind[-3], 10.053326, places = 5)
+        self.assertAlmostEqual(ind[-2], 10.267585, places = 5)
+        self.assertAlmostEqual(ind[-1], 10.264363, places = 5)
 
     def test_update(self):
         self.assertIndicatorUpdate(ALMA(9, 0.85, 6, self.input_values))
