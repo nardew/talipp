@@ -35,7 +35,7 @@ Last but not least, `talipp` is a community project and therefore open to any su
 
 - [v2.0.0 scope](https://github.com/nardew/talipp/issues/111)
 
-For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/blob/main/CHANGELOG.md).
+For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/releases).
 
 ---
 
