@@ -20,7 +20,7 @@ class HLType(enum.Enum):
 
 @dataclass
 class PivotsHLVal:
-    """`ParabolicSAR` output type.
+    """`PivotsHL` output type.
 
     Args:
         ohlcv: Pivot.

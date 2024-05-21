@@ -16,7 +16,7 @@ from .DonchianChannels import DonchianChannels as DonchianChannels
 from .DPO import DPO as DPO
 from .EMA import EMA as EMA
 from .EMV import EMV as EMV
-from .FibRetracement import FibRetracement as FibRetracement
+from .FibonacciRetracement import FibonacciRetracement as FibonacciRetracement
 from .ForceIndex import ForceIndex as ForceIndex
 from .HMA import HMA as HMA
 from .IBS import IBS as IBS
@@ -74,7 +74,7 @@ __all__ = (
     "DPO",
     "EMA",
     "EMV",
-    "FibRetracement",
+    "FibonacciRetracement",
     "ForceIndex",
     "HMA",
     "IBS",
