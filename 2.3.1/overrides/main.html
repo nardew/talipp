@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block announce %}
+The documentation is currently in its beta and any feedback is welcome. To provide it please use <a href="https://github.com/nardew/talipp/issues/new">GitHub issues</a>.
+{% endblock %}
+
+{% block outdated %}
+  You're not viewing the latest version.
+  <a href="{{ '../' ~ base_url }}">
+    <strong>Click here to go to latest.</strong>
+  </a>
+{% endblock %}
