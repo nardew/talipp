@@ -1,14 +1,20 @@
+"""
+Warning:
+        The indicator is deprecated in favour of [ZigZag][talipp.indicators.ZigZag] indicator.
+"""
+
 import enum
 from dataclasses import dataclass
 from typing import List, Any
 
+from talipp.exceptions import TalippException
 from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.input import SamplingPeriodType
 from talipp.ohlcv import OHLCV
 
 
-class HLType(enum.Enum):
+class PivotType(enum.Enum):
     """Pivot type."""
 
     LOW = enum.auto()
@@ -28,15 +34,23 @@ class PivotsHLVal:
     """
 
     ohlcv: OHLCV = None
-    type: HLType = None
+    type: PivotType = None
 
 
 class PivotsHL(Indicator):
     """High/Low Pivots.
 
+    Deprecated.
+
+    Warning:
+        Due to its nature the indicator does not support `update` and `remove` operations.
+
     Input type: [OHLCV][talipp.ohlcv.OHLCV]
 
     Output type: [PivotsHLVal][talipp.indicators.PivotsHL.PivotsHLVal]
+
+    Important:
+        Outputs of the indicator contain only pivots, i.e. length of the output does not match length of the input.
 
     Args:
         high_period: High pivot lookup period.
@@ -45,9 +59,6 @@ class PivotsHL(Indicator):
         input_indicator: Input indicator.
         input_modifier: Input modifier.
         input_sampling: Input sampling type.
-
-    Warning:
-        The indicator always works with the last but one input value because it cannot handle updates/removals properly. Furthermore, the indicator does not support removing two values in a row.
     """
 
     def __init__(self, high_period: int,
@@ -65,37 +76,42 @@ class PivotsHL(Indicator):
 
         self.initialize(input_values, input_indicator)
 
-    # Always return None to avoid automatic update of output_results. They are handled in the method manually.
     def _calculate_new_value(self) -> Any:
-        if not has_valid_values(self.input_values, 2):
+        # initialize the first pivot
+        if has_valid_values(self.input_values, 1, exact=True):
+            self.output_values.append(PivotsHLVal(self.input_values[-1], PivotType.LOW))
             return None
 
-        high = self.input_values[-2].high
-        low = self.input_values[-2].low
+        ohlcv = self.input_values[-1]
+        high = ohlcv.high
+        low = ohlcv.low
         max_high = max(self.input_values[-self.high_period:], key=lambda x: x.high).high
         min_low = min(self.input_values[-self.low_period:], key=lambda x: x.low).low
 
+        last_pivot: PivotsHLVal = self.output_values[-1]
+
         if high >= max_high:
-            if not has_valid_values(self.output_values, 1) or self.output_values[-1].type == HLType.LOW:
-                self.output_values.append(PivotsHLVal(self.input_values[-2], HLType.HIGH))
-            elif high >= self.output_values[-1].ohlcv.high:
-                self.output_values[-1] = PivotsHLVal(self.input_values[-2], HLType.HIGH)
+            if last_pivot.type == PivotType.LOW:
+                self.output_values.append(PivotsHLVal(self.input_values[-1], PivotType.HIGH))
+            elif high >= last_pivot.ohlcv.high:
+                self.output_values[-1] = PivotsHLVal(self.input_values[-1], PivotType.HIGH)
         elif low <= min_low:
-            if not has_valid_values(self.output_values, 1) or self.output_values[-1].type == HLType.HIGH:
-                self.output_values.append(PivotsHLVal(self.input_values[-2], HLType.LOW))
-            elif low <= self.output_values[-1].ohlcv.low:
-                self.output_values[-1] = PivotsHLVal(self.input_values[-2], HLType.LOW)
+            if last_pivot.type == PivotType.HIGH:
+                self.output_values.append(PivotsHLVal(self.input_values[-1], PivotType.LOW))
+            elif low <= last_pivot.ohlcv.low:
+                self.output_values[-1] = PivotsHLVal(self.input_values[-1], PivotType.LOW)
 
         return None
 
-    # override the method to avoid automatic cleanup of output_results
-    def _remove_output_value(self) -> None:
-        pass
+    def update(self, value: Any) -> None:
+        raise TalippException("Operation not supported.")
 
-    # override the method to avoid automatic cleanup of output_results
-    def _purge_oldest_output_value(self, size: int) -> None:
-        pass
+    def remove(self) -> None:
+        raise TalippException("Operation not supported.")
 
-    # override the method to avoid automatic update of output_results
+    def purge_oldest(self, size: int) -> None:
+        raise TalippException("Operation not supported.")
+
+    # output_values are managed directly during the calculation
     def _add_to_output_values(self, value: Any) -> None:
         pass

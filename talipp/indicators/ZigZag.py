@@ -33,8 +33,7 @@ class ZigZagVal:
 
 
 class ZigZag(Indicator):
-    """ZigZag.
-
+    """
     Warning:
         Due to its nature the indicator does not support `update` and `remove` operations.
 
@@ -44,6 +43,9 @@ class ZigZag(Indicator):
 
     Important:
         Outputs of the indicator contain only pivots, i.e. length of the output does not match length of the input.
+
+    Note:
+        ZigZag indicator can also be used as a high/low pivots indicator if `sensitivity` is set to 0.
 
     Args:
         sensitivity: ZigZag sensitivity expressed as relative percentage change (e.g. 0.1 means change of 10%).
