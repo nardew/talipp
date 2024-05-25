@@ -34,7 +34,7 @@
 | [MeanDev][talipp.indicators.MeanDev.MeanDev]                            | Mean Deviation                        | [](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line)             |
 | [OBV][talipp.indicators.OBV.OBV]                                        | On-balacen Volume                     | [](https://school.stockcharts.com/doku.php?id=technical_indicators:on_balance_volume_obv)                      |
 | [ParabolicSAR][talipp.indicators.ParabolicSAR.ParabolicSAR]             | Parabolic Stop and Reverse            | [](https://school.stockcharts.com/doku.php?id=technical_indicators:parabolic_sar)                              |
-| [PivotsHL][talipp.indicators.PivotsHL.PivotsHL]                         | Pivot High Low Points                 |                                                                                                                      |
+| [PivotsHL][talipp.indicators.PivotsHL.PivotsHL][^1]                     | Pivot High Low Points                 |                                                                                                                      |
 | [ROC][talipp.indicators.ROC.ROC]                                        | Rate of Change                        | [](https://school.stockcharts.com/doku.php?id=technical_indicators:rate_of_change_roc_and_momentum)            |
 | [RSI][talipp.indicators.RSI.RSI]                                        | Relative Strength Index               | [](https://school.stockcharts.com/doku.php?id=technical_indicators:relative_strength_index_rsi)                |
 | [SFX][talipp.indicators.SFX.SFX]                                        |                                       |                                                                                                                      |
@@ -56,6 +56,10 @@
 | [VWAP][talipp.indicators.VWAP.VWAP]                                     | Volume-weighted Average Price         | [](https://school.stockcharts.com/doku.php?id=technical_indicators:vwap_intraday)                              |
 | [VWMA][talipp.indicators.VWMA.VWMA]                                     | Volume-weighted Moving Average        | [](https://www.tradingsetupsreview.com/volume-weighted-moving-average-vwma/)                                   |
 | [WMA][talipp.indicators.WMA.WMA]                                        | Weighted Moving Average               | [](https://fxopen.com/blog/en/what-is-a-weighted-moving-average-and-how-do-you-calculate-it/)                  |
+| [ZigZag][talipp.indicators.ZigZag.ZigZag][^1]                           | ZigZag                                | [](https://school.stockcharts.com/doku.php?id=technical_indicators:zigzag)                                          |
 | [ZLEMA][talipp.indicators.ZLEMA.ZLEMA]                                  | Zero-lag Exponential Moving Average   | [](https://en.wikipedia.org/wiki/Zero_lag_exponential_moving_average)                                          |
 
 Request a new indicator via [GitHub Issues](https://github.com/nardew/talipp/issues/new).
+
+  [^1]:
+    Due to the indicator's nature incremental operations are not supported.

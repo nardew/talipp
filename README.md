@@ -30,6 +30,7 @@ Last but not least, `talipp` is a community project and therefore open to any su
 
 ### What's new in the latest version
 
+- ZigZag indicator
 - IBS indicator
 - auto-sampling of input values
 
@@ -86,6 +87,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Ultimate Oscillator (UO)
 - Vortex Indicator (VTX)
 - Volume Weighted Average Price (VWAP)
+- ZigZag
 
 ### Installation
 ```bash
