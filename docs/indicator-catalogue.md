@@ -34,7 +34,7 @@
 | [MeanDev][talipp.indicators.MeanDev.MeanDev]                            | Mean Deviation                        | [](https://school.stockcharts.com/doku.php?id=technical_indicators:accumulation_distribution_line)             |
 | [OBV][talipp.indicators.OBV.OBV]                                        | On-balacen Volume                     | [](https://school.stockcharts.com/doku.php?id=technical_indicators:on_balance_volume_obv)                      |
 | [ParabolicSAR][talipp.indicators.ParabolicSAR.ParabolicSAR]             | Parabolic Stop and Reverse            | [](https://school.stockcharts.com/doku.php?id=technical_indicators:parabolic_sar)                              |
-| [PivotsHL][talipp.indicators.PivotsHL.PivotsHL][^1]                     | Pivot High Low Points                 |                                                                                                                      |
+| [PivotsHL][talipp.indicators.PivotsHL.PivotsHL][^1][^2]                 | Pivot High Low Points                 |                                                                                                                      |
 | [ROC][talipp.indicators.ROC.ROC]                                        | Rate of Change                        | [](https://school.stockcharts.com/doku.php?id=technical_indicators:rate_of_change_roc_and_momentum)            |
 | [RSI][talipp.indicators.RSI.RSI]                                        | Relative Strength Index               | [](https://school.stockcharts.com/doku.php?id=technical_indicators:relative_strength_index_rsi)                |
 | [SFX][talipp.indicators.SFX.SFX]                                        |                                       |                                                                                                                      |
@@ -63,3 +63,5 @@ Request a new indicator via [GitHub Issues](https://github.com/nardew/talipp/iss
 
   [^1]:
     Due to the indicator's nature incremental operations are not supported.
+  [^2]:
+    The indicator is deprecated and will be removed in a next major version.
