@@ -1,5 +1,6 @@
 from abc import ABCMeta, abstractmethod
 from collections.abc import MutableSequence, Sequence
+from datetime import datetime
 from typing import List, Any, Callable, Union, Type
 from warnings import warn
 
@@ -26,12 +27,12 @@ class Indicator(Sequence):
     def __init__(self,
                  input_modifier: InputModifierType = None,
                  output_value_type: Type = float,
-                 input_sampling: SamplingPeriodType = None):
+                 input_sampling: SamplingPeriodType = None, period_start: datetime = None):
         self.input_modifier = input_modifier
         self.output_value_type = output_value_type
         self.input_sampler: Sampler = None
         if input_sampling is not None:
-            self.input_sampler = Sampler(input_sampling)
+            self.input_sampler = Sampler(input_sampling, period_start)
 
         self.input_values: ListAny = []
         self.output_values: ListAny = []
