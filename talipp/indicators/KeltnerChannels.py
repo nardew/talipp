@@ -42,7 +42,7 @@ class KeltnerChannels(Indicator):
         input_modifier: Input modifier.
         ma_type: Moving average type.
         input_sampling: Input sampling type.
-period_start: Period start for sampling (optional)
+        period_start: Period start for sampling (optional)
     """
 
     def __init__(self, ma_period: int,

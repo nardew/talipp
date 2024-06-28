@@ -23,7 +23,7 @@ class ChaikinOsc(Indicator):
         input_indicator: Input indicator.
         input_modifier: Input modifier.
         input_sampling: Input sampling type.
-period_start: Period start for sampling (optional)
+        period_start: Period start for sampling (optional)
     """
 
     def __init__(self, fast_period: int,
