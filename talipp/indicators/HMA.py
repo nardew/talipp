@@ -1,4 +1,5 @@
 from math import sqrt
+from datetime import datetime
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
@@ -26,9 +27,11 @@ class HMA(Indicator):
                  input_values: List[float] = None,
                  input_indicator: Indicator = None,
                  input_modifier: InputModifierType = None,
-                 input_sampling: SamplingPeriodType = None):
+                 input_sampling: SamplingPeriodType = None,
+                 period_start: datetime = None):
         super().__init__(input_modifier=input_modifier,
-                         input_sampling=input_sampling)
+                         input_sampling=input_sampling,
+                         period_start=period_start)
 
         self.period = period
 

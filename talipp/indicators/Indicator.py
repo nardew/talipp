@@ -27,7 +27,8 @@ class Indicator(Sequence):
     def __init__(self,
                  input_modifier: InputModifierType = None,
                  output_value_type: Type = float,
-                 input_sampling: SamplingPeriodType = None, period_start: datetime = None):
+                 input_sampling: SamplingPeriodType = None,
+                 period_start: datetime = None):
         self.input_modifier = input_modifier
         self.output_value_type = output_value_type
         self.input_sampler: Sampler = None
