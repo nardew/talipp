@@ -19,6 +19,7 @@ class SMA(Indicator):
         input_indicator: Input indicator.
         input_modifier: Input modifier.
         input_sampling: Input sampling type.
+period_start: Period start for sampling (optional)
     """
 
     def __init__(self, period: int,

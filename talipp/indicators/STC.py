@@ -27,6 +27,7 @@ class STC(Indicator):
         input_modifier: Input modifier.
         stoch_ma_type: [Stoch][talipp.indicators.Stoch] moving average type.
         input_sampling: Input sampling type.
+period_start: Period start for sampling (optional)
     """
 
     def __init__(self, fast_macd_period: int,

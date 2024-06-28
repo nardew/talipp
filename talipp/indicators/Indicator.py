@@ -20,6 +20,7 @@ class Indicator(Sequence):
         input_modifier: Input modifier.
         output_value_type: Output value type.
         input_sampling: Input sampling type.
+period_start: Period start for sampling (optional)
     """
 
     __metaclass__ = ABCMeta

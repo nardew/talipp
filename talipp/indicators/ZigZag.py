@@ -55,6 +55,7 @@ class ZigZag(Indicator):
         input_indicator: Input indicator.
         input_modifier: Input modifier.
         input_sampling: Input sampling type.
+period_start: Period start for sampling (optional)
     """
 
     @dataclass
