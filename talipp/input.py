@@ -83,8 +83,8 @@ class SamplingPeriodType(Enum):
 
     DAY_1 = (TimeUnitType.DAY, 1)
     """1 day"""
-    
-    
+
+
 class Sampler:
     """Implementation of timeframe auto-sampling.
 
@@ -120,8 +120,9 @@ class Sampler:
         TimeUnitType.DAY: 3600 * 24,
     }
 
-    def __init__(self, period_type: SamplingPeriodType):
+    def __init__(self, period_type: SamplingPeriodType, period_start: datetime = None):
         self._period_type: SamplingPeriodType = period_type
+        self._period_start: datetime = period_start
 
     def is_same_period(self, first: OHLCV, second: OHLCV) -> bool:
         """Evaluate whether two [OHLCV][talipp.ohlcv.OHLCV] objects belong to the same period.
@@ -145,15 +146,18 @@ class Sampler:
         period_type = self._period_type.value[0]
         period_length = self._period_type.value[1]
 
-        if period_type == TimeUnitType.SEC:
-            period_start = datetime(dt.year, dt.month, dt.day, dt.hour, dt.minute)
-        elif period_type == TimeUnitType.MIN:
-            period_start = datetime(dt.year, dt.month, dt.day, dt.hour)
-        elif period_type == TimeUnitType.HOUR:
-            period_start = datetime(dt.year, dt.month, dt.day)
-        elif period_type == TimeUnitType.DAY:
-            period_start = datetime(dt.year, dt.month, 1)
-        period_start = period_start.replace(tzinfo=dt.tzinfo)
+        if self._period_start is None:
+            if period_type == TimeUnitType.SEC:
+                period_start = datetime(dt.year, dt.month, dt.day, dt.hour, dt.minute)
+            elif period_type == TimeUnitType.MIN:
+                period_start = datetime(dt.year, dt.month, dt.day, dt.hour)
+            elif period_type == TimeUnitType.HOUR:
+                period_start = datetime(dt.year, dt.month, dt.day)
+            elif period_type == TimeUnitType.DAY:
+                period_start = datetime(dt.year, dt.month, 1)
+            period_start = period_start.replace(tzinfo=dt.tzinfo)
+        else:
+            period_start = self._period_start
 
         delta = dt - period_start
         num_periods = delta.total_seconds() // (period_length * Sampler.CONVERSION_TO_SEC[period_type])
