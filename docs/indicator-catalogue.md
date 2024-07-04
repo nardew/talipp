@@ -36,6 +36,7 @@
 | [ParabolicSAR][talipp.indicators.ParabolicSAR.ParabolicSAR]             | Parabolic Stop and Reverse            | [](https://school.stockcharts.com/doku.php?id=technical_indicators:parabolic_sar)                              |
 | [PivotsHL][talipp.indicators.PivotsHL.PivotsHL][^1][^2]                 | Pivot High Low Points                 |                                                                                                                      |
 | [ROC][talipp.indicators.ROC.ROC]                                        | Rate of Change                        | [](https://school.stockcharts.com/doku.php?id=technical_indicators:rate_of_change_roc_and_momentum)            |
+| [RogersSatchell][talipp.indicators.RogersSatcgell.RogersSatchell]       | Rogers-Satchell volatility indicator  | [](https://portfolioslab.com/tools/rogers-satchell)            |
 | [RSI][talipp.indicators.RSI.RSI]                                        | Relative Strength Index               | [](https://school.stockcharts.com/doku.php?id=technical_indicators:relative_strength_index_rsi)                |
 | [SFX][talipp.indicators.SFX.SFX]                                        |                                       |                                                                                                                      |
 | [SMA][talipp.indicators.SMA.SMA]                                        | Simple Moving Average                 | [](https://www.investopedia.com/terms/s/sma.asp)                                                               |

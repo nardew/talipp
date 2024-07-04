@@ -24,7 +24,7 @@ class TalippTest(unittest.TestCase):
 
         for i in range(1, iterations_no):
             if isinstance(last_input_value, OHLCV):
-                new_val = OHLCV(i + 1, i + 2, i + 3, i + 4, i + 5)
+                new_val = OHLCV(i + 2, i + 4, i + 1, i + 3, i + 5)
             else:
                 new_val = i
             indicator.update(new_val)
@@ -39,7 +39,7 @@ class TalippTest(unittest.TestCase):
 
         for i in range(1, iterations_no):
             if isinstance(last_input_value, OHLCV):
-                new_val = OHLCV((i + 1)**2, (i + 3)**2, (i + 5)**2, (i + 7)**2, i**2)
+                new_val = OHLCV((i + 3)**2, (i + 7)**2, (i + 1)**2, (i + 5)**2, i**2)
             else:
                 new_val = (i + 1)**2
             indicator.add(new_val)

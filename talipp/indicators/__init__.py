@@ -32,6 +32,7 @@ from .MeanDev import MeanDev as MeanDev
 from .OBV import OBV as OBV
 from .PivotsHL import PivotsHL as PivotsHL
 from .ROC import ROC as ROC
+from .RogersSatchell import RogersSatchell as RogersSatchell
 from .RSI import RSI as RSI
 from .ParabolicSAR import ParabolicSAR as ParabolicSAR
 from .SFX import SFX as SFX
@@ -92,6 +93,7 @@ __all__ = (
     "ParabolicSAR",
     "PivotsHL",
     "ROC",
+    "RogersSatchell",
     "RSI",
     "SFX",
     "SMA",
