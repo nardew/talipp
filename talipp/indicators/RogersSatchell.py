@@ -32,8 +32,6 @@ class RogersSatchell(Indicator):
 
         self.period = period
 
-        self.mult = sqrt(1.0 / self.period)
-
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
@@ -43,6 +41,5 @@ class RogersSatchell(Indicator):
         s = 0.0
         for ohlcv in self.input_values[-self.period:]:
             s += log(float(ohlcv.high) / ohlcv.close) * log(float(ohlcv.high) / ohlcv.open) + log(float(ohlcv.low) / ohlcv.close) * log(float(ohlcv.low) / ohlcv.open)
-        print(s)
-        print(sqrt(s))
-        return  sqrt(s / self.period)
+
+        return sqrt(s / self.period)
