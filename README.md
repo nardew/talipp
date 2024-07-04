@@ -72,6 +72,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Parabolic SAR
 - Pivots High/Low
 - Rate of Change (ROC)
+- Rogers-Satchell volatility indicator
 - Relative strength index (RSI)
 - Schaff Trend Cycle (STC)
 - SFX TOR
