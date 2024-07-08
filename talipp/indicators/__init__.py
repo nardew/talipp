@@ -47,6 +47,7 @@ from .SuperTrend import SuperTrend as SuperTrend
 from .T3 import T3 as T3
 from .TEMA import TEMA as TEMA
 from .TRIX import TRIX as TRIX
+from .TrueRange import TrueRange as TrueRange
 from .TSI import TSI as TSI
 from .TTM import TTM as TTM
 from .UO import UO as UO
