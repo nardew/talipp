@@ -28,8 +28,6 @@ class TrueRange(Indicator):
         super(TrueRange, self).__init__(input_modifier=input_modifier,
                                   input_sampling=input_sampling)
 
-        self._bars = None, None
-
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
