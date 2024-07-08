@@ -53,12 +53,12 @@ class LSMA(Indicator):
         )
 
         self.period = period
-        #self.v_get_timestamp = np.vectorize(input_value_extractor.get_timestamp)
+        self.v_get_timestamp = np.vectorize(input_value_extractor.get_timestamp)
         self.v_get_value = np.vectorize(input_value_extractor.get_value)
 
-        self.times = np.arange(
-            start=1.0, stop=self.period + 1.0, step=1.0, dtype=np.float64
-        )
+        #self.times = np.arange(
+        #    start=0.0, stop=self.period, step=1.0, dtype=np.float64
+        #)
 
         self.initialize(input_values, input_indicator)
 
@@ -77,10 +77,14 @@ class LSMA(Indicator):
         if len(a_input_values) == 0:
             return None
 
-        # times = self.v_get_timestamp(a_input_values) / (3600 * 24)
-        # times = times - times[0]
-        # print(times)
-        times = self.times[: len(a_input_values)]
+        times = self.v_get_timestamp(a_input_values)
+        delta_t = (times[-1] - times[0]) / (self.period - 1)
+        times = times - times[0]
+        times = 1.0 + times / delta_t
+
+        if np.count_nonzero(np.isnan(times)) == len(a_input_values):
+            return None
+
         values = self.v_get_value(a_input_values)
 
         A = np.vstack([times, np.ones(len(times))]).T
