@@ -1,16 +1,14 @@
 from typing import List, Any
 
+from talipp.indicator_util import has_valid_values
 from talipp.indicators.Indicator import Indicator, InputModifierType
-from talipp.indicators.TrueRange import TrueRange
 from talipp.input import SamplingPeriodType
-from talipp.ohlcv import OHLCV
-from talipp.ma import MAType, MAFactory
 
 
-class ATR(Indicator):
-    """Average True Range
+class WilderMA(Indicator):
+    """Wilder's Moving Average.
 
-    Input type: [OHLCV][talipp.ohlcv.OHLCV]
+    Input type: `float`
 
     Output type: `float`
 
@@ -20,24 +18,25 @@ class ATR(Indicator):
         input_indicator: Input indicator.
         input_modifier: Input modifier.
         input_sampling: Input sampling type.
-    """    
+    """
+
     def __init__(self, period: int,
-                 input_values: List[OHLCV] = None,
+                 input_values: List[float] = None,
                  input_indicator: Indicator = None,
                  input_modifier: InputModifierType = None,
-                 ma_type: MAType = MAType.WilderMA,
                  input_sampling: SamplingPeriodType = None):
-        super(ATR, self).__init__(input_modifier=input_modifier,
-                                  input_sampling=input_sampling)
+        super().__init__(input_modifier=input_modifier,
+                         input_sampling=input_sampling)
 
         self.period = period
-
-        self._tr = TrueRange()
-        self.add_sub_indicator(self._tr)
-
-        self._ma_tr = MAFactory.get_ma(ma_type, period, input_indicator=self._tr)
+        self.k = 1.0 / self.period
 
         self.initialize(input_values, input_indicator)
 
     def _calculate_new_value(self) -> Any:
-        return self._ma_tr.output_values[-1]
+        if len(self.input_values) < self.period:
+            return None
+        elif has_valid_values(self.input_values, self.period, exact=True):
+            return sum(self.input_values[-self.period:]) / self.period
+        else:
+            return float(self.k * self.input_values[-1] + (1.0 - self.k) * self.output_values[-1])
