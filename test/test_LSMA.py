@@ -35,8 +35,8 @@ class TestLSMA(TalippTest):
         self.assertAlmostEqual(ind[-2].intercept, 9.352, places=5)
         self.assertAlmostEqual(ind[-2].pred, 10.592, places=5)
 
-        #self.assertAlmostEqual(ind[-1].slope, -0.037, places=5)
-        #self.assertAlmostEqual(ind[-1].intercept, 10.365, places=5)
+        self.assertAlmostEqual(ind[-1].slope, -0.037, places=5)
+        self.assertAlmostEqual(ind[-1].intercept, 10.365, places=5)
         self.assertAlmostEqual(ind[-1].pred, 10.180, places=5)
 
     def test_update(self):
