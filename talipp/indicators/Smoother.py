@@ -3,7 +3,7 @@ from talipp.indicators.Indicator import Indicator
 from talipp.ma import MAFactory, MAType
 
 
-class SmoothedIndicator(Indicator):
+class Smoother(Indicator):
     def __init__(self, indicator_class, ma_type: MAType):
         super().__init__()
 
