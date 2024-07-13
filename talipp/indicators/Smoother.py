@@ -30,19 +30,3 @@ class SmoothedIndicator(Indicator):
     def _calculate_new_value(self) -> Any:
         self.ma.add(self.internal_indicator.output_values)
         return self.ma.output_values[-1]
-
-
-class SmootherFactory:
-    """Smoother factory."""
-
-    @staticmethod
-    def get_smoother(indicator_class, ma_type: MAType = MAType.SMA):
-        """
-        Return a smoother indicator
-
-        Args:
-            indicator_class: indicator class
-            smoothing_period: Smoothing period.
-            ma_type: Moving average type.
-        """
-        return SmoothedIndicator(indicator_class, ma_type)

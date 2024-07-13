@@ -1,5 +1,5 @@
 from talipp.indicators.OBV import OBV
-from talipp.indicators.Smoother import SmootherFactory
+from talipp.indicators.IndicatorFactory import IndicatorFactory
 from talipp.ma import MAType
 
 
@@ -13,4 +13,4 @@ Args:
     input_modifier: Input modifier.
     input_sampling: Input sampling type.
 """
-SOBV = SmootherFactory.get_smoother(OBV, MAType.SMA)
+SOBV = IndicatorFactory.get_smoother(OBV, MAType.SMA)
