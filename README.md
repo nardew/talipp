@@ -28,12 +28,10 @@ Last but not least, `talipp` is a community project and therefore open to any su
 
 ---
 
-### What's new in the latest version
+### What's new in the recent versions
 
-- ZigZag indicator
-- IBS indicator
+- Rogers-Satchell volatility indicator
 - auto-sampling of input values
-
 - [v2.0.0 scope](https://github.com/nardew/talipp/issues/111)
 
 For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp/releases).
@@ -74,6 +72,7 @@ For the full history of changes see [CHANGELOG](https://github.com/nardew/talipp
 - Parabolic SAR
 - Pivots High/Low
 - Rate of Change (ROC)
+- Rogers-Satchell volatility indicator
 - Relative strength index (RSI)
 - Schaff Trend Cycle (STC)
 - SFX TOR
