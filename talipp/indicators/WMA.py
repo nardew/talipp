@@ -1,3 +1,4 @@
+import numpy as np
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
@@ -38,9 +39,11 @@ class WMA(Indicator):
         if not has_valid_values(self.input_values, self.period):
             return None
 
-        s = 0.0
-        for i in range(self.period, 0, -1):
-            index = len(self.input_values) - self.period + i - 1  # decreases from end of array with increasing i
-            s += self.input_values[index] * i
+        # Convert input_values to a NumPy array for vectorized operations
+        input_values_np = np.array(self.input_values[-self.period:])
 
-        return s / self.denom_sum
+        # Calculate weighted moving average using NumPy vectorized operations
+        weights = np.arange(1, self.period + 1)
+        wma = np.sum(input_values_np * weights) / self.denom_sum
+
+        return wma
