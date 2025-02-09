@@ -32,7 +32,7 @@ theme:
         icon: material/weather-night
         name: Switch to system preference
   features:
-    - announce.dismiss
+#    - announce.dismiss
     - search.suggest
     - search.highlight
     - search.share

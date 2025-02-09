@@ -53,8 +53,8 @@ class BB(Indicator):
         self.period = period
         self.std_dev_mult = std_dev_mult
 
-        self.central_band = MAFactory.get_ma(ma_type, period, input_modifier=input_modifier)
-        self.std_dev = StdDev(self.period, input_modifier=input_modifier)
+        self.central_band = MAFactory.get_ma(ma_type, period)
+        self.std_dev = StdDev(self.period)
 
         self.add_sub_indicator(self.central_band)
         self.add_sub_indicator(self.std_dev)

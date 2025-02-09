@@ -1,7 +1,8 @@
 import unittest
 
 from TalippTest import TalippTest
-from talipp.indicators import SMA
+from talipp.indicators import SMA, MACD
+from talipp.ohlcv import OHLCV
 
 
 class Test(TalippTest):
@@ -108,6 +109,24 @@ class Test(TalippTest):
         self.assertSequenceEqual([], sma2)
         self.assertSequenceEqual([], sma3)
         self.assertSequenceEqual([], sma4)
+
+    def test_composite_sub_indicator(self):
+        ohlcv_input = list(TalippTest.OHLCV_TMPL)
+        ind = MACD(12, 26, 9, ohlcv_input, input_modifier=lambda x: x.close)
+
+        print(ind)
+
+        self.assertAlmostEqual(ind[-3].macd, 0.293541, places=5)
+        self.assertAlmostEqual(ind[-3].signal, 0.098639, places=5)
+        self.assertAlmostEqual(ind[-3].histogram, 0.194901, places=5)
+
+        self.assertAlmostEqual(ind[-2].macd, 0.326186, places=5)
+        self.assertAlmostEqual(ind[-2].signal, 0.144149, places=5)
+        self.assertAlmostEqual(ind[-2].histogram, 0.182037, places=5)
+
+        self.assertAlmostEqual(ind[-1].macd, 0.329698, places=5)
+        self.assertAlmostEqual(ind[-1].signal, 0.181259, places=5)
+        self.assertAlmostEqual(ind[-1].histogram, 0.148439, places=5)
 
 
 if __name__ == '__main__':
