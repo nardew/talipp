@@ -44,3 +44,21 @@ ohlcv.time = dt.replace(second=25)
 obv.add(ohlcv) # still within the same timeframe => no new value added, the last one updated
 print(len(obv)) # 2
 ```
+
+!!! tip
+
+    If you want to apply auto-sampling to an indicator which accepts `float` input, e.g. [MACD][talipp.indicators.MACD] indicator, then wrap each input value in a "dummy" [OHLCV][talipp.ohlcv.OHLCV] object, populate its `close` and `time` components and finally provide [input modifier](indicator-chaining.md#input-modifiers) to extract the value
+
+    !!! example
+
+        ```python
+        from datetime import datetime
+        from talipp.indicators import MACD
+        from talipp.input import SamplingPeriodType
+        from talipp.ohlcv import OHLCV
+
+        input_floats = [1.0, 2.0, ...]
+        dt = datetime(2024, 1, 1, 0, 0, 0)
+        input_ohlcv = [OHLCV(None, None, None, value, None, dt) for value in input_floats]
+        macd = MACD(input_values=input_ohlcv, input_modifier=lambda x: x.close, input_sampling=SamplingPeriodType.SEC_15)
+        ```

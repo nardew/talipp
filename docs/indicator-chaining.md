@@ -37,6 +37,8 @@ print(smoothed_rsi)
 
 There is no limit to the number of chained indicators, one can create a computation pipeline from as many indicators as needed.
 
+## Input modifiers
+
 Chaining of indicators assumes that output and input types of chained indicators match. In case they do not, talipp provides an option to specify a conversion function which will be applied to the output value before it is fed to the next indicator. The function is specified in indicator's `__init__` method via `input_modifier` attribute.
 
 To illustrate usage of input modifiers, imagine we want to create a new indicator based on [Bollinger Bands][talipp.indicators.BB.BB] which will calculate [EMA][talipp.indicators.EMA.EMA] of the upper band. With standard libraries you would first calculate `Bolliger Bands`, then extract the upper band and finally feed it to `EMA`. With indicator chaining we can do better (besides it gives much more efficient solution). The only issue is that while `EMA` expects `floats` as the input, `Bollinger Bands` produce [BBVal][talipp.indicators.BB.BBVal]. Input modifiers for the rescue.
