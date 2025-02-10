@@ -58,8 +58,15 @@ class UO(Indicator):
         if not has_valid_values(self.buy_press, self.slow_period):
             return None
 
-        avg_fast = sum(self.buy_press[-self.fast_period:]) / float(sum(self.true_range[-self.fast_period:]))
-        avg_mid = sum(self.buy_press[-self.mid_period:]) / float(sum(self.true_range[-self.mid_period:]))
-        avg_slow = sum(self.buy_press[-self.slow_period:]) / float(sum(self.true_range[-self.slow_period:]))
+        fast_sum = sum(self.true_range[-self.fast_period:])
+        mid_sum = sum(self.true_range[-self.mid_period:])
+        slow_sum = sum(self.true_range[-self.slow_period:])
+
+        if fast_sum == 0 or mid_sum == 0 or slow_sum == 0:
+            return None
+
+        avg_fast = sum(self.buy_press[-self.fast_period:]) / float(fast_sum)
+        avg_mid = sum(self.buy_press[-self.mid_period:]) / float(mid_sum)
+        avg_slow = sum(self.buy_press[-self.slow_period:]) / float(slow_sum)
 
         return 100.0 * (4.0 * avg_fast + 2.0 * avg_mid + avg_slow) / 7.0
