@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
@@ -21,6 +22,7 @@ class ForceIndex(Indicator):
         input_modifier: Input modifier.
         ma_type: Moving average type.
         input_sampling: Input sampling type.
+        period_start: Period start for sampling (optional)
     """
 
     def __init__(self, period: int,
@@ -28,9 +30,11 @@ class ForceIndex(Indicator):
                  input_indicator: Indicator = None,
                  input_modifier: InputModifierType = None,
                  ma_type: MAType = MAType.EMA,
-                 input_sampling: SamplingPeriodType = None):
+                 input_sampling: SamplingPeriodType = None,
+                 period_start: datetime = None):
         super().__init__(input_modifier=input_modifier,
-                         input_sampling=input_sampling)
+                         input_sampling=input_sampling,
+                         period_start=period_start)
 
         self.ma = MAFactory.get_ma(ma_type, period)
         self.add_managed_sequence(self.ma)
