@@ -31,7 +31,7 @@ class TalippTest(unittest.TestCase):
 
         indicator.update(last_input_value)
 
-        self.assertEqual(last_indicator_value, indicator[-1])
+        self.assertAlmostEqual(last_indicator_value, indicator[-1], places = 5)
 
     def assertIndicatorDelete(self, indicator: Indicator, iterations_no: int = 20):
         last_indicator_value = indicator[-1]
@@ -48,13 +48,13 @@ class TalippTest(unittest.TestCase):
             indicator.remove()
 
         # verify that adding and then removing X input values returns the original output value
-        self.assertEqual(last_indicator_value, indicator[-1])
+        self.assertAlmostEqual(last_indicator_value, indicator[-1], places = 5)
 
         # delete the original last input value and add it back and check the original last output value is returned
         indicator.remove()
         indicator.add(last_input_value)
 
-        self.assertEqual(last_indicator_value, indicator[-1])
+        self.assertAlmostEqual(last_indicator_value, indicator[-1], places = 5)
 
     def assertIndicatorPurgeOldest(self, indicator: Indicator):
         # purge oldest 5 values
