@@ -35,4 +35,4 @@ class IBS(Indicator):
             return None
 
         candle: OHLCV = self.input_values[-1]
-        return (candle.close - candle.low) / (candle.high - candle.low)
+        return None if candle.high == candle.low else (candle.close - candle.low) / (candle.high - candle.low)
