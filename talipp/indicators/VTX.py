@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
-from talipp.indicators.ATR import ATR
+from talipp.indicators.TrueRange import TrueRange
 from talipp.indicators.Indicator import Indicator, InputModifierType
 from talipp.input import SamplingPeriodType
 from talipp.ohlcv import OHLCV
@@ -53,8 +53,8 @@ class VTX(Indicator):
         self.minus_vm = []
         self.add_managed_sequence(self.minus_vm)
 
-        self.atr = ATR(1)
-        self.add_sub_indicator(self.atr)
+        self.tr = TrueRange()
+        self.add_sub_indicator(self.tr)
 
         self.initialize(input_values, input_indicator)
 
@@ -68,9 +68,9 @@ class VTX(Indicator):
         self.plus_vm.append(abs(value.high - value2.low))
         self.minus_vm.append(abs(value.low - value2.high))
 
-        if not has_valid_values(self.atr, self.period) or not has_valid_values(self.plus_vm, self.period) or \
+        if not has_valid_values(self.tr, self.period) or not has_valid_values(self.plus_vm, self.period) or \
                 not has_valid_values(self.minus_vm, self.period):
             return None
 
-        atr_sum = float(sum(self.atr[-self.period:]))
+        atr_sum = float(sum(self.tr[-self.period:]))
         return VTXVal(sum(self.plus_vm[-self.period:]) / atr_sum, sum(self.minus_vm[-self.period:]) / atr_sum)
