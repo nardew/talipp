@@ -8,7 +8,7 @@ from cryptoxlib.version_conversions import async_run
 
 from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, \
     CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, IBS, Ichimoku, \
-    KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, McGinleyDynamic, MeanDev, OBV, ROC, RogersSatchell, RSI, \
+    KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, McGinleyDynamic, MeanDev, NATR, OBV, ROC, RogersSatchell, RSI, \
     ParabolicSAR, \
     SFX, SMA, SMMA, SOBV, STC, StdDev, \
     Stoch, StochRSI, SuperTrend, T3, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, WMA, ZigZag, ZLEMA
@@ -61,6 +61,7 @@ async def run():
     print(f'MassIndex: {MassIndex(9, 9, 10, ohlcv)[-1]}')
     print(f'McGinleyDynamic: {McGinleyDynamic(14, close)[-1]}')
     print(f'MeanDev: {MeanDev(10, close)[-1]}')
+    print(f'NATR: {NATR(14, ohlcv)[-5:]}')
     print(f'OBV: {OBV(ohlcv)[-1]}')
     print(f'ROC: {ROC(9, close)[-1]}')
     print(f'RogersSatchell: {RogersSatchell(9, ohlcv)[-5:]}')

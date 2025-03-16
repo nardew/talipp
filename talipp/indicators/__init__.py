@@ -29,6 +29,7 @@ from .MACD import MACD as MACD
 from .MassIndex import MassIndex as MassIndex
 from .McGinleyDynamic import McGinleyDynamic as McGinleyDynamic
 from .MeanDev import MeanDev as MeanDev
+from .NATR import NATR as NATR
 from .OBV import OBV as OBV
 from .PivotsHL import PivotsHL as PivotsHL
 from .ROC import ROC as ROC
@@ -89,6 +90,7 @@ __all__ = (
     "MassIndex",
     "McGinleyDynamic",
     "MeanDev",
+    "NATR",
     "OBV",
     "ParabolicSAR",
     "PivotsHL",
