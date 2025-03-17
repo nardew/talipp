@@ -1,4 +1,5 @@
 from math import exp
+from datetime import datetime
 from typing import List, Any
 
 from talipp.indicators.Indicator import Indicator, InputModifierType
@@ -20,6 +21,7 @@ class ALMA(Indicator):
         input_indicator: Input indicator.
         input_modifier: Input modifier.
         input_sampling: Input sampling type.
+        period_start: Period start for sampling (optional)
     """
 
     def __init__(self, period: int,
@@ -28,9 +30,11 @@ class ALMA(Indicator):
                  input_values: List[float] = None,
                  input_indicator: Indicator = None,
                  input_modifier: InputModifierType = None,
-                 input_sampling: SamplingPeriodType = None):
+                 input_sampling: SamplingPeriodType = None,
+                 period_start: datetime = None):
         super().__init__(input_modifier=input_modifier,
-                         input_sampling=input_sampling)
+                         input_sampling=input_sampling,
+                         period_start=period_start)
 
         self.period = period
         self.offset = offset

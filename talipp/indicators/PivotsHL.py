@@ -5,6 +5,7 @@ Warning:
 
 import enum
 from dataclasses import dataclass
+from datetime import datetime
 from typing import List, Any
 
 from talipp.exceptions import TalippException
@@ -59,6 +60,7 @@ class PivotsHL(Indicator):
         input_indicator: Input indicator.
         input_modifier: Input modifier.
         input_sampling: Input sampling type.
+        period_start: Period start for sampling (optional)
     """
 
     def __init__(self, high_period: int,
@@ -66,10 +68,12 @@ class PivotsHL(Indicator):
                  input_values: List[OHLCV] = None,
                  input_indicator: Indicator = None,
                  input_modifier: InputModifierType = None,
-                 input_sampling: SamplingPeriodType = None):
+                 input_sampling: SamplingPeriodType = None,
+                 period_start: datetime = None):
         super().__init__(input_modifier=input_modifier,
                          output_value_type=PivotsHLVal,
-                         input_sampling=input_sampling)
+                         input_sampling=input_sampling,
+                         period_start=period_start)
 
         self.high_period = high_period
         self.low_period = low_period

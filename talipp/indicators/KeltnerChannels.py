@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
@@ -41,6 +42,7 @@ class KeltnerChannels(Indicator):
         input_modifier: Input modifier.
         ma_type: Moving average type.
         input_sampling: Input sampling type.
+        period_start: Period start for sampling (optional)
     """
 
     def __init__(self, ma_period: int,
@@ -51,10 +53,12 @@ class KeltnerChannels(Indicator):
                  input_indicator: Indicator = None,
                  input_modifier: InputModifierType = None,
                  ma_type: MAType = MAType.EMA,
-                 input_sampling: SamplingPeriodType = None):
+                 input_sampling: SamplingPeriodType = None,
+                 period_start: datetime = None):
         super().__init__(input_modifier=input_modifier,
                          output_value_type=KeltnerChannelsVal,
-                         input_sampling=input_sampling)
+                         input_sampling=input_sampling,
+                         period_start=period_start)
 
         self.atr_mult_up = atr_mult_up
         self.atr_mult_down = atr_mult_down
