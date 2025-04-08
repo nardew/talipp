@@ -21,6 +21,7 @@ from .ForceIndex import ForceIndex as ForceIndex
 from .HMA import HMA as HMA
 from .IBS import IBS as IBS
 from .Ichimoku import Ichimoku as Ichimoku
+from .IR import IR as IR
 from .KAMA import KAMA as KAMA
 from .KeltnerChannels import KeltnerChannels as KeltnerChannels
 from .KST import KST as KST
@@ -32,6 +33,7 @@ from .MeanDev import MeanDev as MeanDev
 from .NATR import NATR as NATR
 from .OBV import OBV as OBV
 from .PivotsHL import PivotsHL as PivotsHL
+from .IR import RIR as RIR
 from .ROC import ROC as ROC
 from .RogersSatchell import RogersSatchell as RogersSatchell
 from .RSI import RSI as RSI
