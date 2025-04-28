@@ -14,6 +14,7 @@ from talipp.indicators.T3 import T3
 from talipp.indicators.TEMA import TEMA
 from talipp.indicators.TRIX import TRIX
 from talipp.indicators.VWMA import VWMA
+from talipp.indicators.WilderMA import WilderMA
 from talipp.indicators.WMA import WMA
 from talipp.indicators.ZLEMA import ZLEMA
 
@@ -53,6 +54,9 @@ class MAType(Enum):
 
     VWMA = auto()
     """[Volume Weighted Moving Average][talipp.indicators.VWMA]"""
+
+    WilderMA = auto()
+    """[Wilder's Moving Average][talipp.indicators.WMA]"""
 
     WMA = auto()
     """[Weighted Moving Average][talipp.indicators.WMA]"""
@@ -101,6 +105,8 @@ class MAFactory:
             return HMA(period=period, input_values=input_values, input_indicator=input_indicator, input_modifier=input_modifier)
         elif ma_type == MAType.VWMA:
             return VWMA(period=period, input_values=input_values, input_indicator=input_indicator, input_modifier=input_modifier)
+        elif ma_type == MAType.WilderMA:
+            return WilderMA(period=period, input_values=input_values, input_indicator=input_indicator, input_modifier=input_modifier)
         elif ma_type == MAType.WMA:
             return WMA(period=period, input_values=input_values, input_indicator=input_indicator, input_modifier=input_modifier)
         elif ma_type == MAType.T3:
