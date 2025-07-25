@@ -1,7 +1,7 @@
 # talipp - Incremental Technical Analysis Library
 
 ![python](https://img.shields.io/pypi/pyversions/talipp?logo=python)
-![PyPy](https://img.shields.io/badge/pypy-3-blue.svg)
+![PyPy](https://img.shields.io/badge/pypy-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11%20%7C%203.12%20%7C%203.13-blue)
 ![unit tests](https://github.com/nardew/talipp/workflows/unit%20tests/badge.svg)
 
 ---
