@@ -1,7 +1,7 @@
 # Home
 
 ![python](https://img.shields.io/pypi/pyversions/talipp?logo=python)
-![pypi](https://img.shields.io/pypi/v/talipp?logo=pypi)
+![PyPy](https://img.shields.io/badge/pypy-3.8%20%7C%203.9%20%7C%203.10%20%7C%203.11-blue)
 ![GitHub Release Date](https://img.shields.io/github/release-date/nardew/talipp?logo=pypi)
 ![pypi](https://img.shields.io/pypi/l/talipp)
 
