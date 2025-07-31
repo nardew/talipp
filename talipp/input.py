@@ -6,6 +6,7 @@ from __future__ import annotations
 
 from datetime import datetime, timedelta
 from enum import Enum, auto
+from dataclasses import dataclass
 
 from talipp.ohlcv import OHLCV
 
@@ -83,8 +84,8 @@ class SamplingPeriodType(Enum):
 
     DAY_1 = (TimeUnitType.DAY, 1)
     """1 day"""
-    
-    
+
+
 class Sampler:
     """Implementation of timeframe auto-sampling.
 
@@ -156,8 +157,28 @@ class Sampler:
         period_start = period_start.replace(tzinfo=dt.tzinfo)
 
         delta = dt - period_start
-        num_periods = delta.total_seconds() // (period_length * Sampler.CONVERSION_TO_SEC[period_type])
+        num_periods = delta.total_seconds() // (
+            period_length * Sampler.CONVERSION_TO_SEC[period_type]
+        )
 
-        normalized_dt = period_start + timedelta(seconds=num_periods * period_length * Sampler.CONVERSION_TO_SEC[period_type])
+        normalized_dt = period_start + timedelta(
+            seconds=num_periods * period_length * Sampler.CONVERSION_TO_SEC[period_type]
+        )
 
         return normalized_dt
+
+
+@dataclass
+class TimedValue:
+    time: datetime
+    value: float
+
+
+class TimedValueExtractor:
+    @staticmethod
+    def get_timestamp(tv: TimedValue):
+        return tv.time.timestamp()
+
+    @staticmethod
+    def get_value(tv: TimedValue):
+        return tv.value
