@@ -48,12 +48,14 @@ from .SuperTrend import SuperTrend as SuperTrend
 from .T3 import T3 as T3
 from .TEMA import TEMA as TEMA
 from .TRIX import TRIX as TRIX
+from .TrueRange import TrueRange as TrueRange
 from .TSI import TSI as TSI
 from .TTM import TTM as TTM
 from .UO import UO as UO
 from .VTX import VTX as VTX
 from .VWAP import VWAP as VWAP
 from .VWMA import VWMA as VWMA
+from .WilderMA import WilderMA as WilderMA
 from .WMA import WMA as WMA
 from .ZigZag import ZigZag as ZigZag
 from .ZLEMA import ZLEMA as ZLEMA
@@ -115,6 +117,7 @@ __all__ = (
     "VTX",
     "VWAP",
     "VWMA",
+    "WilderMA",
     "WMA",
     "ZigZag",
     "ZLEMA"
