@@ -10,13 +10,11 @@ class Test(TalippTest):
         self.input_values = list(TalippTest.OHLCV_TMPL)
 
     def test_init(self):
-        ind = SOBV(20, self.input_values)
+        ind = SOBV(20, input_values=self.input_values)
 
-        print(ind)
-
-        self.assertAlmostEqual(ind[-3], 90.868499, places = 5)
-        self.assertAlmostEqual(ind[-2], 139.166499, places = 5)
-        self.assertAlmostEqual(ind[-1], 187.558499, places = 5)
+        self.assertAlmostEqual(ind[-3], 90.868499, places=5)
+        self.assertAlmostEqual(ind[-2], 139.166499, places=5)
+        self.assertAlmostEqual(ind[-1], 187.558499, places=5)
 
     def test_update(self):
         self.assertIndicatorUpdate(SOBV(20, self.input_values))
@@ -28,5 +26,5 @@ class Test(TalippTest):
         self.assertIndicatorPurgeOldest(SOBV(20, self.input_values))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
