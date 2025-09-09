@@ -5,7 +5,7 @@ repo_url: https://github.com/nardew/talipp
 edit_uri: blob/main/docs/
 site_author: nardew
 site_description: talipp - incremental technical analysis library
-copyright: Copyright &copy; 2024 nardew
+copyright: Copyright &copy; 2025 nardew
 theme:
   name: material
   language: en
