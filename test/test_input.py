@@ -59,6 +59,14 @@ class Test(unittest.TestCase):
         self.assertFalse(sampler.is_same_period(self.get_ohlcv("01/01/2024 12:34:59"),
                                                 self.get_ohlcv("01/01/2024 12:35:00")))
 
+        self.assertFalse(sampler.is_same_period(self.get_ohlcv("01/01/2024 09:14:00"),
+                                               self.get_ohlcv("01/01/2024 09:16:00")))
+
+        period_adjusted_sampler = Sampler(SamplingPeriodType.MIN_5, datetime.strptime("01/01/2024 09:14:00", "%d/%m/%Y %H:%M:%S"))
+
+        self.assertTrue(period_adjusted_sampler.is_same_period(self.get_ohlcv("01/01/2024 09:14:00"),
+                                                               self.get_ohlcv("01/01/2024 09:16:00")))
+
     def test_sample_normalize_1hour(self):
         sampler = Sampler(SamplingPeriodType.HOUR_1)
 

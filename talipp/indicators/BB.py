@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from datetime import datetime
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
@@ -37,6 +38,7 @@ class BB(Indicator):
         input_indicator: Input indicator.
         input_modifier: Input modifier.
         input_sampling: Input sampling type.
+        period_start: Period start for sampling (optional)
     """
 
     def __init__(self, period: int,
@@ -45,10 +47,12 @@ class BB(Indicator):
                  input_indicator: Indicator = None,
                  input_modifier: InputModifierType = None,
                  ma_type: MAType = MAType.SMA,
-                 input_sampling: SamplingPeriodType = None):
+                 input_sampling: SamplingPeriodType = None,
+                 period_start: datetime = None):
         super().__init__(input_modifier=input_modifier,
                          output_value_type=BBVal,
-                         input_sampling=input_sampling)
+                         input_sampling=input_sampling,
+                         period_start=period_start)
 
         self.period = period
         self.std_dev_mult = std_dev_mult

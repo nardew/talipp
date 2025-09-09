@@ -1,5 +1,6 @@
 import enum
 from dataclasses import dataclass
+from datetime import datetime
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
@@ -50,6 +51,7 @@ class ParabolicSAR(Indicator):
         input_indicator: Input indicator.
         input_modifier: Input modifier.
         input_sampling: Input sampling type.
+        period_start: Period start for sampling (optional)
     """
 
     SAR_INIT_LEN = 5
@@ -60,10 +62,12 @@ class ParabolicSAR(Indicator):
                  input_values: List[OHLCV] = None,
                  input_indicator: Indicator = None,
                  input_modifier: InputModifierType = None,
-                 input_sampling: SamplingPeriodType = None):
+                 input_sampling: SamplingPeriodType = None,
+                 period_start: datetime = None):
         super().__init__(input_modifier=input_modifier,
                          output_value_type=ParabolicSARVal,
-                         input_sampling=input_sampling)
+                         input_sampling=input_sampling,
+                         period_start=period_start)
 
         self.init_accel_factor = init_accel_factor
         self.accel_factor_inc = accel_factor_inc

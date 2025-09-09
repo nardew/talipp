@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import List, Any
 
 from talipp.indicator_util import has_valid_values
@@ -26,6 +27,7 @@ class STC(Indicator):
         input_modifier: Input modifier.
         stoch_ma_type: [Stoch][talipp.indicators.Stoch] moving average type.
         input_sampling: Input sampling type.
+        period_start: Period start for sampling (optional)
     """
 
     def __init__(self, fast_macd_period: int,
@@ -36,9 +38,11 @@ class STC(Indicator):
                  input_indicator: Indicator = None,
                  input_modifier: InputModifierType = None,
                  stoch_ma_type: MAType = MAType.SMA,
-                 input_sampling: SamplingPeriodType = None):
+                 input_sampling: SamplingPeriodType = None,
+                 period_start: datetime = None):
         super().__init__(input_modifier=input_modifier,
-                         input_sampling=input_sampling)
+                         input_sampling=input_sampling,
+                         period_start=period_start)
 
         # use slow_macd_period for signal line as signal line is not relevant here
         self.macd = MACD(fast_macd_period, slow_macd_period, slow_macd_period)
