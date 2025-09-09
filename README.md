@@ -30,8 +30,7 @@ Last but not least, `talipp` is a community project and therefore open to any su
 
 ### What's new in the recent versions
 
-- Normalized Average True Range indicator
-- Rogers-Satchell volatility indicator
+- Williams %R indicator
 - auto-sampling of input values
 
 For the full history of changes see [Release Notes](https://github.com/nardew/talipp/releases).
@@ -86,6 +85,7 @@ For the full history of changes see [Release Notes](https://github.com/nardew/ta
 - Ultimate Oscillator (UO)
 - Vortex Indicator (VTX)
 - Volume Weighted Average Price (VWAP)
+- Williams %R
 - ZigZag
 
 ### Installation

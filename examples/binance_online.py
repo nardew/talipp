@@ -7,11 +7,10 @@ from cryptoxlib.clients.binance import enums
 from cryptoxlib.version_conversions import async_run
 
 from talipp.indicators import AccuDist, ADX, ALMA, AO, Aroon, ATR, BB, BOP, CCI, ChaikinOsc, ChandeKrollStop, CHOP, \
-    CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, IBS, Ichimoku, \
-    KAMA, KeltnerChannels, KST, KVO, MACD, MassIndex, McGinleyDynamic, MeanDev, NATR, OBV, ROC, RogersSatchell, RSI, \
-    ParabolicSAR, \
-    SFX, SMA, SMMA, SOBV, STC, StdDev, \
-    Stoch, StochRSI, SuperTrend, T3, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, WMA, ZigZag, ZLEMA
+    CoppockCurve, DEMA, DonchianChannels, DPO, EMA, EMV, ForceIndex, HMA, IBS, Ichimoku, KAMA, KeltnerChannels, KST, \
+    KVO, MACD, MassIndex, McGinleyDynamic, MeanDev, NATR, OBV, ROC, RogersSatchell, RSI, ParabolicSAR, SFX, SMA, SMMA, \
+    SOBV, STC, StdDev, Stoch, StochRSI, SuperTrend, T3, TEMA, TRIX, TSI, TTM, UO, VTX, VWAP, VWMA, Williams, WMA, \
+    ZigZag, ZLEMA
 from talipp.ohlcv import OHLCV
 
 
@@ -85,6 +84,7 @@ async def run():
     print(f'VTX: {VTX(14, ohlcv)[-1]}')
     print(f'VWAP: {VWAP(ohlcv)[-1]}')
     print(f'VWMA: {VWMA(20, ohlcv)[-1]}')
+    print(f'Williams: {Williams(14, ohlcv)[-5:]}')
     print(f'WMA: {WMA(9, close)[-1]}')
     print(f'ZigZag: {ZigZag(0.1, 4, ohlcv)[-15:]}')
     print(f'ZLEMA: {ZLEMA(14, close)[-1]}')
